@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const GameSchema = new mongoose.Schema({
-  players: [{ type: mongoose.Schema.Types.ObjectId, ref: "Player", validate: v => v.length > 0, required: true }], // all players in the particular game
+  players: [{ type: mongoose.Schema.Types.ObjectId, ref: "Player", required: true }], // all players in the particular game
   game_host: { type: mongoose.Schema.Types.ObjectId, ref: "Player", required: true },
   current_player: { type: mongoose.Schema.Types.ObjectId, ref: "Player", required: true }, // player who's turn it is at the moment
   phase: { type: String, enum: [ "listening-placement-phase", "reveal-phase" ], required: true },
