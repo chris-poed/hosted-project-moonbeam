@@ -10,28 +10,31 @@ export function JoinGame() {
 
     const navigate = useNavigate();
 
-    function handleSubmit(event){
+     function handleSubmit(event){
         event.preventDefault();
         setError("");
         console.log("INSIDE GAME:JOIN HANDLE SUBMIT");
         console.log("DISPLAYNAME", displayName);
          console.log("DISPLAYNAME", joinCode);
 
-        // if(!displayName.trim()){
-        //     console.log("STOPPING: displayname")
-        //     setError("Enter a display name");
-        //     return;
-        // }
+        if(!displayName.trim()){
+            console.log("STOPPING: displayname")
+            setError("Enter a display name");
+            return;
+        }
 
 
-        // if(!joinCode.trim()){
-        //     console.log("STOPPING: join code")
-        //     setError("Enter a join code name");
-        //     return;
-        // }
-
+        if(!joinCode.trim()){
+            console.log("STOPPING: join code")
+            setError("Enter a join code name");
+            return;
+        }
+        if(!socket.connected){
+            console.log("Socket not connected");
+            socket.connect();
+        }
         
-
+       
         socket.emit("game:join", {
             display_name:displayName.trim(),
             join_code:joinCode.trim().toUpperCase(),

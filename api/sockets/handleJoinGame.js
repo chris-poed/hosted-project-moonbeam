@@ -4,6 +4,7 @@ const Player = require("../models/player");
  async function handleJoinGame(io, socket, payload, callback){
 
     try{
+        console.log("API:Inside JOIN GAME", payload)
 
         const {display_name, join_code} = payload;
 
