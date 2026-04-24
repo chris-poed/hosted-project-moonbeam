@@ -21,21 +21,13 @@
 
  async function handleCreateGame(io, socket, payload, callback){
 
-    console.log("create game handler")
-    console.log(payload)
-    // generate room code function
-   
-
-    
-    
-
     try{
         const { display_name } = payload;
 
         if(!display_name){
             return callback({
             ok:false,
-            message: "enter a display name"
+            error: "Enter a display name"
              })
         }
 
@@ -86,13 +78,17 @@
 
         })
 
-        io.to(roomName).emit("lobby:updated", lobbyPayload);
 
 
        
 
     } catch(error){
-        console.log(error);
+        console.error("game:create failed", error)
+        callback({
+            ok:false,
+            error: "Create Game failed"
+
+        })
 
 
     }
