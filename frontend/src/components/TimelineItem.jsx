@@ -1,23 +1,39 @@
-import { useSortable } from "@dnd-kit/sortable"
-import { CSS } from "@dnd-kit/utilities"
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
 function TimelineItem(props) {
-    const sortable = useSortable({id: props.song.id})
-    const style = {
-        transform: CSS.Transform.toString(sortable.transform),
-        transition: sortable.transition
-    }
+  const sortable = useSortable({ id: props.song.id });
 
+  const style = {
+    transform: CSS.Transform.toString(sortable.transform),
+    transition: sortable.transition,
+    padding: "10px",
+    border: "1px solid black",
+    background: "white",
+    cursor: props.isDraggable ? "grab" : "default",
 
-  return <div 
-    ref={sortable.setNodeRef}
-    {...(props.song.id === props.pendingCard ? sortable.listeners : {})} 
-    {...sortable.attributes} 
-    style={ style }
-        >
-    {props.song.year}
-    </div> 
- 
+    // Hide original card while DragOverlay is moving
+    opacity: sortable.isDragging ? 0 : 1,
+
+    minWidth: "60px",
+    textAlign: "center",
+    boxSizing: "border-box",
+  };
+
+  return (
+    <div
+      ref={sortable.setNodeRef}
+      {...sortable.attributes}
+      {...(props.isDraggable ? sortable.listeners : {})}
+      style={style}
+    >
+      {props.isDraggable ? (
+  <span style={{ fontSize: "32px", fontWeight: "bold" }}>?</span>
+) : (
+  props.song.year
+)}
+    </div>
+  );
 }
 
-export default TimelineItem
+export default TimelineItem;
