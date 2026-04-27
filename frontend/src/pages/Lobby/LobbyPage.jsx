@@ -5,7 +5,6 @@ import { socket } from "../../socket";
 export function Lobby() {
 
     const location = useLocation();
-    // console.log(location, "useLocation data");
     const navigate = useNavigate();
 
     const [lobby, setLobby]= useState(location.state?.lobby||null);
