@@ -1,5 +1,6 @@
 import { useDroppable } from "@dnd-kit/core";
-import SongCard from "./SongCard";
+import {  SortableContext, horizontalListSortingStrategy} from "@dnd-kit/sortable"
+import TimelineItem from "./TimelineItem";
 
 
 function Timeline(props) {
@@ -7,10 +8,13 @@ function Timeline(props) {
     return <div>
         <h2>Timeline</h2>
         <div ref={droppable.setNodeRef} style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
+            <SortableContext items={props.timeline.map(song => song.id)} strategy={horizontalListSortingStrategy}>
             {props.timeline.map(song => (
-                <SongCard key={song.id} song={song} mode="timeline"/>
+                <TimelineItem key={song.id} song={song}/>
             ))}
-        </div></div>
+            </SortableContext>
+        </div>
+      </div>
     
 }
 

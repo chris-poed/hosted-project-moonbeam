@@ -1,11 +1,11 @@
-import SongCard from "./SongCard"
+import CardBankItem from "./CardBankItem"
 
 function CardBank(props) {
   return <div>
            <h2>Card Bank</h2>
            <div>
             {props.cardBank.map(song => (
-                <SongCard key={song.id} song={song} mode="bank"/>
+                <CardBankItem key={song.id} song={song}/>
             ))}
            </div>
           </div>
