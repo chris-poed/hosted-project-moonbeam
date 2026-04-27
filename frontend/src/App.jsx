@@ -4,6 +4,7 @@ import "./App.css";
 import { HomePage } from "./pages/Home/HomePage";
 
 import { Lobby } from "./pages/Lobby/LobbyPage";
+import { GameScreen } from "./pages/GameScreen";
 
 // docs: https://reactrouter.com/en/main/start/overview
 const router = createBrowserRouter([
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
   {
     path: "/lobby",
     element: <Lobby />,
+  },
+  {
+    path: "/gamescreen",
+    element: <GameScreen/>
   }
 ]);
 
