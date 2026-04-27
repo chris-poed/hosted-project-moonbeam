@@ -1,0 +1,73 @@
+.countdown-timer {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  user-select: none;
+}
+
+.countdown-timer__label {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary, #555);
+}
+
+.countdown-timer__ring-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.countdown-timer__number {
+  position: absolute;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--timer-fg, #1a1a1a);
+  line-height: 1;
+  transition: color 0.4s ease;
+}
+
+/* SVG track (background ring) */
+.countdown-timer__track {
+  stroke: var(--timer-track, #e0e0e0);
+}
+
+/* SVG arc (progress ring) */
+.countdown-timer__arc {
+  stroke: var(--timer-arc, #4a90e2);
+}
+
+/* --- Urgency states --- */
+.countdown-timer--calm {
+  --timer-arc: #4a90e2;
+  --timer-fg: #1a1a1a;
+}
+
+.countdown-timer--warning {
+  --timer-arc: #f59e0b;
+  --timer-fg: #92400e;
+}
+
+.countdown-timer--urgent {
+  --timer-arc: #ef4444;
+  --timer-fg: #991b1b;
+  animation: countdown-pulse 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes countdown-pulse {
+  from { transform: scale(1); }
+  to   { transform: scale(1.04); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .countdown-timer--urgent {
+    animation: none;
+  }
+  .countdown-timer__arc {
+    transition: none;
+  }
+}
