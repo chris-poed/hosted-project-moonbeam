@@ -42,7 +42,7 @@ describe("registerCreateGameHandlers", ()=>{
 
     })
 
-    test("when game:create event is triggered handeleCreateGame is called ", async ()=>{
+    test("when game:create event is triggered handleCreateGame is called ", async ()=>{
         
         //set up paylad and mock cb function
         const payload = {display_name: "Bob"}
