@@ -79,7 +79,11 @@ async function handleStartGame(io, socket, payload, callback){
         
 
     } catch (error) {
-        console.log(error)
+        console.log(error);
+        return callback({
+            ok: false,
+            error: "Start Game failed",
+        });
     }
 }
 
