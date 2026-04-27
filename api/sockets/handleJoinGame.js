@@ -4,13 +4,9 @@ const Player = require("../models/player");
  async function handleJoinGame(io, socket, payload, callback){
 
     try{
-        console.log("API:Inside JOIN GAME", payload)
-
         const {display_name, join_code} = payload;
-
-        console.log("API:Inside JOIN GAME", payload)
-
-        if(!display_name){
+        
+        if(!display_name || !display_name.trim()){
             return callback({
             ok:false,
             error: "Enter a display name"
@@ -55,7 +51,7 @@ const Player = require("../models/player");
         }
 
         const player = await Player.create({
-            display_name:display_name,
+            display_name:display_name.trim(),
             timeline:[],
             is_connected:true,
         });
@@ -86,7 +82,7 @@ const Player = require("../models/player");
         //data is needed for transitioninto lobby
         callback({
         ok:true,
-        player_id: player.id.toString(),
+        player_id: player._id.toString(),
         lobby: lobbyPayload,
 
         })
@@ -97,18 +93,13 @@ const Player = require("../models/player");
 
 
     } catch(error) {
-        console.error("game:join failed", error)
+        
         callback({
             ok:false,
             error: "Join Game failed"
 
         })
-
-
-
     }
-
-
  }
 
  module.exports = handleJoinGame;
