@@ -1,5 +1,6 @@
 const handleCreateGame = require("./handleCreateGame")
 const handleJoinGame = require("./handleJoinGame")
+const handleStartGame = require("./handleStartGame")
 
 const registerCreateGameHandlers = (io, socket) => {
    
@@ -10,6 +11,11 @@ const registerCreateGameHandlers = (io, socket) => {
      socket.on("game:join", async (payload, callback) => {
         await handleJoinGame(io, socket, payload, callback);
     });
+
+    socket.on("game:start", async (payload, callback) => {
+        console.log("SERVER: inside game:start handler", payload);
+        await handleStartGame(io, socket, payload, callback)
+    })
 
 
     
