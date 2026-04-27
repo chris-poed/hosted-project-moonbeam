@@ -5,6 +5,7 @@ import { HomePage } from "./pages/Home/HomePage";
 
 import { Lobby } from "./pages/Lobby/LobbyPage";
 import { GameScreen } from "./pages/GameScreen";
+import { TimerTest } from "./pages/TimerTest";
 
 // docs: https://reactrouter.com/en/main/start/overview
 const router = createBrowserRouter([
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "/gamescreen",
     element: <GameScreen/>
+ },
+  {
+    path: "/timer-test",
+    element: <TimerTest />,
   }
 ]);
 
