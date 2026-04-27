@@ -10,8 +10,8 @@ function TimelineItem(props) {
 
 
   return <div 
-    ref={sortable.setNodeRef} 
-    {...sortable.listeners} 
+    ref={sortable.setNodeRef}
+    {...(props.song.id === props.pendingCard ? sortable.listeners : {})} 
     {...sortable.attributes} 
     style={ style }
         >

@@ -10,7 +10,7 @@ function Timeline(props) {
         <div ref={droppable.setNodeRef} style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
             <SortableContext items={props.timeline.map(song => song.id)} strategy={horizontalListSortingStrategy}>
             {props.timeline.map(song => (
-                <TimelineItem key={song.id} song={song}/>
+                <TimelineItem key={song.id} song={song} pendingCard={props.pendingCard}/>
             ))}
             </SortableContext>
         </div>

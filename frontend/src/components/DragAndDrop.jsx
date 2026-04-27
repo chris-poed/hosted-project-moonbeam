@@ -9,15 +9,16 @@ function DragAndDrop() {
 
   const [cardBank, setCardBank] = useState(songs)
   const [timeline, setTimeline] = useState([])
+  const [pendingCard, setPendingCard] = useState(null)
 
   const handleDragEnd = (event) => {
     const draggedId = event.active.id
     const draggedCard = cardBank.find(song => song.id === draggedId)
     if (!draggedCard) return
     const newTimeline = [...timeline, draggedCard]
-    const sorted = newTimeline.sort((a, b) => a.year - b.year)
-    setTimeline(sorted)
+    setTimeline(newTimeline)
     setCardBank(cardBank.filter(song => song.id !== draggedCard.id))
+    setPendingCard(draggedCard.id)
   }
 
   const handleDragOver = (event) => {
@@ -48,7 +49,7 @@ function DragAndDrop() {
         
         <CardBank cardBank={cardBank} />
 
-        <Timeline timeline={timeline} />
+        <Timeline timeline={timeline} pendingCard={pendingCard} />
         
       </div></DndContext>
     
