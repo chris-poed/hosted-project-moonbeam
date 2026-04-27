@@ -14,11 +14,6 @@ export function GameScreen() {
         return player.player_id === playerId;
     });
 
-    console.log("GameScreen location.state:", location.state);
-    console.log("GameScreen gameState:", gameState);
-    console.log("GameScreen playerId:", playerId);
-    console.log("Phase:", phase);
-
     return (
         <>
             <h1>The gamescreen</h1>
