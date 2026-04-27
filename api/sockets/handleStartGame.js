@@ -20,18 +20,19 @@ async function handleStartGame(io, socket, payload, callback){
 
         const roomName = `game:${join_code}`;
         const game = await getGameStatePayload(join_code)
-        if (player_id !== game.host_player_id) {
-            return callback({
-                ok: false,
-                error: "Only the host can start the game"
-            })
-        }
 
         if (!game) {
             return callback({
                 ok: false,
                 error: "Game not found",
             });
+        }
+
+        if (player_id !== game.host_player_id) {
+            return callback({
+                ok: false,
+                error: "Only the host can start the game"
+            })
         }
 
         if (game.players.length <= 1) {
