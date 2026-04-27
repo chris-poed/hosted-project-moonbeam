@@ -1,6 +1,7 @@
 const handleCreateGame = require("./handleCreateGame")
 const handleJoinGame = require("./handleJoinGame")
 const handleStartGame = require("./handleStartGame")
+const { registerTimerEvents } = require("./handleGameTimer")
 
 const registerCreateGameHandlers = (io, socket) => {
    
@@ -20,6 +21,7 @@ const registerCreateGameHandlers = (io, socket) => {
 
     
     //Add additional handlers here
+    registerTimerEvents(io, socket)
 }
 
 module.exports = registerCreateGameHandlers
