@@ -57,7 +57,7 @@
         const lobbyPayload = {
             game_id: game._id.toString(),
             join_code:game.join_code,
-            game_host:player.id.toString(),
+            game_host:player._id.toString(),
             players: [
                 {
                     player_id: player._id.toString(),
@@ -71,7 +71,7 @@
 
          callback({
         ok:true,
-        game_id: game.id,
+        game_id: game._id.toString(),
         join_code:game.join_code,
         player_id: player.id.toString(),
         lobby: lobbyPayload,
