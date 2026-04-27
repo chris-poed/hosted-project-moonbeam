@@ -1,13 +1,19 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { CreateGame } from "../../components/CreateGame";
 import { JoinGame } from "../../components/JoinGame";
-import { useState } from "react";
+import {socket} from "../../socket"
 
 
 import "./HomePage.css";
 
 export function HomePage() {
   const [activeView, setActiveView] = useState(null);
+
+          useEffect(() => {
+        
+            socket.connect() 
+
+        }, []);
 
   return(
     <div>

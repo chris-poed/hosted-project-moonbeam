@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { socket } from "../../socket";
 
 export function Lobby() {
 
     const location = useLocation();
-    console.log(location, "useLocation data");
+    const navigate = useNavigate();
 
     const [lobby, setLobby]= useState(location.state?.lobby||null);
     const [playerId, setPlayerId] = useState(location.state?.playerId || null);
+    const [error, setError] = useState("");
 
     //we need to wrap the following code in a useeffect in this particular instance
     //because data initially comes from a navigate transistion when host creates game or player is added - this only needs to run once
@@ -42,6 +43,24 @@ export function Lobby() {
         };
     }, []);
 
+    useEffect(() => {
+
+        function handleGameStarted(gameStartPayload) {
+            navigate("/gamescreen", {
+            state: {
+                gameState: gameStartPayload,
+                playerId: playerId
+            },
+            });
+        }
+
+        socket.on("game:started", handleGameStarted);
+
+        return () => {
+            socket.off("game:started", handleGameStarted);
+        };
+    }, [navigate, playerId]);
+
     if(!lobby){
         return (
             <div>
@@ -53,7 +72,21 @@ export function Lobby() {
 
     const isHost = lobby.game_host === playerId;
 
-   
+    function handleStartGame(){
+        socket.emit("game:start",
+            {
+                player_id: playerId,
+                join_code: lobby.join_code
+            },
+            (response)=>{
+                if(!response.ok){
+                    setError(response.error || "Failed to start game");
+                    return;
+                }
+            }
+        )
+    }
+    
     return(
         <div>
             <h1>Lobby Page</h1>
@@ -78,7 +111,7 @@ export function Lobby() {
             )}
 
             {isHost ? (
-                <button type="button">Start Game</button>
+                <button type="button" onClick={handleStartGame}>Start Game</button>
             ):(
                 <button type="button" disabled>
                     Waiting for host to start
