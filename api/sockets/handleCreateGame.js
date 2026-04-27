@@ -8,14 +8,13 @@
 
  async function generateUniqueCode(){
         let joinCode = generateJoinCode();
-       //let existingGame;
-        
+      
         while(await Game.findOne({join_code:joinCode})){
             joinCode = generateJoinCode();
            
             
         }
-        console.log("JOINCODE----->>>>",joinCode);
+        //console.log("JOINCODE----->>>>",joinCode);
         return joinCode;
     }
 
@@ -24,7 +23,8 @@
     try{
         const { display_name } = payload;
 
-        if(!display_name){
+        //catch no display name or {display_name: "  "}
+        if(!display_name || !display_name.trim()){
             return callback({
             ok:false,
             error: "Enter a display name"
@@ -33,13 +33,13 @@
 
         //create player
         const player = await Player.create({
-            display_name:display_name,
+            display_name:display_name.trim(),
             is_connected:true
         })
 
         const joinCode = await generateUniqueCode();
 
-        console.log(joinCode)
+       
         //create game
         const game = await Game.create({
             players:[player._id],
@@ -49,15 +49,15 @@
             songs:[]
         })
 
-        console.log(game)
+        
 
         const roomName = `game:${game.join_code}`;
         socket.join(roomName);
 
         const lobbyPayload = {
-            game_id: game._id,
+            game_id: game._id.toString(),
             join_code:game.join_code,
-            game_host:player._id.toString(),
+            game_host:player.id.toString(),
             players: [
                 {
                     player_id: player._id.toString(),
@@ -71,19 +71,15 @@
 
          callback({
         ok:true,
-        game_id: game._id,
+        game_id: game.id,
         join_code:game.join_code,
         player_id: player.id.toString(),
         lobby: lobbyPayload,
 
         })
 
-
-
-       
-
     } catch(error){
-        console.error("game:create failed", error)
+       
         callback({
             ok:false,
             error: "Create Game failed"
@@ -92,15 +88,6 @@
 
 
     }
-
-
-
-    //create player
-
-
-    //create game --> mondo DB interaction
-
-
    
 }
 module.exports = handleCreateGame
