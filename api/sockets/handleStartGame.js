@@ -73,7 +73,7 @@ async function handleStartGame(io, socket, payload, callback){
             { join_code: join_code },
             {
                 $set: {
-                    phase: "intro-countdown",   //!!!!change to intro-cnt-down
+                    phase: "intro-countdown",   
                     round_no: 1,  ///this will nedd to be updated per round e.g. round_no: round_no +1
                     current_player: firstPlayer.player_id,
                 },
