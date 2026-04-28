@@ -4,10 +4,7 @@ import { useEffect, useState, useMemo } from "react";
 import { socket } from "../socket";
 import CountdownTimer from "../components/CountdownTimer";
 import DragAndDrop from "../components/DragAndDrop";
-<<<<<<< HEAD
 import AudioPlayer from "../components/AudioPlayer";
-=======
->>>>>>> 820b2b9 (updates gamescreen with useStates from DragAndDrop)
 import { songs } from "../data/songs";
 import Timeline from "../components/Timeline";
 //import CardBank from "../components/CardBank";
@@ -53,40 +50,26 @@ export function GameScreen() {
 
     const roomId = `game:${gameState.join_code}`;
 
-  const [cardBank, setCardBank] = useState(songs);
-    const [timeline, setTimeline] = useState([]);
-    const [activeTimelineCard, setActiveTimelineCard] = useState(null); // only timeline card that is currently allowed to be moved again
-
-  useEffect(() => {
+    useEffect(() => {
     function handlePhaseChanged(updatedGameState) {
     setGameState(updatedGameState);
     }
-
     socket.on("game:phase_changed", handlePhaseChanged);
-
     return () => {
     socket.off("game:phase_changed", handlePhaseChanged);
     };
-  }, []);
-
-
-  useEffect(() => {
+    }, []);
+    useEffect(() => {
     if (!myPlayer) return;
-
     setTimeline(myPlayer.timeline || []);
-  }, [myPlayer?.player_id]);
-
-
-useEffect(() => {
+    }, [myPlayer?.player_id]);
+    useEffect(() => {
     if (!gameState) return;
-
     if (gameState.phase === "listening-placement-phase") {
     setHasSubmittedPlacement(false);
     }
-  }, [gameState?.phase]);
-
-
-  useEffect(() => {
+    }, [gameState?.phase]);
+    useEffect(() => {
     if (!gameState) return;
     if (!isCurrentPlayer) return;
     if (gameState.phase !== "placement-ended") return;
@@ -96,67 +79,61 @@ useEffect(() => {
     console.log("No placement was made before timer ended.");
     return;
     }
-
     setHasSubmittedPlacement(true);
-
     socket.emit(
     "placement:submit",
     {
-      join_code: gameState.join_code,
-      player_id: playerId,
-      placed_song: placement.placed_song,
-      position: placement.position,
-		timeline: myPlayer?.timeline || []
-
+    join_code: gameState.join_code,
+    player_id: playerId,
+    placed_song: placement.placed_song,
+    position: placement.position,
+    timeline: myPlayer?.timeline || []
     },
     (response) => {
-      if (!response.ok) {
-      console.log(response.error);
-      }
+    if (!response.ok) {
+    console.log(response.error);
+    }
     }
     );
-  }, [
+    }, [
     gameState?.phase,
     gameState?.join_code,
     isCurrentPlayer,
     hasSubmittedPlacement,
     placement,
     playerId,
-  ]);
-
-
- useEffect(() => {
- function handleReveal(revealPayload) {
-   
-  navigate("/reveal", {
-   state: {
+    ]);
+    useEffect(() => {
+    function handleReveal(revealPayload) {
+    navigate("/reveal", {
+    state: {
     revealState: revealPayload,
     playerId,
-   },
-  });
- }
-
- socket.on("game:reveal", handleReveal);
-
- return () => {
-  socket.off("game:reveal", handleReveal);
- };
-}, [navigate, playerId]);
-
-
-useEffect(() => {
- function logAnyEvent(event, ...args) {
-  console.log("SOCKET EVENT RECEIVED:", event, args);
- }
-
- socket.onAny(logAnyEvent);
-
- return () => {
-  socket.offAny(logAnyEvent);
- };
-}, []);
+    },
+    });
+    }
+    socket.on("game:reveal", handleReveal);
+    return () => {
+    socket.off("game:reveal", handleReveal);
+    };
+    }, [navigate, playerId]);
+    useEffect(() => {
+    function logAnyEvent(event, ...args) {
+    console.log("SOCKET EVENT RECEIVED:", event, args);
+    }
+    socket.onAny(logAnyEvent);
+    return () => {
+    socket.offAny(logAnyEvent);
+    };
+    }, []);
 
 
+
+    if (!gameState) {
+        return <p>No game state found.</p>;
+    }
+
+    const timelineToShow = currentPlayer?.timeline || [];
 
     if (!gameState) {
         return <p>No game state found.</p>;
