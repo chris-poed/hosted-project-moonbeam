@@ -24,7 +24,6 @@ const router = createBrowserRouter([
     path: "/reveal",
     element: <RevealPage />,
   }
-
 ]);
 
 function App() {
