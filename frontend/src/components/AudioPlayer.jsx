@@ -1,16 +1,16 @@
-import { useEffect, useRef } from "react";
-import "./MusicPreviewPlayer.css";
+import { useEffect, useRef, useState } from "react";
+import "./AudioPlayer.css";
 
-function MusicPreviewPlayer(props) {
+function AudioPlayer(props) {
   const audioRef = useRef(null);
   const rafRef = useRef(null);
   const timerRef = useRef(null);
-  const fillRef = useRef(null);
-  const elapsedRef = useRef(null);
-  const labelRef = useRef(null);
-  const eqRef = useRef(null);
-  const waveRef = useRef(null);
   const DURATION = 30;
+
+  const [fillWidth, setFillWidth] = useState(0);
+  const [elapsed, setElapsed] = useState("0:00");
+  const [label, setLabel] = useState("Loading...");
+  const [isPlaying, setIsPlaying] = useState(false);
 
   function fmt(seconds) {
     const m = Math.floor(seconds / 60);
@@ -18,25 +18,20 @@ function MusicPreviewPlayer(props) {
     return m + ":" + s.toString().padStart(2, "0");
   }
 
-  function setLabel(text) {
-    if (labelRef.current) labelRef.current.textContent = text;
-  }
-
   function end() {
     if (audioRef.current) audioRef.current.pause();
     cancelAnimationFrame(rafRef.current);
     clearTimeout(timerRef.current);
-    if (fillRef.current) fillRef.current.style.width = "100%";
-    if (elapsedRef.current) elapsedRef.current.textContent = "0:30";
+    setFillWidth(100);
+    setElapsed("0:30");
     setLabel("Preview ended");
-    if (eqRef.current) eqRef.current.classList.remove("equalizer--playing");
-    if (waveRef.current) waveRef.current.classList.remove("music-player__wave--playing");
+    setIsPlaying(false);
   }
 
   function tick() {
     const current = Math.min(audioRef.current ? audioRef.current.currentTime : 0, DURATION);
-    if (fillRef.current) fillRef.current.style.width = (current / DURATION) * 100 + "%";
-    if (elapsedRef.current) elapsedRef.current.textContent = fmt(current);
+    setFillWidth((current / DURATION) * 100);
+    setElapsed(fmt(current));
     if (current < DURATION) {
       rafRef.current = requestAnimationFrame(tick);
     } else {
@@ -49,6 +44,11 @@ function MusicPreviewPlayer(props) {
     audioRef.current = audio;
     audio.volume = 0.85;
 
+    setFillWidth(0);
+    setElapsed("0:00");
+    setLabel("Loading...");
+    setIsPlaying(false);
+
     audio.addEventListener("canplay", function () {
       setLabel("30s preview");
       audio.play().catch(function () {
@@ -60,8 +60,8 @@ function MusicPreviewPlayer(props) {
     });
 
     audio.addEventListener("play", function () {
-      if (eqRef.current) eqRef.current.classList.add("equalizer--playing");
-      if (waveRef.current) waveRef.current.classList.add("music-player__wave--playing");
+      setIsPlaying(true);
+      timerRef.current = setTimeout(end, DURATION * 1000);
       tick();
     });
 
@@ -69,33 +69,31 @@ function MusicPreviewPlayer(props) {
       setLabel("Preview unavailable");
     });
 
-    timerRef.current = setTimeout(end, DURATION * 1000);
-
     return function () {
       audio.pause();
       cancelAnimationFrame(rafRef.current);
       clearTimeout(timerRef.current);
     };
-  }, []);
+  }, [props.previewUrl]);
 
   return (
     <div className="music-player">
       <div className="music-player__track">
-        <div className="music-player__fill" ref={fillRef}></div>
+        <div className="music-player__fill" style={{ width: fillWidth + "%" }}></div>
       </div>
       <div className="music-player__times">
-        <span ref={elapsedRef}>0:00</span>
-        <span className="music-player__label" ref={labelRef}>Loading...</span>
+        <span>{elapsed}</span>
+        <span className="music-player__label">{label}</span>
         <span>0:30</span>
       </div>
-      <div className="music-player__wave" ref={waveRef}>
+      <div className={`music-player__wave${isPlaying ? " music-player__wave--playing" : ""}`}>
         {Array.from({ length: 20 }, (_, i) => <span key={i}></span>)}
       </div>
-      <div className="equalizer" ref={eqRef}>
+      <div className={`equalizer${isPlaying ? " equalizer--playing" : ""}`}>
         <span></span><span></span><span></span>
       </div>
     </div>
   );
 }
 
-export default MusicPreviewPlayer;
+export default AudioPlayer;
