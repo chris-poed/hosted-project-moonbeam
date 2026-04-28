@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Song Preview</title>
+</head>
+<body style="display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#f9f9f9;">
+
+  <div id="player-container"></div>
+
+  <script src="MusicPreviewPlayer.js"></script>
+  <script>
+    const SONG_ID = 'SONG_ID_HERE';
+
+    fetch(`/api/songs/${SONG_ID}`)
+      .then(res => res.json())
+      .then(song => {
+        const player = new MusicPreviewPlayer('#player-container', {
+          previewUrl: song.url,
+          title:      song.title,
+          artist:     song.artist,
+        });
+        player.mount();
+      })
+      .catch(() => {
+        const player = new MusicPreviewPlayer('#player-container', {
+          previewUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+          title:      'Test Track',
+          artist:     'SoundHelix',
+        });
+        player.mount();
+      });
+  </script>
+</body>
+</html>

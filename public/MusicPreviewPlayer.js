@@ -1,18 +1,3 @@
-/**
- * MusicPreviewPlayer
- *
- * Autoplays a 30-second song preview.
- * Players cannot pause or stop the audio.
- *
- * Usage:
- *   const player = new MusicPreviewPlayer('#container', {
- *     previewUrl: song.url,
- *     title:      song.title,
- *     artist:     song.artist,
- *   });
- *   player.mount();
- */
-
 class MusicPreviewPlayer {
   constructor(selector, { previewUrl, title = 'Unknown Track', artist = 'Unknown Artist' } = {}) {
     this.container = typeof selector === 'string' ? document.querySelector(selector) : selector;

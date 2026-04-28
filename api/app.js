@@ -9,6 +9,11 @@ const tokenChecker = require("./middleware/tokenChecker");
 
 const app = express();
 
+const songsRouter = require('./routes/songs');
+
+
+app.use('/api/songs', songsRouter);
+
 // Allow requests from any client
 // docs: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 // docs: https://expressjs.com/en/resources/middleware/cors.html
@@ -21,6 +26,15 @@ app.use(bodyParser.json());
 app.use("/users", usersRouter);
 app.use("/posts", tokenChecker, postsRouter);
 app.use("/tokens", authenticationRouter);
+
+app.use(cors());
+
+// Parse JSON request bodies, made available on `req.body`
+app.use(bodyParser.json());
+app.use(express.static('public')); // 👈 add this line
+
+// API Routes
+app.use("/users", usersRouter);
 
 // 404 Handler
 app.use((_req, res) => {
