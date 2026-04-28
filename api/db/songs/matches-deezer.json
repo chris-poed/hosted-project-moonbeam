@@ -1,0 +1,3282 @@
+[
+  {
+    "expected": "Bill Haley & His Comets – Rock Around the Clock",
+    "matched": "Bill Haley & His Comets – Rock Around The Clock",
+    "suspicious": false
+  },
+  {
+    "expected": "Elvis Presley – That's All Right",
+    "matched": "Elvis Presley – That's All Right (EPiC Version)",
+    "suspicious": false
+  },
+  {
+    "expected": "Little Richard – Tutti Frutti",
+    "matched": "Little Richard – Tutti Frutti",
+    "suspicious": false
+  },
+  {
+    "expected": "Chuck Berry – Maybellene",
+    "matched": "Chuck Berry – Maybellene",
+    "suspicious": false
+  },
+  {
+    "expected": "Carl Perkins – Blue Suede Shoes",
+    "matched": "Carl Perkins – Blue Suede Shoes",
+    "suspicious": false
+  },
+  {
+    "expected": "Elvis Presley – Heartbreak Hotel",
+    "matched": "Elvis Presley – Heartbreak Hotel",
+    "suspicious": false
+  },
+  {
+    "expected": "Little Richard – Long Tall Sally",
+    "matched": "Little Richard – Long Tall Sally",
+    "suspicious": false
+  },
+  {
+    "expected": "Jerry Lee Lewis – Great Balls of Fire",
+    "matched": "Jerry Lee Lewis – Great Balls of Fire",
+    "suspicious": false
+  },
+  {
+    "expected": "The Crickets – That'll Be the Day",
+    "matched": "The Crickets – That'll Be the Day",
+    "suspicious": false
+  },
+  {
+    "expected": "Elvis Presley – Jailhouse Rock",
+    "matched": "Elvis Presley – Jailhouse Rock",
+    "suspicious": false
+  },
+  {
+    "expected": "The Everly Brothers – Wake Up Little Susie",
+    "matched": "The Everly Brothers – Wake up Little Susie (Single Version; 2006 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "Chuck Berry – Johnny B. Goode",
+    "matched": "Chuck Berry – Johnny B. Goode",
+    "suspicious": false
+  },
+  {
+    "expected": "Danny & The Juniors – At the Hop",
+    "matched": "Danny & The Juniors – At the Hop (Re-Recorded)",
+    "suspicious": false
+  },
+  {
+    "expected": "Ritchie Valens – La Bamba",
+    "matched": "Ritchie Valens – La Bamba",
+    "suspicious": false
+  },
+  {
+    "expected": "Eddie Cochran – Summertime Blues",
+    "matched": "Eddie Cochran – Summertime Blues",
+    "suspicious": false
+  },
+  {
+    "expected": "Sam Cooke – What a Wonderful World",
+    "matched": "Sam Cooke – (What A) Wonderful World",
+    "suspicious": false
+  },
+  {
+    "expected": "Bobby Darin – Mack the Knife",
+    "matched": "Bobby Darin – Mack the Knife (Edit; 2006 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "The Isley Brothers – Shout",
+    "matched": "The Isley Brothers – Shout",
+    "suspicious": false
+  },
+  {
+    "expected": "The Everly Brothers – Cathy's Clown",
+    "matched": "The Everly Brothers – Cathy's Clown",
+    "suspicious": false
+  },
+  {
+    "expected": "Ben E. King – Stand By Me",
+    "matched": "Ben E. King – Stand By Me",
+    "suspicious": false
+  },
+  {
+    "expected": "Chubby Checker – The Twist",
+    "matched": "Chubby Checker – The Twist",
+    "suspicious": false
+  },
+  {
+    "expected": "Del Shannon – Runaway",
+    "matched": "Del Shannon – Runaway",
+    "suspicious": false
+  },
+  {
+    "expected": "Little Eva – The Loco-Motion",
+    "matched": "Little Eva – The Loco-Motion",
+    "suspicious": false
+  },
+  {
+    "expected": "The Beach Boys – Surfin' U.S.A.",
+    "matched": "The Beach Boys – Surfin' U.S.A. (Remastered 2001)",
+    "suspicious": false
+  },
+  {
+    "expected": "The Ronettes – Be My Baby",
+    "matched": "The Ronettes – Be My Baby",
+    "suspicious": false
+  },
+  {
+    "expected": "The Beatles – She Loves You",
+    "matched": "The Beatles – She Loves You (Mono / Remastered)",
+    "suspicious": false
+  },
+  {
+    "expected": "The Beatles – I Want to Hold Your Hand",
+    "matched": "The Beatles – I Want To Hold Your Hand (Remastered 2015)",
+    "suspicious": false
+  },
+  {
+    "expected": "The Temptations – My Girl",
+    "matched": "The Temptations – My Girl",
+    "suspicious": false
+  },
+  {
+    "expected": "The Animals – House of the Rising Sun",
+    "matched": "The Animals – House of the Rising Sun",
+    "suspicious": false
+  },
+  {
+    "expected": "The Beatles – A Hard Day's Night",
+    "matched": "The Beatles – A Hard Day's Night (Remastered 2015)",
+    "suspicious": false
+  },
+  {
+    "expected": "The Kinks – You Really Got Me",
+    "matched": "The Kinks – You Really Got Me (Remastered 2014)",
+    "suspicious": false
+  },
+  {
+    "expected": "The Rolling Stones – (I Can't Get No) Satisfaction",
+    "matched": "The Rolling Stones – (I Can't Get No) Satisfaction (Mono)",
+    "suspicious": false
+  },
+  {
+    "expected": "The Beatles – Yesterday",
+    "matched": "The Beatles – Yesterday (Remastered 2015)",
+    "suspicious": false
+  },
+  {
+    "expected": "Bob Dylan – Like a Rolling Stone",
+    "matched": "Bob Dylan – Like a Rolling Stone",
+    "suspicious": false
+  },
+  {
+    "expected": "The Who – My Generation",
+    "matched": "The Who – My Generation",
+    "suspicious": false
+  },
+  {
+    "expected": "Simon & Garfunkel – The Sound of Silence",
+    "matched": "Simon & Garfunkel – The Sound Of Silence",
+    "suspicious": false
+  },
+  {
+    "expected": "The Mamas & The Papas – California Dreamin'",
+    "matched": "The Mamas & The Papas – California Dreamin' (Single Version)",
+    "suspicious": false
+  },
+  {
+    "expected": "The Beach Boys – Good Vibrations",
+    "matched": "The Beach Boys – Good Vibrations (Remastered 2001)",
+    "suspicious": false
+  },
+  {
+    "expected": "The Rolling Stones – Paint It Black",
+    "matched": "The Rolling Stones – Paint It, Black",
+    "suspicious": false
+  },
+  {
+    "expected": "Nancy Sinatra – These Boots Are Made for Walkin'",
+    "matched": "Nancy Sinatra – These Boots Are Made for Walkin'",
+    "suspicious": false
+  },
+  {
+    "expected": "The Beach Boys – Wouldn't It Be Nice",
+    "matched": "The Beach Boys – Wouldn't It Be Nice (Remastered 1999)",
+    "suspicious": false
+  },
+  {
+    "expected": "Aretha Franklin – Respect",
+    "matched": "Aretha Franklin – Respect",
+    "suspicious": false
+  },
+  {
+    "expected": "The Doors – Light My Fire",
+    "matched": "The Doors – Light My Fire",
+    "suspicious": false
+  },
+  {
+    "expected": "Procol Harum – A Whiter Shade of Pale",
+    "matched": "Procol Harum – A Whiter Shade of Pale (2007 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "Van Morrison – Brown Eyed Girl",
+    "matched": "Van Morrison – Brown Eyed Girl",
+    "suspicious": false
+  },
+  {
+    "expected": "Louis Armstrong – What a Wonderful World",
+    "matched": "Louis Armstrong – What A Wonderful World",
+    "suspicious": false
+  },
+  {
+    "expected": "Jefferson Airplane – Somebody to Love",
+    "matched": "Jefferson Airplane – Somebody to Love",
+    "suspicious": false
+  },
+  {
+    "expected": "Jimi Hendrix – Purple Haze",
+    "matched": "Jimi Hendrix – Purple Haze",
+    "suspicious": false
+  },
+  {
+    "expected": "The Beatles – All You Need Is Love",
+    "matched": "The Beatles – All You Need Is Love (Remastered 2015)",
+    "suspicious": false
+  },
+  {
+    "expected": "The Beatles – Hey Jude",
+    "matched": "The Beatles – Hey Jude (Remastered 2015)",
+    "suspicious": false
+  },
+  {
+    "expected": "Steppenwolf – Born to Be Wild",
+    "matched": "Steppenwolf – Born To Be Wild",
+    "suspicious": false
+  },
+  {
+    "expected": "Otis Redding – (Sittin' On) The Dock of the Bay",
+    "matched": "Otis Redding – (Sittin' On) the Dock of the Bay",
+    "suspicious": false
+  },
+  {
+    "expected": "Simon & Garfunkel – Mrs. Robinson",
+    "matched": "Simon & Garfunkel – Mrs. Robinson",
+    "suspicious": false
+  },
+  {
+    "expected": "The Rolling Stones – Sympathy for the Devil",
+    "matched": "The Rolling Stones – Sympathy For The Devil",
+    "suspicious": false
+  },
+  {
+    "expected": "The Beatles – Here Comes the Sun",
+    "matched": "The Beatles – Here Comes The Sun (Remastered 2009)",
+    "suspicious": false
+  },
+  {
+    "expected": "The Rolling Stones – Honky Tonk Women",
+    "matched": "The Rolling Stones – Honky Tonk Women (Mono Version)",
+    "suspicious": false
+  },
+  {
+    "expected": "Elvis Presley – Suspicious Minds",
+    "matched": "Elvis Presley – Suspicious Minds",
+    "suspicious": false
+  },
+  {
+    "expected": "Creedence Clearwater Revival – Proud Mary",
+    "matched": "Creedence Clearwater Revival – Proud Mary",
+    "suspicious": false
+  },
+  {
+    "expected": "Creedence Clearwater Revival – Bad Moon Rising",
+    "matched": "Creedence Clearwater Revival – Bad Moon Rising (Remastered 1985)",
+    "suspicious": false
+  },
+  {
+    "expected": "The Beatles – Come Together",
+    "matched": "The Beatles – Come Together (Remastered 2009)",
+    "suspicious": false
+  },
+  {
+    "expected": "The Beatles – Let It Be",
+    "matched": "The Beatles – Let It Be (Remastered 2009)",
+    "suspicious": false
+  },
+  {
+    "expected": "Simon & Garfunkel – Bridge Over Troubled Water",
+    "matched": "Simon & Garfunkel – Bridge Over Troubled Water",
+    "suspicious": false
+  },
+  {
+    "expected": "The Guess Who – American Woman",
+    "matched": "The Guess Who – American Woman",
+    "suspicious": false
+  },
+  {
+    "expected": "The Kinks – Lola",
+    "matched": "The Kinks – Lola (Remastered 2020)",
+    "suspicious": false
+  },
+  {
+    "expected": "Elton John – Your Song",
+    "matched": "Elton John – Your Song",
+    "suspicious": false
+  },
+  {
+    "expected": "Edwin Starr – War",
+    "matched": "Edwin Starr – War",
+    "suspicious": false
+  },
+  {
+    "expected": "Bill Withers – Ain't No Sunshine",
+    "matched": "Bill Withers – Ain't No Sunshine",
+    "suspicious": false
+  },
+  {
+    "expected": "John Lennon – Imagine",
+    "matched": "John Lennon – Imagine (Remastered 2010)",
+    "suspicious": false
+  },
+  {
+    "expected": "Don McLean – American Pie",
+    "matched": "Don McLean – American Pie",
+    "suspicious": false
+  },
+  {
+    "expected": "Marvin Gaye – What's Going On",
+    "matched": "Marvin Gaye – What's Going On",
+    "suspicious": false
+  },
+  {
+    "expected": "Led Zeppelin – Stairway to Heaven",
+    "matched": "Led Zeppelin – Stairway to Heaven (Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "Rod Stewart – Maggie May",
+    "matched": "Rod Stewart – Maggie May",
+    "suspicious": false
+  },
+  {
+    "expected": "The Rolling Stones – Brown Sugar",
+    "matched": "The Rolling Stones – Brown Sugar (Remastered 2009)",
+    "suspicious": false
+  },
+  {
+    "expected": "Stevie Wonder – Superstition",
+    "matched": "Stevie Wonder – Superstition",
+    "suspicious": false
+  },
+  {
+    "expected": "Bill Withers – Lean on Me",
+    "matched": "Bill Withers – Lean On Me",
+    "suspicious": false
+  },
+  {
+    "expected": "Elton John – Tiny Dancer",
+    "matched": "Elton John – Tiny Dancer",
+    "suspicious": false
+  },
+  {
+    "expected": "Neil Young – Heart of Gold",
+    "matched": "Neil Young – Heart of Gold (2009 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "Don McLean – American Pie",
+    "matched": "Don McLean – American Pie",
+    "suspicious": false
+  },
+  {
+    "expected": "Roberta Flack – Killing Me Softly With His Song",
+    "matched": "Roberta Flack – Killing Me Softly With His Song",
+    "suspicious": false
+  },
+  {
+    "expected": "Tony Orlando & Dawn – Tie a Yellow Ribbon Round the Ole Oak Tree",
+    "matched": "DAWN – Tie a Yellow Ribbon Round the Ole Oak Tree (feat. Tony Orlando) (1998 Remastered)",
+    "suspicious": false
+  },
+  {
+    "expected": "Aerosmith – Dream On",
+    "matched": "Aerosmith – Dream On",
+    "suspicious": false
+  },
+  {
+    "expected": "Lynyrd Skynyrd – Free Bird",
+    "matched": "Lynyrd Skynyrd – Free Bird",
+    "suspicious": false
+  },
+  {
+    "expected": "ABBA – Waterloo",
+    "matched": "ABBA – Waterloo",
+    "suspicious": false
+  },
+  {
+    "expected": "Lynyrd Skynyrd – Sweet Home Alabama",
+    "matched": "Lynyrd Skynyrd – Sweet Home Alabama",
+    "suspicious": false
+  },
+  {
+    "expected": "John Denver – Take Me Home, Country Roads",
+    "matched": "John Denver – Take Me Home, Country Roads (Original Version)",
+    "suspicious": false
+  },
+  {
+    "expected": "The Hues Corporation – Rock the Boat",
+    "matched": "The Hues Corporation – Rock the Boat",
+    "suspicious": false
+  },
+  {
+    "expected": "Queen – Bohemian Rhapsody",
+    "matched": "Queen – Bohemian Rhapsody (Remastered 2011)",
+    "suspicious": false
+  },
+  {
+    "expected": "Captain & Tennille – Love Will Keep Us Together",
+    "matched": "Captain & Tennille – Love Will Keep Us Together",
+    "suspicious": false
+  },
+  {
+    "expected": "Eagles – Lyin' Eyes",
+    "matched": "Eagles – Lyin' Eyes (2013 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "Bruce Springsteen – Born to Run",
+    "matched": "Bruce Springsteen – Born to Run",
+    "suspicious": false
+  },
+  {
+    "expected": "ABBA – Dancing Queen",
+    "matched": "ABBA – Dancing Queen",
+    "suspicious": false
+  },
+  {
+    "expected": "Fleetwood Mac – Go Your Own Way",
+    "matched": "Fleetwood Mac – Go Your Own Way (2004 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "Fleetwood Mac – Dreams",
+    "matched": "Fleetwood Mac – Dreams (2004 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "Eagles – Hotel California",
+    "matched": "Eagles – Hotel California (2013 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "Bee Gees – Stayin' Alive",
+    "matched": "Bee Gees – Stayin Alive",
+    "suspicious": false
+  },
+  {
+    "expected": "Bee Gees – Night Fever",
+    "matched": "Bee Gees – Night Fever (From \"Saturday Night Fever\" Soundtrack)",
+    "suspicious": false
+  },
+  {
+    "expected": "Sex Pistols – God Save the Queen",
+    "matched": "Sex Pistols – God Save The Queen (Remastered 2012)",
+    "suspicious": false
+  },
+  {
+    "expected": "David Bowie – Heroes",
+    "matched": "David Bowie – \"Heroes\" (2017 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "Gloria Gaynor – I Will Survive",
+    "matched": "Gloria Gaynor – I Will Survive (Rerecorded)",
+    "suspicious": false
+  },
+  {
+    "expected": "Chic – Le Freak",
+    "matched": "CHIC – Le Freak",
+    "suspicious": false
+  },
+  {
+    "expected": "Village People – YMCA",
+    "matched": "Village People – YMCA (Original Version 1978)",
+    "suspicious": false
+  },
+  {
+    "expected": "The Police – Roxanne",
+    "matched": "The Police – Roxanne",
+    "suspicious": false
+  },
+  {
+    "expected": "Donna Summer – Hot Stuff",
+    "matched": "Donna Summer – Hot Stuff",
+    "suspicious": false
+  },
+  {
+    "expected": "The Knack – My Sharona",
+    "matched": "The Knack – My Sharona",
+    "suspicious": false
+  },
+  {
+    "expected": "Pink Floyd – Another Brick in the Wall, Pt. 2",
+    "matched": "Pink Floyd – Another Brick in the Wall, Pt. 2",
+    "suspicious": false
+  },
+  {
+    "expected": "The Buggles – Video Killed the Radio Star",
+    "matched": "The Buggles – Video Killed The Radio Star",
+    "suspicious": false
+  },
+  {
+    "expected": "The Police – Message in a Bottle",
+    "matched": "The Police – Message In A Bottle",
+    "suspicious": false
+  },
+  {
+    "expected": "Chic – Good Times",
+    "matched": "CHIC – Good Times",
+    "suspicious": false
+  },
+  {
+    "expected": "Blondie – Heart of Glass",
+    "matched": "Blondie – Heart Of Glass (Single Version / Remastered)",
+    "suspicious": false
+  },
+  {
+    "expected": "The Sugarhill Gang – Rapper's Delight",
+    "matched": "The Sugarhill Gang – Rapper's Delight (Radio Edit)",
+    "suspicious": false
+  },
+  {
+    "expected": "Blondie – Call Me",
+    "matched": "Blondie – Call Me",
+    "suspicious": false
+  },
+  {
+    "expected": "Queen – Another One Bites the Dust",
+    "matched": "Queen – Another One Bites The Dust (Remastered 2011)",
+    "suspicious": false
+  },
+  {
+    "expected": "Lipps Inc. – Funkytown",
+    "matched": "Lipps Inc. – Funkytown (Single Version)",
+    "suspicious": false
+  },
+  {
+    "expected": "Michael Jackson – Rock with You",
+    "matched": "Michael Jackson – Rock with You (Single Version)",
+    "suspicious": false
+  },
+  {
+    "expected": "Diana Ross – Upside Down",
+    "matched": "Diana Ross – Upside Down",
+    "suspicious": false
+  },
+  {
+    "expected": "Journey – Don't Stop Believin'",
+    "matched": "Journey – Don't Stop Believin'",
+    "suspicious": false
+  },
+  {
+    "expected": "Kim Carnes – Bette Davis Eyes",
+    "matched": "Kim Carnes – Bette Davis Eyes",
+    "suspicious": false
+  },
+  {
+    "expected": "Soft Cell – Tainted Love",
+    "matched": "Soft Cell – Tainted Love",
+    "suspicious": false
+  },
+  {
+    "expected": "The Rolling Stones – Start Me Up",
+    "matched": "The Rolling Stones – Start Me Up (Remastered 2009)",
+    "suspicious": false
+  },
+  {
+    "expected": "Queen & David Bowie – Under Pressure",
+    "matched": "Queen – Under Pressure (Remastered 2011)",
+    "suspicious": false
+  },
+  {
+    "expected": "Rick James – Super Freak",
+    "matched": "Rick James – Super Freak",
+    "suspicious": false
+  },
+  {
+    "expected": "Survivor – Eye of the Tiger",
+    "matched": "Survivor – Eye of the Tiger",
+    "suspicious": false
+  },
+  {
+    "expected": "Michael Jackson – Billie Jean",
+    "matched": "Michael Jackson – Billie Jean",
+    "suspicious": false
+  },
+  {
+    "expected": "Michael Jackson – Beat It",
+    "matched": "Michael Jackson – Beat It",
+    "suspicious": false
+  },
+  {
+    "expected": "Michael Jackson – Thriller",
+    "matched": "Michael Jackson – Thriller",
+    "suspicious": false
+  },
+  {
+    "expected": "Toto – Africa",
+    "matched": "Toto – Africa",
+    "suspicious": false
+  },
+  {
+    "expected": "Soft Cell – Tainted Love",
+    "matched": "Soft Cell – Tainted Love",
+    "suspicious": false
+  },
+  {
+    "expected": "The Police – Every Breath You Take",
+    "matched": "The Police – Every Breath You Take",
+    "suspicious": false
+  },
+  {
+    "expected": "Cyndi Lauper – Girls Just Want to Have Fun",
+    "matched": "Cyndi Lauper – Girls Just Want to Have Fun",
+    "suspicious": false
+  },
+  {
+    "expected": "Culture Club – Karma Chameleon",
+    "matched": "Culture Club – Karma Chameleon",
+    "suspicious": false
+  },
+  {
+    "expected": "Eurythmics – Sweet Dreams (Are Made of This)",
+    "matched": "Eurythmics – Sweet Dreams (Are Made of This) (2005 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "Bonnie Tyler – Total Eclipse of the Heart",
+    "matched": "Bonnie Tyler – Total Eclipse of the Heart",
+    "suspicious": false
+  },
+  {
+    "expected": "Irene Cara – Flashdance... What a Feeling",
+    "matched": "Irene Cara – Flashdance... What A Feeling ('95 Version)",
+    "suspicious": false
+  },
+  {
+    "expected": "Spandau Ballet – True",
+    "matched": "Spandau Ballet – True (Single Edit)",
+    "suspicious": false
+  },
+  {
+    "expected": "New Order – Blue Monday",
+    "matched": "New Order – Blue Monday '88",
+    "suspicious": false
+  },
+  {
+    "expected": "Prince – Purple Rain",
+    "matched": "Prince – Purple Rain (2015 Paisley Park Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "Prince – When Doves Cry",
+    "matched": "Prince – When Doves Cry",
+    "suspicious": false
+  },
+  {
+    "expected": "Madonna – Like a Virgin",
+    "matched": "Madonna – Like a Virgin",
+    "suspicious": false
+  },
+  {
+    "expected": "Madonna – Borderline",
+    "matched": "Madonna – Borderline",
+    "suspicious": false
+  },
+  {
+    "expected": "Wham! – Wake Me Up Before You Go-Go",
+    "matched": "Wham! – Wake Me Up Before You Go-Go",
+    "suspicious": false
+  },
+  {
+    "expected": "Van Halen – Jump",
+    "matched": "Van Halen – Jump (2015 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "George Michael – Careless Whisper",
+    "matched": "George Michael – Careless Whisper",
+    "suspicious": false
+  },
+  {
+    "expected": "Tina Turner – What's Love Got to Do with It",
+    "matched": "Tina Turner – What's Love Got to Do with It",
+    "suspicious": false
+  },
+  {
+    "expected": "Cyndi Lauper – Time After Time",
+    "matched": "Cyndi Lauper – Time After Time",
+    "suspicious": false
+  },
+  {
+    "expected": "Kenny Loggins – Footloose",
+    "matched": "Kenny Loggins – Footloose (From \"Footloose\" Soundtrack)",
+    "suspicious": false
+  },
+  {
+    "expected": "Band Aid – Do They Know It's Christmas?",
+    "matched": "Band Aid – Do They Know It's Christmas? (1984 Version)",
+    "suspicious": false
+  },
+  {
+    "expected": "a-ha – Take On Me",
+    "matched": "a-ha – Take on Me",
+    "suspicious": false
+  },
+  {
+    "expected": "Katrina and the Waves – Walking on Sunshine",
+    "matched": "Katrina (Formerly of Katrina And The Waves) – Walking On Sunshine",
+    "suspicious": false
+  },
+  {
+    "expected": "Simple Minds – Don't You (Forget About Me)",
+    "matched": "Simple Minds – Don't You (Forget About Me) (2001 Remastered Version)",
+    "suspicious": false
+  },
+  {
+    "expected": "Dire Straits – Money for Nothing",
+    "matched": "Dire Straits – Money For Nothing",
+    "suspicious": false
+  },
+  {
+    "expected": "USA for Africa – We Are the World",
+    "matched": "U.S.A. for Africa – We Are The World",
+    "suspicious": false
+  },
+  {
+    "expected": "Foreigner – I Want to Know What Love Is",
+    "matched": "Foreigner – I Want to Know What Love Is (2008 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "Huey Lewis and the News – Power of Love",
+    "matched": "Huey Lewis and The News – Power of Love",
+    "suspicious": false
+  },
+  {
+    "expected": "Pet Shop Boys – West End Girls",
+    "matched": "Pet Shop Boys – West End Girls",
+    "suspicious": false
+  },
+  {
+    "expected": "Bon Jovi – Livin' on a Prayer",
+    "matched": "Bon Jovi – Livin' On A Prayer",
+    "suspicious": false
+  },
+  {
+    "expected": "Madonna – Papa Don't Preach",
+    "matched": "Madonna – Papa Don't Preach",
+    "suspicious": false
+  },
+  {
+    "expected": "Peter Gabriel – Sledgehammer",
+    "matched": "Peter Gabriel – Sledgehammer",
+    "suspicious": false
+  },
+  {
+    "expected": "The Bangles – Walk Like an Egyptian",
+    "matched": "The Bangles – Walk Like An Egyptian",
+    "suspicious": false
+  },
+  {
+    "expected": "Robert Palmer – Addicted to Love",
+    "matched": "Robert Palmer – Addicted To Love",
+    "suspicious": false
+  },
+  {
+    "expected": "Berlin – Take My Breath Away",
+    "matched": "Berlin – Take My Breath Away (Love Theme from \"Top Gun\")",
+    "suspicious": false
+  },
+  {
+    "expected": "Guns N' Roses – Sweet Child O' Mine",
+    "matched": "Guns N' Roses – Sweet Child O' Mine",
+    "suspicious": false
+  },
+  {
+    "expected": "U2 – With or Without You",
+    "matched": "U2 – With Or Without You (Remastered 2007)",
+    "suspicious": false
+  },
+  {
+    "expected": "U2 – I Still Haven't Found What I'm Looking For",
+    "matched": "U2 – I Still Haven't Found What I'm Looking For (Remastered 2007)",
+    "suspicious": false
+  },
+  {
+    "expected": "Rick Astley – Never Gonna Give You Up",
+    "matched": "Rick Astley – Never Gonna Give You Up",
+    "suspicious": false
+  },
+  {
+    "expected": "INXS – Need You Tonight",
+    "matched": "INXS – Need You Tonight",
+    "suspicious": false
+  },
+  {
+    "expected": "George Michael – Faith",
+    "matched": "George Michael – Faith (Remastered)",
+    "suspicious": false
+  },
+  {
+    "expected": "Michael Jackson – Bad",
+    "matched": "Michael Jackson – Bad (2012 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "Michael Jackson – The Way You Make Me Feel",
+    "matched": "Michael Jackson – The Way You Make Me Feel (2012 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "Salt-N-Pepa – Push It",
+    "matched": "Salt-N-Pepa – Push It",
+    "suspicious": false
+  },
+  {
+    "expected": "INXS – Never Tear Us Apart",
+    "matched": "INXS – Never Tear Us Apart",
+    "suspicious": false
+  },
+  {
+    "expected": "Eurythmics – Sweet Dreams",
+    "matched": "Eurythmics – Sweet Dreams (Are Made of This) (2005 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "Tracy Chapman – Fast Car",
+    "matched": "Tracy Chapman – Fast Car",
+    "suspicious": false
+  },
+  {
+    "expected": "Bobby McFerrin – Don't Worry, Be Happy",
+    "matched": "Bobby McFerrin – Don't Worry Be Happy",
+    "suspicious": false
+  },
+  {
+    "expected": "N.W.A. – Straight Outta Compton",
+    "matched": "N.W.A – Straight Outta Compton",
+    "suspicious": false
+  },
+  {
+    "expected": "Madonna – Like a Prayer",
+    "matched": "Madonna – Like a Prayer",
+    "suspicious": false
+  },
+  {
+    "expected": "The Bangles – Eternal Flame",
+    "matched": "The Bangles – Eternal Flame",
+    "suspicious": false
+  },
+  {
+    "expected": "Poison – Every Rose Has Its Thorn",
+    "matched": "Poison – Every Rose Has Its Thorn (2003 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "Public Enemy – Fight the Power",
+    "matched": "Public Enemy – Fight The Power",
+    "suspicious": false
+  },
+  {
+    "expected": "The B-52's – Love Shack",
+    "matched": "The B-52's – Love Shack",
+    "suspicious": false
+  },
+  {
+    "expected": "Black Box – Ride on Time",
+    "matched": "Black Box – Ride on Time",
+    "suspicious": false
+  },
+  {
+    "expected": "Soul II Soul – Back to Life",
+    "matched": "Soul II Soul – Back To Life",
+    "suspicious": false
+  },
+  {
+    "expected": "Sinéad O'Connor – Nothing Compares 2 U",
+    "matched": "Sinéad O'Connor – Nothing Compares 2 U",
+    "suspicious": false
+  },
+  {
+    "expected": "Madonna – Vogue",
+    "matched": "Madonna – Vogue",
+    "suspicious": false
+  },
+  {
+    "expected": "Vanilla Ice – Ice Ice Baby",
+    "matched": "Vanilla Ice – Ice Ice Baby",
+    "suspicious": false
+  },
+  {
+    "expected": "MC Hammer – U Can't Touch This",
+    "matched": "MC Hammer – U Can't Touch This",
+    "suspicious": false
+  },
+  {
+    "expected": "EMF – Unbelievable",
+    "matched": "EMF – Unbelievable",
+    "suspicious": false
+  },
+  {
+    "expected": "Deee-Lite – Groove Is in the Heart",
+    "matched": "Deee-Lite – Groove Is in the Heart",
+    "suspicious": false
+  },
+  {
+    "expected": "Nirvana – Smells Like Teen Spirit",
+    "matched": "Nirvana – Smells Like Teen Spirit",
+    "suspicious": false
+  },
+  {
+    "expected": "R.E.M. – Losing My Religion",
+    "matched": "R.E.M. – Losing My Religion",
+    "suspicious": false
+  },
+  {
+    "expected": "Red Hot Chili Peppers – Under the Bridge",
+    "matched": "Red Hot Chili Peppers – Under the Bridge",
+    "suspicious": false
+  },
+  {
+    "expected": "Bryan Adams – (Everything I Do) I Do It for You",
+    "matched": "Bryan Adams – (Everything I Do) I Do It For You",
+    "suspicious": false
+  },
+  {
+    "expected": "Metallica – Enter Sandman",
+    "matched": "Metallica – Enter Sandman (Remastered 2021)",
+    "suspicious": false
+  },
+  {
+    "expected": "Guns N' Roses – November Rain",
+    "matched": "Guns N' Roses – November Rain",
+    "suspicious": false
+  },
+  {
+    "expected": "Sir Mix-a-Lot – Baby Got Back",
+    "matched": "Sir Mix-A-Lot – Baby Got Back",
+    "suspicious": false
+  },
+  {
+    "expected": "Boyz II Men – End of the Road",
+    "matched": "Boyz II Men – End Of The Road",
+    "suspicious": false
+  },
+  {
+    "expected": "Whitney Houston – I Will Always Love You",
+    "matched": "Whitney Houston – I Will Always Love You",
+    "suspicious": false
+  },
+  {
+    "expected": "Kris Kross – Jump",
+    "matched": "Kris Kross – Jump",
+    "suspicious": false
+  },
+  {
+    "expected": "Radiohead – Creep",
+    "matched": "Radiohead – Creep",
+    "suspicious": false
+  },
+  {
+    "expected": "Snow – Informer",
+    "matched": "Snow – Informer",
+    "suspicious": false
+  },
+  {
+    "expected": "Eric Clapton – Tears in Heaven",
+    "matched": "Eric Clapton – Tears in Heaven",
+    "suspicious": false
+  },
+  {
+    "expected": "Michael Jackson – Black or White",
+    "matched": "Michael Jackson – Black or White (Single Version)",
+    "suspicious": false
+  },
+  {
+    "expected": "Tag Team – Whoomp! (There It Is)",
+    "matched": "Tag Team – Whoomp! There It Is (Radio Edit)",
+    "suspicious": false
+  },
+  {
+    "expected": "Mariah Carey – Dreamlover",
+    "matched": "Mariah Carey – Dreamlover",
+    "suspicious": false
+  },
+  {
+    "expected": "Blind Melon – No Rain",
+    "matched": "Blind Melon – No Rain",
+    "suspicious": false
+  },
+  {
+    "expected": "4 Non Blondes – What's Up?",
+    "matched": "4 Non Blondes – What's Up?",
+    "suspicious": false
+  },
+  {
+    "expected": "Ace of Base – All That She Wants",
+    "matched": "Ace of Base – All That She Wants",
+    "suspicious": false
+  },
+  {
+    "expected": "Ace of Base – The Sign",
+    "matched": "Ace of Base – The Sign",
+    "suspicious": false
+  },
+  {
+    "expected": "Whitney Houston – I Will Always Love You",
+    "matched": "Whitney Houston – I Will Always Love You",
+    "suspicious": false
+  },
+  {
+    "expected": "The Cranberries – Zombie",
+    "matched": "The Cranberries – Zombie",
+    "suspicious": false
+  },
+  {
+    "expected": "Oasis – Wonderwall",
+    "matched": "Oasis – Wonderwall",
+    "suspicious": false
+  },
+  {
+    "expected": "Oasis – Don't Look Back in Anger",
+    "matched": "Oasis – Don't Look Back In Anger",
+    "suspicious": false
+  },
+  {
+    "expected": "Pulp – Common People",
+    "matched": "Pulp – Common People (Full Length Version)",
+    "suspicious": false
+  },
+  {
+    "expected": "TLC – Waterfalls",
+    "matched": "TLC – Waterfalls",
+    "suspicious": false
+  },
+  {
+    "expected": "Beck – Loser",
+    "matched": "Beck – Loser",
+    "suspicious": false
+  },
+  {
+    "expected": "Coolio – Gangsta's Paradise",
+    "matched": "Coolio – Gangsta's Paradise",
+    "suspicious": false
+  },
+  {
+    "expected": "Seal – Kiss from a Rose",
+    "matched": "Seal – Kiss from a Rose",
+    "suspicious": false
+  },
+  {
+    "expected": "The Rembrandts – I'll Be There for You",
+    "matched": "The Rembrandts – I'll Be There for You (Theme from Friends) (Single Version)",
+    "suspicious": false
+  },
+  {
+    "expected": "Mariah Carey – Fantasy",
+    "matched": "Mariah Carey – Fantasy",
+    "suspicious": false
+  },
+  {
+    "expected": "Los del Río – Macarena",
+    "matched": "Los Del Río – Macarena",
+    "suspicious": false
+  },
+  {
+    "expected": "Fugees – Killing Me Softly",
+    "matched": "Fugees – Killing Me Softly With His Song",
+    "suspicious": false
+  },
+  {
+    "expected": "2Pac ft. Dr. Dre – California Love",
+    "matched": "2Pac – California Love (Original Version)",
+    "suspicious": false
+  },
+  {
+    "expected": "Blackstreet – No Diggity",
+    "matched": "Blackstreet – No Diggity",
+    "suspicious": false
+  },
+  {
+    "expected": "The Prodigy – Firestarter",
+    "matched": "The Prodigy – Firestarter",
+    "suspicious": false
+  },
+  {
+    "expected": "Spice Girls – Wannabe",
+    "matched": "Spice Girls – Wannabe",
+    "suspicious": false
+  },
+  {
+    "expected": "Spice Girls – Say You'll Be There",
+    "matched": "Spice Girls – Say You'll Be There",
+    "suspicious": false
+  },
+  {
+    "expected": "The Verve – Bitter Sweet Symphony",
+    "matched": "The Verve – Bitter Sweet Symphony (Remastered 2016)",
+    "suspicious": false
+  },
+  {
+    "expected": "Chumbawamba – Tubthumping",
+    "matched": "Chumbawamba – Tubthumping",
+    "suspicious": false
+  },
+  {
+    "expected": "Elton John – Candle in the Wind 1997",
+    "matched": "Elton John – Candle In The Wind 1997",
+    "suspicious": false
+  },
+  {
+    "expected": "Hanson – MMMBop",
+    "matched": "Hanson – MMMBop",
+    "suspicious": false
+  },
+  {
+    "expected": "Aqua – Barbie Girl",
+    "matched": "Aqua – Barbie Girl",
+    "suspicious": false
+  },
+  {
+    "expected": "Will Smith – Men in Black",
+    "matched": "Will Smith – Men In Black (From \"Men In Black\" Soundtrack)",
+    "suspicious": false
+  },
+  {
+    "expected": "The Notorious B.I.G. – Mo Money Mo Problems",
+    "matched": "The Notorious B.I.G. – Mo Money Mo Problems (feat. Puff Daddy & Mase) (2014 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "Natalie Imbruglia – Torn",
+    "matched": "Natalie Imbruglia – Torn",
+    "suspicious": false
+  },
+  {
+    "expected": "Celine Dion – My Heart Will Go On",
+    "matched": "Céline Dion – My Heart Will Go On (Love Theme from \"Titanic\")",
+    "suspicious": false
+  },
+  {
+    "expected": "Britney Spears – ...Baby One More Time",
+    "matched": "Britney Spears – ...Baby One More Time",
+    "suspicious": false
+  },
+  {
+    "expected": "Cher – Believe",
+    "matched": "Cher – Believe",
+    "suspicious": false
+  },
+  {
+    "expected": "Madonna – Ray of Light",
+    "matched": "Madonna – Ray of Light",
+    "suspicious": false
+  },
+  {
+    "expected": "Cornershop – Brimful of Asha",
+    "matched": "Cornershop – Brimful of Asha (Norman Cook Remix Single Version)",
+    "suspicious": false
+  },
+  {
+    "expected": "Will Smith – Gettin' Jiggy wit It",
+    "matched": "Will Smith – Gettin' Jiggy Wit It",
+    "suspicious": false
+  },
+  {
+    "expected": "Fatboy Slim – Praise You",
+    "matched": "Fatboy Slim – Praise You (Radio Edit)",
+    "suspicious": false
+  },
+  {
+    "expected": "Ricky Martin – Livin' la Vida Loca",
+    "matched": "Ricky Martin – Livin' la Vida Loca",
+    "suspicious": false
+  },
+  {
+    "expected": "TLC – No Scrubs",
+    "matched": "TLC – No Scrubs",
+    "suspicious": false
+  },
+  {
+    "expected": "Destiny's Child – Say My Name",
+    "matched": "Destiny's Child – Say My Name",
+    "suspicious": false
+  },
+  {
+    "expected": "Christina Aguilera – Genie in a Bottle",
+    "matched": "Christina Aguilera – Genie In a Bottle",
+    "suspicious": false
+  },
+  {
+    "expected": "Britney Spears – ...Baby One More Time",
+    "matched": "Britney Spears – ...Baby One More Time",
+    "suspicious": false
+  },
+  {
+    "expected": "Santana ft. Rob Thomas – Smooth",
+    "matched": "Santana – Smooth (feat. Rob Thomas)",
+    "suspicious": false
+  },
+  {
+    "expected": "Destiny's Child – Bills, Bills, Bills",
+    "matched": "Destiny's Child – Bills, Bills, Bills",
+    "suspicious": false
+  },
+  {
+    "expected": "Len – Steal My Sunshine",
+    "matched": "LEN – Steal My Sunshine (Single Version)",
+    "suspicious": false
+  },
+  {
+    "expected": "Red Hot Chili Peppers – Scar Tissue",
+    "matched": "Red Hot Chili Peppers – Scar Tissue",
+    "suspicious": false
+  },
+  {
+    "expected": "Britney Spears – Oops!... I Did It Again",
+    "matched": "Britney Spears – Oops!...I Did It Again",
+    "suspicious": false
+  },
+  {
+    "expected": "*NSYNC – Bye Bye Bye",
+    "matched": "*NSYNC – Bye Bye Bye",
+    "suspicious": false
+  },
+  {
+    "expected": "Wheatus – Teenage Dirtbag",
+    "matched": "Wheatus – Teenage Dirtbag",
+    "suspicious": false
+  },
+  {
+    "expected": "Shaggy ft. RikRok – It Wasn't Me",
+    "matched": "Shaggy – It Wasn't Me",
+    "suspicious": false
+  },
+  {
+    "expected": "Coldplay – Yellow",
+    "matched": "Coldplay – Yellow",
+    "suspicious": false
+  },
+  {
+    "expected": "U2 – Beautiful Day",
+    "matched": "U2 – Beautiful Day",
+    "suspicious": false
+  },
+  {
+    "expected": "Destiny's Child – Independent Women",
+    "matched": "Destiny's Child – Independent Women, Pt. 1",
+    "suspicious": false
+  },
+  {
+    "expected": "OutKast – Ms. Jackson",
+    "matched": "OutKast – Ms. Jackson",
+    "suspicious": false
+  },
+  {
+    "expected": "Baha Men – Who Let the Dogs Out",
+    "matched": "Baha Men – Who Let The Dogs Out",
+    "suspicious": false
+  },
+  {
+    "expected": "Lifehouse – Hanging by a Moment",
+    "matched": "Lifehouse – Hanging By A Moment",
+    "suspicious": false
+  },
+  {
+    "expected": "Alicia Keys – Fallin'",
+    "matched": "Alicia Keys – Fallin'",
+    "suspicious": false
+  },
+  {
+    "expected": "Train – Drops of Jupiter",
+    "matched": "Train – Drops of Jupiter (Tell Me)",
+    "suspicious": false
+  },
+  {
+    "expected": "Christina Aguilera, Lil' Kim, Mya & Pink – Lady Marmalade",
+    "matched": "Christina Aguilera – Lady Marmalade (From \"Moulin Rouge\" Soundtrack)",
+    "suspicious": false
+  },
+  {
+    "expected": "OutKast – Hey Ya!",
+    "matched": "OutKast – Hey Ya!",
+    "suspicious": false
+  },
+  {
+    "expected": "Coldplay – Clocks",
+    "matched": "Coldplay – Clocks",
+    "suspicious": false
+  },
+  {
+    "expected": "Evanescence – Bring Me to Life",
+    "matched": "Evanescence – Bring Me To Life",
+    "suspicious": false
+  },
+  {
+    "expected": "50 Cent – In Da Club",
+    "matched": "50 Cent – In Da Club",
+    "suspicious": false
+  },
+  {
+    "expected": "Beyoncé ft. Jay-Z – Crazy in Love",
+    "matched": "Beyoncé – Crazy In Love (feat. JAY-Z)",
+    "suspicious": false
+  },
+  {
+    "expected": "The White Stripes – Seven Nation Army",
+    "matched": "The White Stripes – Seven Nation Army",
+    "suspicious": false
+  },
+  {
+    "expected": "The Killers – Mr. Brightside",
+    "matched": "The Killers – Mr. Brightside",
+    "suspicious": false
+  },
+  {
+    "expected": "Britney Spears – Toxic",
+    "matched": "Britney Spears – Toxic",
+    "suspicious": false
+  },
+  {
+    "expected": "Usher ft. Lil Jon & Ludacris – Yeah!",
+    "matched": "USHER – Yeah! (feat. Lil Jon & Ludacris)",
+    "suspicious": false
+  },
+  {
+    "expected": "Usher – Burn",
+    "matched": "USHER – Burn",
+    "suspicious": false
+  },
+  {
+    "expected": "Kelly Clarkson – Since U Been Gone",
+    "matched": "Kelly Clarkson – Since U Been Gone",
+    "suspicious": false
+  },
+  {
+    "expected": "The Killers – Mr. Brightside",
+    "matched": "The Killers – Mr. Brightside",
+    "suspicious": false
+  },
+  {
+    "expected": "OutKast – Hey Ya!",
+    "matched": "OutKast – Hey Ya!",
+    "suspicious": false
+  },
+  {
+    "expected": "Green Day – American Idiot",
+    "matched": "Green Day – American Idiot",
+    "suspicious": false
+  },
+  {
+    "expected": "Gorillaz – Feel Good Inc.",
+    "matched": "Gorillaz – Feel Good Inc.",
+    "suspicious": false
+  },
+  {
+    "expected": "Kanye West ft. Jamie Foxx – Gold Digger",
+    "matched": "Kanye West – Gold Digger",
+    "suspicious": false
+  },
+  {
+    "expected": "Gwen Stefani – Hollaback Girl",
+    "matched": "Gwen Stefani – Hollaback Girl",
+    "suspicious": false
+  },
+  {
+    "expected": "The Pussycat Dolls – Don't Cha",
+    "matched": "The Pussycat Dolls – Don't Cha",
+    "suspicious": false
+  },
+  {
+    "expected": "The Black Eyed Peas – My Humps",
+    "matched": "The Black Eyed Peas – My Humps",
+    "suspicious": false
+  },
+  {
+    "expected": "Smash Mouth – I'm a Believer",
+    "matched": "Smash Mouth – I'm A Believer (Radio Edit)",
+    "suspicious": false
+  },
+  {
+    "expected": "Gnarls Barkley – Crazy",
+    "matched": "Gnarls Barkley – Crazy",
+    "suspicious": false
+  },
+  {
+    "expected": "Daniel Powter – Bad Day",
+    "matched": "Daniel Powter – Bad Day",
+    "suspicious": false
+  },
+  {
+    "expected": "Justin Timberlake – Sexyback",
+    "matched": "Justin Timberlake – SexyBack (feat. Timbaland)",
+    "suspicious": false
+  },
+  {
+    "expected": "Beyoncé – Irreplaceable",
+    "matched": "Beyoncé – Irreplaceable",
+    "suspicious": false
+  },
+  {
+    "expected": "Snow Patrol – Chasing Cars",
+    "matched": "Snow Patrol – Chasing Cars",
+    "suspicious": false
+  },
+  {
+    "expected": "Shakira ft. Wyclef Jean – Hips Don't Lie",
+    "matched": "Shakira – Hips Don't Lie (feat. Wyclef Jean)",
+    "suspicious": false
+  },
+  {
+    "expected": "Rihanna ft. Jay-Z – Umbrella",
+    "matched": "Rihanna – Umbrella",
+    "suspicious": false
+  },
+  {
+    "expected": "Timbaland ft. OneRepublic – Apologize",
+    "matched": "Timbaland – Apologize (\"Shock Value\" Version)",
+    "suspicious": false
+  },
+  {
+    "expected": "Flo Rida ft. T-Pain – Low",
+    "matched": "Flo Rida – Low (feat. T-Pain)",
+    "suspicious": false
+  },
+  {
+    "expected": "Fergie – Big Girls Don't Cry",
+    "matched": "Fergie – Big Girls Don't Cry (Personal)",
+    "suspicious": false
+  },
+  {
+    "expected": "Kanye West – Stronger",
+    "matched": "Kanye West – Stronger",
+    "suspicious": false
+  },
+  {
+    "expected": "Leona Lewis – Bleeding Love",
+    "matched": "Leona Lewis – Bleeding Love",
+    "suspicious": false
+  },
+  {
+    "expected": "Amy Winehouse – Rehab",
+    "matched": "Amy Winehouse – Rehab",
+    "suspicious": false
+  },
+  {
+    "expected": "Mark Ronson ft. Amy Winehouse – Valerie",
+    "matched": "Mark Ronson – Valerie (feat. Amy Winehouse) (Version Revisited)",
+    "suspicious": false
+  },
+  {
+    "expected": "Usher ft. Young Jeezy – Love in This Club",
+    "matched": "USHER – Love in This Club (feat. Young Jeezy)",
+    "suspicious": false
+  },
+  {
+    "expected": "Katy Perry – I Kissed a Girl",
+    "matched": "Katy Perry – I Kissed A Girl",
+    "suspicious": false
+  },
+  {
+    "expected": "Coldplay – Viva La Vida",
+    "matched": "Coldplay – Viva La Vida",
+    "suspicious": false
+  },
+  {
+    "expected": "Lady Gaga – Poker Face",
+    "matched": "Lady Gaga – Poker Face",
+    "suspicious": false
+  },
+  {
+    "expected": "Lady Gaga ft. Colby O'Donis – Just Dance",
+    "matched": "Lady Gaga – Just Dance",
+    "suspicious": false
+  },
+  {
+    "expected": "Beyoncé – Single Ladies (Put a Ring on It)",
+    "matched": "Beyoncé – Single Ladies (Put a Ring on It)",
+    "suspicious": false
+  },
+  {
+    "expected": "Beyoncé – Halo",
+    "matched": "Beyoncé – Halo",
+    "suspicious": false
+  },
+  {
+    "expected": "Jason Derulo – Whatcha Say",
+    "matched": "Jason Derülo – Whatcha Say",
+    "suspicious": false
+  },
+  {
+    "expected": "Jay-Z ft. Alicia Keys – Empire State of Mind",
+    "matched": "JAŸ-Z – Empire State Of Mind",
+    "suspicious": false
+  },
+  {
+    "expected": "The Black Eyed Peas – I Gotta Feeling",
+    "matched": "The Black Eyed Peas – I Gotta Feeling",
+    "suspicious": false
+  },
+  {
+    "expected": "The Black Eyed Peas – Boom Boom Pow",
+    "matched": "The Black Eyed Peas – Boom Boom Pow",
+    "suspicious": false
+  },
+  {
+    "expected": "Kings of Leon – Use Somebody",
+    "matched": "Kings Of Leon – Use Somebody",
+    "suspicious": false
+  },
+  {
+    "expected": "Kings of Leon – Sex on Fire",
+    "matched": "Kings Of Leon – Sex on Fire",
+    "suspicious": false
+  },
+  {
+    "expected": "Owl City – Fireflies",
+    "matched": "Owl City – Fireflies",
+    "suspicious": false
+  },
+  {
+    "expected": "Taylor Swift – Love Story",
+    "matched": "Taylor Swift – Love Story",
+    "suspicious": false
+  },
+  {
+    "expected": "Lady Gaga – Bad Romance",
+    "matched": "Lady Gaga – Bad Romance",
+    "suspicious": false
+  },
+  {
+    "expected": "Katy Perry ft. Snoop Dogg – California Gurls",
+    "matched": "Katy Perry – California Gurls",
+    "suspicious": false
+  },
+  {
+    "expected": "Katy Perry – Teenage Dream",
+    "matched": "Katy Perry – Teenage Dream",
+    "suspicious": false
+  },
+  {
+    "expected": "Katy Perry – Firework",
+    "matched": "Katy Perry – Firework",
+    "suspicious": false
+  },
+  {
+    "expected": "Taio Cruz – Dynamite",
+    "matched": "Taio Cruz – Dynamite",
+    "suspicious": false
+  },
+  {
+    "expected": "Eminem ft. Rihanna – Love the Way You Lie",
+    "matched": "Eminem – Love The Way You Lie",
+    "suspicious": false
+  },
+  {
+    "expected": "Eminem – Not Afraid",
+    "matched": "Eminem – Not Afraid",
+    "suspicious": false
+  },
+  {
+    "expected": "Adele – Rolling in the Deep",
+    "matched": "Adele – Rolling in the Deep",
+    "suspicious": false
+  },
+  {
+    "expected": "Adele – Someone Like You",
+    "matched": "Adele – Someone Like You",
+    "suspicious": false
+  },
+  {
+    "expected": "Adele – Set Fire to the Rain",
+    "matched": "Adele – Set Fire to the Rain",
+    "suspicious": false
+  },
+  {
+    "expected": "LMFAO – Party Rock Anthem",
+    "matched": "LMFAO – Party Rock Anthem",
+    "suspicious": false
+  },
+  {
+    "expected": "Maroon 5 ft. Christina Aguilera – Moves Like Jagger",
+    "matched": "Maroon 5 – Moves Like Jagger (Studio Recording From \"The Voice\" Performance)",
+    "suspicious": false
+  },
+  {
+    "expected": "Carly Rae Jepsen – Call Me Maybe",
+    "matched": "Carly Rae Jepsen – Call Me Maybe",
+    "suspicious": false
+  },
+  {
+    "expected": "Gotye ft. Kimbra – Somebody That I Used to Know",
+    "matched": "Gotye – Somebody That I Used To Know",
+    "suspicious": false
+  },
+  {
+    "expected": "Rihanna ft. Calvin Harris – We Found Love",
+    "matched": "Rihanna – We Found Love (Album Version)",
+    "suspicious": false
+  },
+  {
+    "expected": "Nicki Minaj – Super Bass",
+    "matched": "Nicki Minaj – Super Bass",
+    "suspicious": false
+  },
+  {
+    "expected": "Foster the People – Pumped Up Kicks",
+    "matched": "Foster The People – Pumped Up Kicks",
+    "suspicious": false
+  },
+  {
+    "expected": "Jessie J ft. B.o.B – Price Tag",
+    "matched": "Jessie J – Price Tag",
+    "suspicious": false
+  },
+  {
+    "expected": "Maroon 5 ft. Wiz Khalifa – Payphone",
+    "matched": "Maroon 5 – Payphone",
+    "suspicious": false
+  },
+  {
+    "expected": "fun. ft. Janelle Monáe – We Are Young",
+    "matched": "Fun. – We Are Young (feat. Janelle Monáe)",
+    "suspicious": false
+  },
+  {
+    "expected": "Psy – Gangnam Style",
+    "matched": "Psy – Gangnam Style (강남스타일)",
+    "suspicious": false
+  },
+  {
+    "expected": "fun. – Some Nights",
+    "matched": "Fun. – Some Nights",
+    "suspicious": false
+  },
+  {
+    "expected": "Macklemore & Ryan Lewis ft. Wanz – Thrift Shop",
+    "matched": "Macklemore & Ryan Lewis – Thrift Shop (feat. Wanz)",
+    "suspicious": false
+  },
+  {
+    "expected": "The Lumineers – Ho Hey",
+    "matched": "The Lumineers – Ho Hey",
+    "suspicious": false
+  },
+  {
+    "expected": "Daft Punk ft. Pharrell Williams – Get Lucky",
+    "matched": "Daft Punk – Get Lucky (Radio Edit - feat. Pharrell Williams and Nile Rodgers)",
+    "suspicious": false
+  },
+  {
+    "expected": "Pharrell Williams – Happy",
+    "matched": "Pharrell Williams – Happy (From \"Despicable Me 2\")",
+    "suspicious": false
+  },
+  {
+    "expected": "Robin Thicke ft. T.I. & Pharrell – Blurred Lines",
+    "matched": "Robin Thicke – Blurred Lines",
+    "suspicious": false
+  },
+  {
+    "expected": "Lorde – Royals",
+    "matched": "Lorde – Royals",
+    "suspicious": false
+  },
+  {
+    "expected": "Miley Cyrus – Wrecking Ball",
+    "matched": "Miley Cyrus – Wrecking Ball",
+    "suspicious": false
+  },
+  {
+    "expected": "Katy Perry – Roar",
+    "matched": "Katy Perry – Roar",
+    "suspicious": false
+  },
+  {
+    "expected": "Katy Perry ft. Juicy J – Dark Horse",
+    "matched": "Katy Perry – Dark Horse",
+    "suspicious": false
+  },
+  {
+    "expected": "Imagine Dragons – Radioactive",
+    "matched": "Imagine Dragons – Radioactive",
+    "suspicious": false
+  },
+  {
+    "expected": "Passenger – Let Her Go",
+    "matched": "Passenger – Let Her Go",
+    "suspicious": false
+  },
+  {
+    "expected": "OneRepublic – Counting Stars",
+    "matched": "OneRepublic – Counting Stars",
+    "suspicious": false
+  },
+  {
+    "expected": "Avicii – Wake Me Up",
+    "matched": "Avicii – Wake Me Up",
+    "suspicious": false
+  },
+  {
+    "expected": "Avicii – Hey Brother",
+    "matched": "Avicii – Hey Brother",
+    "suspicious": false
+  },
+  {
+    "expected": "Idina Menzel – Let It Go",
+    "matched": "Idina Menzel – Let It Go (From \"Frozen\"/Soundtrack Version)",
+    "suspicious": false
+  },
+  {
+    "expected": "Sam Smith – Stay with Me",
+    "matched": "Sam Smith – Stay With Me",
+    "suspicious": false
+  },
+  {
+    "expected": "Mark Ronson ft. Bruno Mars – Uptown Funk",
+    "matched": "Mark Ronson – Uptown Funk (feat. Bruno Mars)",
+    "suspicious": false
+  },
+  {
+    "expected": "Taylor Swift – Shake It Off",
+    "matched": "Taylor Swift – Shake It Off",
+    "suspicious": false
+  },
+  {
+    "expected": "Taylor Swift – Blank Space",
+    "matched": "Taylor Swift – Blank Space",
+    "suspicious": false
+  },
+  {
+    "expected": "Taylor Swift – Bad Blood",
+    "matched": "Taylor Swift – Bad Blood",
+    "suspicious": false
+  },
+  {
+    "expected": "Meghan Trainor – All About That Bass",
+    "matched": "Meghan Trainor – All About That Bass",
+    "suspicious": false
+  },
+  {
+    "expected": "Ed Sheeran – Thinking Out Loud",
+    "matched": "Ed Sheeran – Thinking out Loud",
+    "suspicious": false
+  },
+  {
+    "expected": "Ed Sheeran – Photograph",
+    "matched": "Ed Sheeran – Photograph",
+    "suspicious": false
+  },
+  {
+    "expected": "Sia – Chandelier",
+    "matched": "Sia – Chandelier",
+    "suspicious": false
+  },
+  {
+    "expected": "Iggy Azalea ft. Charli XCX – Fancy",
+    "matched": "Iggy Azalea – Fancy",
+    "suspicious": false
+  },
+  {
+    "expected": "Ariana Grande ft. Iggy Azalea – Problem",
+    "matched": "Ariana Grande – Problem",
+    "suspicious": false
+  },
+  {
+    "expected": "Maroon 5 – Sugar",
+    "matched": "Maroon 5 – Sugar",
+    "suspicious": false
+  },
+  {
+    "expected": "Adele – Hello",
+    "matched": "Adele – Hello",
+    "suspicious": false
+  },
+  {
+    "expected": "The Weeknd – Can't Feel My Face",
+    "matched": "The Weeknd – Can't Feel My Face",
+    "suspicious": false
+  },
+  {
+    "expected": "The Weeknd – The Hills",
+    "matched": "The Weeknd – The Hills",
+    "suspicious": false
+  },
+  {
+    "expected": "Justin Bieber – Sorry",
+    "matched": "Justin Bieber – Sorry",
+    "suspicious": false
+  },
+  {
+    "expected": "Justin Bieber – What Do You Mean?",
+    "matched": "Justin Bieber – What Do You Mean?",
+    "suspicious": false
+  },
+  {
+    "expected": "Justin Bieber – Love Yourself",
+    "matched": "Justin Bieber – Love Yourself",
+    "suspicious": false
+  },
+  {
+    "expected": "Drake – Hotline Bling",
+    "matched": "Drake – Hotline Bling",
+    "suspicious": false
+  },
+  {
+    "expected": "Twenty One Pilots – Stressed Out",
+    "matched": "Twenty One Pilots – Stressed Out",
+    "suspicious": false
+  },
+  {
+    "expected": "Wiz Khalifa ft. Charlie Puth – See You Again",
+    "matched": "Wiz Khalifa – See You Again (feat. Charlie Puth)",
+    "suspicious": false
+  },
+  {
+    "expected": "Major Lazer & DJ Snake ft. MØ – Lean On",
+    "matched": "Major Lazer – Lean On",
+    "suspicious": false
+  },
+  {
+    "expected": "Taylor Swift ft. Kendrick Lamar – Bad Blood",
+    "matched": "Taylor Swift – Bad Blood",
+    "suspicious": false
+  },
+  {
+    "expected": "OMI – Cheerleader",
+    "matched": "OMI – Cheerleader (Felix Jaehn Remix) (Radio Edit)",
+    "suspicious": false
+  },
+  {
+    "expected": "Rihanna ft. Drake – Work",
+    "matched": "Rihanna – Work",
+    "suspicious": false
+  },
+  {
+    "expected": "The Chainsmokers ft. Halsey – Closer",
+    "matched": "The Chainsmokers – Closer",
+    "suspicious": false
+  },
+  {
+    "expected": "The Chainsmokers ft. Daya – Don't Let Me Down",
+    "matched": "The Chainsmokers – Don't Let Me Down",
+    "suspicious": false
+  },
+  {
+    "expected": "Drake ft. WizKid & Kyla – One Dance",
+    "matched": "Drake – One Dance",
+    "suspicious": false
+  },
+  {
+    "expected": "Sia ft. Sean Paul – Cheap Thrills",
+    "matched": "Sia – Cheap Thrills (feat. Sean Paul)",
+    "suspicious": false
+  },
+  {
+    "expected": "Justin Timberlake – Can't Stop the Feeling!",
+    "matched": "Justin Timberlake – CAN'T STOP THE FEELING! (from DreamWorks Animation's \"TROLLS\")",
+    "suspicious": false
+  },
+  {
+    "expected": "Twenty One Pilots – Heathens",
+    "matched": "Twenty One Pilots – Heathens",
+    "suspicious": false
+  },
+  {
+    "expected": "Ariana Grande ft. Nicki Minaj – Side to Side",
+    "matched": "Ariana Grande – Side To Side",
+    "suspicious": false
+  },
+  {
+    "expected": "Beyoncé – Formation",
+    "matched": "Beyoncé – Formation",
+    "suspicious": false
+  },
+  {
+    "expected": "The Weeknd ft. Daft Punk – Starboy",
+    "matched": "The Weeknd – Starboy",
+    "suspicious": false
+  },
+  {
+    "expected": "Lukas Graham – 7 Years",
+    "matched": "Lukas Graham – 7 Years",
+    "suspicious": false
+  },
+  {
+    "expected": "Luis Fonsi & Daddy Yankee – Despacito",
+    "matched": "Luis Fonsi – Despacito",
+    "suspicious": false
+  },
+  {
+    "expected": "Ed Sheeran – Shape of You",
+    "matched": "Ed Sheeran – Shape of You",
+    "suspicious": false
+  },
+  {
+    "expected": "Ed Sheeran – Perfect",
+    "matched": "Ed Sheeran – Perfect",
+    "suspicious": false
+  },
+  {
+    "expected": "Kendrick Lamar – Humble",
+    "matched": "Kendrick Lamar – HUMBLE.",
+    "suspicious": false
+  },
+  {
+    "expected": "Migos ft. Lil Uzi Vert – Bad and Boujee",
+    "matched": "Migos – Bad and Boujee",
+    "suspicious": false
+  },
+  {
+    "expected": "Bruno Mars – That's What I Like",
+    "matched": "Bruno Mars – That's What I Like",
+    "suspicious": false
+  },
+  {
+    "expected": "Bruno Mars – 24K Magic",
+    "matched": "Bruno Mars – 24K Magic",
+    "suspicious": false
+  },
+  {
+    "expected": "Imagine Dragons – Believer",
+    "matched": "Imagine Dragons – Believer",
+    "suspicious": false
+  },
+  {
+    "expected": "Imagine Dragons – Thunder",
+    "matched": "Imagine Dragons – Thunder",
+    "suspicious": false
+  },
+  {
+    "expected": "Charlie Puth – Attention",
+    "matched": "Charlie Puth – Attention",
+    "suspicious": false
+  },
+  {
+    "expected": "Post Malone ft. 21 Savage – Rockstar",
+    "matched": "Post Malone – rockstar",
+    "suspicious": false
+  },
+  {
+    "expected": "Post Malone ft. Quavo – Congratulations",
+    "matched": "Post Malone – Congratulations",
+    "suspicious": false
+  },
+  {
+    "expected": "Camila Cabello ft. Young Thug – Havana",
+    "matched": "Camila Cabello – Havana (feat. Young Thug)",
+    "suspicious": false
+  },
+  {
+    "expected": "Dua Lipa – New Rules",
+    "matched": "Dua Lipa – New Rules",
+    "suspicious": false
+  },
+  {
+    "expected": "Drake – God's Plan",
+    "matched": "Drake – God's Plan",
+    "suspicious": false
+  },
+  {
+    "expected": "Drake – In My Feelings",
+    "matched": "Drake – In My Feelings",
+    "suspicious": false
+  },
+  {
+    "expected": "Drake – Nice for What",
+    "matched": "Drake – Nice For What",
+    "suspicious": false
+  },
+  {
+    "expected": "Ed Sheeran – Perfect",
+    "matched": "Ed Sheeran – Perfect",
+    "suspicious": false
+  },
+  {
+    "expected": "Lady Gaga & Bradley Cooper – Shallow",
+    "matched": "Lady Gaga – Shallow",
+    "suspicious": false
+  },
+  {
+    "expected": "Ariana Grande – Thank U, Next",
+    "matched": "Ariana Grande – thank u, next",
+    "suspicious": false
+  },
+  {
+    "expected": "Ariana Grande – 7 Rings",
+    "matched": "Ariana Grande – 7 rings",
+    "suspicious": false
+  },
+  {
+    "expected": "Lil Nas X ft. Billy Ray Cyrus – Old Town Road",
+    "matched": "Lil Nas X – Old Town Road (feat. Billy Ray Cyrus) (Remix)",
+    "suspicious": false
+  },
+  {
+    "expected": "Billie Eilish – Bad Guy",
+    "matched": "Billie Eilish – bad guy",
+    "suspicious": false
+  },
+  {
+    "expected": "Shawn Mendes & Camila Cabello – Senorita",
+    "matched": "Shawn Mendes – Señorita",
+    "suspicious": false
+  },
+  {
+    "expected": "Lewis Capaldi – Someone You Loved",
+    "matched": "Lewis Capaldi – Someone You Loved",
+    "suspicious": false
+  },
+  {
+    "expected": "Post Malone & Swae Lee – Sunflower",
+    "matched": "Post Malone – Sunflower (Spider-Man: Into the Spider-Verse)",
+    "suspicious": false
+  },
+  {
+    "expected": "Lizzo – Truth Hurts",
+    "matched": "Lizzo – Truth Hurts",
+    "suspicious": false
+  },
+  {
+    "expected": "Lizzo – Good as Hell",
+    "matched": "Lizzo – Good as Hell",
+    "suspicious": false
+  },
+  {
+    "expected": "Harry Styles – Watermelon Sugar",
+    "matched": "Harry Styles – Watermelon Sugar",
+    "suspicious": false
+  },
+  {
+    "expected": "Harry Styles – Adore You",
+    "matched": "Harry Styles – Adore You",
+    "suspicious": false
+  },
+  {
+    "expected": "Maroon 5 – Memories",
+    "matched": "Maroon 5 – Memories",
+    "suspicious": false
+  },
+  {
+    "expected": "Post Malone – Circles",
+    "matched": "Post Malone – Circles",
+    "suspicious": false
+  },
+  {
+    "expected": "Tones and I – Dance Monkey",
+    "matched": "Tones And I – Dance Monkey",
+    "suspicious": false
+  },
+  {
+    "expected": "The Weeknd – Blinding Lights",
+    "matched": "The Weeknd – Blinding Lights",
+    "suspicious": false
+  },
+  {
+    "expected": "The Weeknd – Save Your Tears",
+    "matched": "The Weeknd – Save Your Tears",
+    "suspicious": false
+  },
+  {
+    "expected": "The Weeknd – Heartless",
+    "matched": "The Weeknd – Heartless",
+    "suspicious": false
+  },
+  {
+    "expected": "Dua Lipa – Don't Start Now",
+    "matched": "Dua Lipa – Don't Start Now",
+    "suspicious": false
+  },
+  {
+    "expected": "Dua Lipa – Physical",
+    "matched": "Dua Lipa – Physical",
+    "suspicious": false
+  },
+  {
+    "expected": "Dua Lipa – Levitating",
+    "matched": "Dua Lipa – Levitating",
+    "suspicious": false
+  },
+  {
+    "expected": "Dua Lipa – Break My Heart",
+    "matched": "Dua Lipa – Break My Heart",
+    "suspicious": false
+  },
+  {
+    "expected": "Harry Styles – Watermelon Sugar",
+    "matched": "Harry Styles – Watermelon Sugar",
+    "suspicious": false
+  },
+  {
+    "expected": "Roddy Ricch – The Box",
+    "matched": "Roddy Ricch – The Box",
+    "suspicious": false
+  },
+  {
+    "expected": "Megan Thee Stallion – Savage",
+    "matched": "Megan Thee Stallion – Savage Remix (feat. Beyoncé)",
+    "suspicious": false
+  },
+  {
+    "expected": "Cardi B ft. Megan Thee Stallion – WAP",
+    "matched": "Cardi B – WAP (feat. Megan Thee Stallion)",
+    "suspicious": false
+  },
+  {
+    "expected": "DaBaby ft. Roddy Ricch – Rockstar",
+    "matched": "DaBaby – ROCKSTAR",
+    "suspicious": false
+  },
+  {
+    "expected": "Doja Cat – Say So",
+    "matched": "Doja Cat – Say So",
+    "suspicious": false
+  },
+  {
+    "expected": "BTS – Dynamite",
+    "matched": "BTS – Dynamite",
+    "suspicious": false
+  },
+  {
+    "expected": "BTS – Butter",
+    "matched": "BTS – Butter",
+    "suspicious": false
+  },
+  {
+    "expected": "24kGoldn ft. iann dior – Mood",
+    "matched": "24kGoldn – Mood (feat. iann dior)",
+    "suspicious": false
+  },
+  {
+    "expected": "Harry Styles – Watermelon Sugar",
+    "matched": "Harry Styles – Watermelon Sugar",
+    "suspicious": false
+  },
+  {
+    "expected": "Olivia Rodrigo – Good 4 U",
+    "matched": "Olivia Rodrigo – good 4 u",
+    "suspicious": false
+  },
+  {
+    "expected": "Olivia Rodrigo – drivers license",
+    "matched": "Olivia Rodrigo – drivers license",
+    "suspicious": false
+  },
+  {
+    "expected": "Olivia Rodrigo – deja vu",
+    "matched": "Olivia Rodrigo – deja vu",
+    "suspicious": false
+  },
+  {
+    "expected": "The Kid LAROI & Justin Bieber – Stay",
+    "matched": "The Kid LAROI – STAY",
+    "suspicious": false
+  },
+  {
+    "expected": "Justin Bieber ft. Daniel Caesar & Giveon – Peaches",
+    "matched": "Justin Bieber – Peaches",
+    "suspicious": false
+  },
+  {
+    "expected": "Doja Cat ft. SZA – Kiss Me More",
+    "matched": "Doja Cat – Kiss Me More (feat. SZA)",
+    "suspicious": false
+  },
+  {
+    "expected": "Glass Animals – Heat Waves",
+    "matched": "Glass Animals – Heat Waves",
+    "suspicious": false
+  },
+  {
+    "expected": "Lil Nas X – Montero (Call Me By Your Name)",
+    "matched": "Lil Nas X – MONTERO (Call Me By Your Name)",
+    "suspicious": false
+  },
+  {
+    "expected": "Lil Nas X ft. Jack Harlow – Industry Baby",
+    "matched": "Lil Nas X – INDUSTRY BABY",
+    "suspicious": false
+  },
+  {
+    "expected": "Ed Sheeran – Bad Habits",
+    "matched": "Ed Sheeran – Bad Habits",
+    "suspicious": false
+  },
+  {
+    "expected": "Ed Sheeran – Shivers",
+    "matched": "Ed Sheeran – Shivers",
+    "suspicious": false
+  },
+  {
+    "expected": "Taylor Swift – Cruel Summer",
+    "matched": "Taylor Swift – Cruel Summer",
+    "suspicious": false
+  },
+  {
+    "expected": "Taylor Swift – Anti-Hero",
+    "matched": "Taylor Swift – Anti-Hero",
+    "suspicious": false
+  },
+  {
+    "expected": "Harry Styles – As It Was",
+    "matched": "Harry Styles – As It Was",
+    "suspicious": false
+  },
+  {
+    "expected": "Lizzo – About Damn Time",
+    "matched": "Lizzo – About Damn Time",
+    "suspicious": false
+  },
+  {
+    "expected": "Kate Bush – Running Up That Hill",
+    "matched": "Kate Bush – Running Up That Hill (A Deal With God)",
+    "suspicious": false
+  },
+  {
+    "expected": "Jack Harlow – First Class",
+    "matched": "Jack Harlow – First Class",
+    "suspicious": false
+  },
+  {
+    "expected": "Sam Smith & Kim Petras – Unholy",
+    "matched": "Sam Smith – Unholy",
+    "suspicious": false
+  },
+  {
+    "expected": "SZA – Kill Bill",
+    "matched": "SZA – Kill Bill",
+    "suspicious": false
+  },
+  {
+    "expected": "Miley Cyrus – Flowers",
+    "matched": "Miley Cyrus – Flowers",
+    "suspicious": false
+  },
+  {
+    "expected": "Olivia Rodrigo – Vampire",
+    "matched": "Olivia Rodrigo – vampire",
+    "suspicious": false
+  },
+  {
+    "expected": "Morgan Wallen – Last Night",
+    "matched": "Morgan Wallen – Last Night",
+    "suspicious": false
+  },
+  {
+    "expected": "Rema & Selena Gomez – Calm Down",
+    "matched": "Rema – Calm Down",
+    "suspicious": false
+  },
+  {
+    "expected": "FIFTY FIFTY – Cupid",
+    "matched": "FIFTY FIFTY – Cupid",
+    "suspicious": false
+  },
+  {
+    "expected": "Doja Cat – Paint the Town Red",
+    "matched": "Doja Cat – Paint The Town Red",
+    "suspicious": false
+  },
+  {
+    "expected": "Tate McRae – Greedy",
+    "matched": "Tate McRae – greedy",
+    "suspicious": false
+  },
+  {
+    "expected": "Taylor Swift – Cruel Summer",
+    "matched": "Taylor Swift – Cruel Summer",
+    "suspicious": false
+  },
+  {
+    "expected": "Sabrina Carpenter – Espresso",
+    "matched": "Sabrina Carpenter – Espresso",
+    "suspicious": false
+  },
+  {
+    "expected": "Sabrina Carpenter – Please Please Please",
+    "matched": "Sabrina Carpenter – Please Please Please",
+    "suspicious": false
+  },
+  {
+    "expected": "Beyoncé – Texas Hold 'Em",
+    "matched": "Beyoncé – TEXAS HOLD 'EM",
+    "suspicious": false
+  },
+  {
+    "expected": "Teddy Swims – Lose Control",
+    "matched": "Teddy Swims – Lose Control",
+    "suspicious": false
+  },
+  {
+    "expected": "Zach Bryan ft. Kacey Musgraves – I Remember Everything",
+    "matched": "Zach Bryan – I Remember Everything (feat. Kacey Musgraves)",
+    "suspicious": false
+  },
+  {
+    "expected": "The Doors – Riders on the Storm",
+    "matched": "The Doors – Riders on the Storm",
+    "suspicious": false
+  },
+  {
+    "expected": "The Rolling Stones – Brown Sugar",
+    "matched": "The Rolling Stones – Brown Sugar (Remastered 2009)",
+    "suspicious": false
+  },
+  {
+    "expected": "Billy Joel – Piano Man",
+    "matched": "Billy Joel – Piano Man",
+    "suspicious": false
+  },
+  {
+    "expected": "Queen – We Will Rock You",
+    "matched": "Queen – We Will Rock You (Remastered 2011)",
+    "suspicious": false
+  },
+  {
+    "expected": "Queen – We Are the Champions",
+    "matched": "Queen – We Are The Champions (Remastered 2011)",
+    "suspicious": false
+  },
+  {
+    "expected": "Queen – Don't Stop Me Now",
+    "matched": "Queen – Don't Stop Me Now (Remastered 2011)",
+    "suspicious": false
+  },
+  {
+    "expected": "Queen & David Bowie – Under Pressure",
+    "matched": "Queen – Under Pressure (Remastered 2011)",
+    "suspicious": false
+  },
+  {
+    "expected": "David Bowie – Space Oddity",
+    "matched": "David Bowie – Space Oddity (2015 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "David Bowie – Life on Mars?",
+    "matched": "David Bowie – Life On Mars?",
+    "suspicious": false
+  },
+  {
+    "expected": "David Bowie – Let's Dance",
+    "matched": "David Bowie – Let's Dance (2018 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "Eagles – Life in the Fast Lane",
+    "matched": "Eagles – Life in the Fast Lane (2013 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "Eagles – Take It Easy",
+    "matched": "Eagles – Take It Easy (2013 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "Frank Sinatra – New York, New York",
+    "matched": "Frank Sinatra – Theme From New York, New York (2008 Remastered)",
+    "suspicious": false
+  },
+  {
+    "expected": "Frank Sinatra – My Way",
+    "matched": "Frank Sinatra – My Way",
+    "suspicious": false
+  },
+  {
+    "expected": "Frank Sinatra – Fly Me to the Moon",
+    "matched": "Frank Sinatra – Fly Me To The Moon (2008 Remastered)",
+    "suspicious": false
+  },
+  {
+    "expected": "James Brown – I Got You (I Feel Good)",
+    "matched": "James Brown – I Got You (I Feel Good)",
+    "suspicious": false
+  },
+  {
+    "expected": "James Brown – Papa's Got a Brand New Bag",
+    "matched": "James Brown – Papa's Got A Brand New Bag (Pt. 1)",
+    "suspicious": false
+  },
+  {
+    "expected": "The Carpenters – Superstar",
+    "matched": "The British Carpenters – Superstar (Live at the Everyman Theatre, Cheltenham, 2023)",
+    "suspicious": false
+  },
+  {
+    "expected": "Led Zeppelin – Whole Lotta Love",
+    "matched": "Led Zeppelin – Whole Lotta Love (Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "Led Zeppelin – Kashmir",
+    "matched": "Led Zeppelin – Kashmir (Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "Led Zeppelin – Black Dog",
+    "matched": "Led Zeppelin – Black Dog (Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "Pink Floyd – Money",
+    "matched": "Pink Floyd – Money",
+    "suspicious": false
+  },
+  {
+    "expected": "Pink Floyd – Comfortably Numb",
+    "matched": "Pink Floyd – Comfortably Numb",
+    "suspicious": false
+  },
+  {
+    "expected": "Pink Floyd – Wish You Were Here",
+    "matched": "Pink Floyd – Wish You Were Here",
+    "suspicious": false
+  },
+  {
+    "expected": "Black Sabbath – Paranoid",
+    "matched": "Black Sabbath – Paranoid (Remastered 2009)",
+    "suspicious": false
+  },
+  {
+    "expected": "Black Sabbath – Iron Man",
+    "matched": "Black Sabbath – Iron Man (Remastered 2009)",
+    "suspicious": false
+  },
+  {
+    "expected": "Ozzy Osbourne – Crazy Train",
+    "matched": "Ozzy Osbourne – Crazy Train",
+    "suspicious": false
+  },
+  {
+    "expected": "David Bowie – Rebel Rebel",
+    "matched": "David Bowie – Rebel Rebel",
+    "suspicious": false
+  },
+  {
+    "expected": "Aerosmith – Walk This Way",
+    "matched": "Aerosmith – Walk This Way",
+    "suspicious": false
+  },
+  {
+    "expected": "Dire Straits – Sultans of Swing",
+    "matched": "Dire Straits – Sultans Of Swing",
+    "suspicious": false
+  },
+  {
+    "expected": "Boston – More Than a Feeling",
+    "matched": "Boston – More Than a Feeling",
+    "suspicious": false
+  },
+  {
+    "expected": "Kansas – Carry On Wayward Son",
+    "matched": "Kansas – Carry on Wayward Son",
+    "suspicious": false
+  },
+  {
+    "expected": "Blue Öyster Cult – Don't Fear the Reaper",
+    "matched": "Blue Öyster Cult – (Don't Fear) The Reaper",
+    "suspicious": false
+  },
+  {
+    "expected": "Heart – Barracuda",
+    "matched": "Heart – Barracuda",
+    "suspicious": false
+  },
+  {
+    "expected": "The Jackson 5 – I Want You Back",
+    "matched": "Jackson 5 – I Want You Back",
+    "suspicious": false
+  },
+  {
+    "expected": "The Jackson 5 – ABC",
+    "matched": "Jackson 5 – ABC",
+    "suspicious": false
+  },
+  {
+    "expected": "The Jackson 5 – I'll Be There",
+    "matched": "Jackson 5 – I'll Be There",
+    "suspicious": false
+  },
+  {
+    "expected": "Marvin Gaye & Tammi Terrell – Ain't No Mountain High Enough",
+    "matched": "Marvin Gaye – Ain't No Mountain High Enough",
+    "suspicious": false
+  },
+  {
+    "expected": "Marvin Gaye – I Heard It Through the Grapevine",
+    "matched": "Marvin Gaye – I Heard It Through The Grapevine",
+    "suspicious": false
+  },
+  {
+    "expected": "Marvin Gaye – Let's Get It On",
+    "matched": "Marvin Gaye – Let's Get It On",
+    "suspicious": false
+  },
+  {
+    "expected": "Marvin Gaye – Sexual Healing",
+    "matched": "Marvin Gaye – Sexual Healing",
+    "suspicious": false
+  },
+  {
+    "expected": "Stevie Wonder – Signed, Sealed, Delivered I'm Yours",
+    "matched": "Stevie Wonder – Signed, Sealed, Delivered (I'm Yours)",
+    "suspicious": false
+  },
+  {
+    "expected": "Stevie Wonder – Isn't She Lovely",
+    "matched": "Stevie Wonder – Isn't She Lovely",
+    "suspicious": false
+  },
+  {
+    "expected": "Stevie Wonder – I Just Called to Say I Love You",
+    "matched": "Stevie Wonder – I Just Called To Say I Love You",
+    "suspicious": false
+  },
+  {
+    "expected": "Dusty Springfield – Son of a Preacher Man",
+    "matched": "Dusty Springfield – Son Of A Preacher Man",
+    "suspicious": false
+  },
+  {
+    "expected": "The Foundations – Build Me Up Buttercup",
+    "matched": "The Foundations – Build Me up Buttercup",
+    "suspicious": false
+  },
+  {
+    "expected": "Frankie Valli – Can't Take My Eyes Off You",
+    "matched": "Frankie Valli – Can't Take My Eyes off You",
+    "suspicious": false
+  },
+  {
+    "expected": "Roy Orbison – Oh, Pretty Woman",
+    "matched": "Roy Orbison – Oh, Pretty Woman",
+    "suspicious": false
+  },
+  {
+    "expected": "Tammy Wynette – Stand by Your Man",
+    "matched": "Tammy Wynette – Stand By Your Man",
+    "suspicious": false
+  },
+  {
+    "expected": "Johnny Cash – Ring of Fire",
+    "matched": "Johnny Cash – Ring of Fire",
+    "suspicious": false
+  },
+  {
+    "expected": "Johnny Cash – I Walk the Line",
+    "matched": "Johnny Cash – I Walk the Line",
+    "suspicious": false
+  },
+  {
+    "expected": "Johnny Cash – Folsom Prison Blues",
+    "matched": "Johnny Cash – Folsom Prison Blues",
+    "suspicious": false
+  },
+  {
+    "expected": "Johnny Cash – Hurt",
+    "matched": "Johnny Cash – Hurt",
+    "suspicious": false
+  },
+  {
+    "expected": "Dolly Parton – Jolene",
+    "matched": "Dolly Parton – Jolene",
+    "suspicious": false
+  },
+  {
+    "expected": "Dolly Parton – 9 to 5",
+    "matched": "Dolly Parton – 9 to 5",
+    "suspicious": false
+  },
+  {
+    "expected": "John Denver – Country Roads",
+    "matched": "John Denver – Take Me Home, Country Roads (Original Version)",
+    "suspicious": false
+  },
+  {
+    "expected": "Neil Diamond – Sweet Caroline",
+    "matched": "Neil Diamond – Sweet Caroline",
+    "suspicious": false
+  },
+  {
+    "expected": "Billy Joel – Piano Man",
+    "matched": "Billy Joel – Piano Man",
+    "suspicious": false
+  },
+  {
+    "expected": "Billy Joel – Uptown Girl",
+    "matched": "Billy Joel – Uptown Girl",
+    "suspicious": false
+  },
+  {
+    "expected": "Billy Joel – We Didn't Start the Fire",
+    "matched": "Billy Joel – We Didn't Start the Fire",
+    "suspicious": false
+  },
+  {
+    "expected": "Bruce Springsteen – The River",
+    "matched": "Bruce Springsteen – The River",
+    "suspicious": false
+  },
+  {
+    "expected": "Bruce Springsteen – Dancing in the Dark",
+    "matched": "Bruce Springsteen – Dancing In the Dark",
+    "suspicious": false
+  },
+  {
+    "expected": "Bruce Springsteen – Streets of Philadelphia",
+    "matched": "Bruce Springsteen – Streets of Philadelphia (Single Edit)",
+    "suspicious": false
+  },
+  {
+    "expected": "Fleetwood Mac – Landslide",
+    "matched": "Fleetwood Mac – Landslide",
+    "suspicious": false
+  },
+  {
+    "expected": "Fleetwood Mac – The Chain",
+    "matched": "Fleetwood Mac – The Chain (2004 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "Fleetwood Mac – Rhiannon",
+    "matched": "Fleetwood Mac – Rhiannon",
+    "suspicious": false
+  },
+  {
+    "expected": "Tears for Fears – Everybody Wants to Rule the World",
+    "matched": "Tears For Fears – Everybody Wants To Rule The World",
+    "suspicious": false
+  },
+  {
+    "expected": "Tears for Fears – Shout",
+    "matched": "Tears For Fears – Shout",
+    "suspicious": false
+  },
+  {
+    "expected": "Dexys Midnight Runners – Come on Eileen",
+    "matched": "Dexys Midnight Runners – Come On Eileen",
+    "suspicious": false
+  },
+  {
+    "expected": "The Police – Every Little Thing She Does Is Magic",
+    "matched": "The Police – Every Little Thing She Does Is Magic",
+    "suspicious": false
+  },
+  {
+    "expected": "The Police – Message in a Bottle",
+    "matched": "The Police – Message In A Bottle",
+    "suspicious": false
+  },
+  {
+    "expected": "The Police – Don't Stand So Close to Me",
+    "matched": "The Police – Don't Stand So Close To Me",
+    "suspicious": false
+  },
+  {
+    "expected": "Phil Collins – In the Air Tonight",
+    "matched": "Phil Collins – In the Air Tonight (2015 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "Phil Collins – Against All Odds",
+    "matched": "Phil Collins – Against All Odds (Take a Look at Me Now) (2016 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "Philip Bailey & Phil Collins – Easy Lover",
+    "matched": "Philip Bailey – Easy Lover",
+    "suspicious": false
+  },
+  {
+    "expected": "Bruce Springsteen – Born in the U.S.A.",
+    "matched": "Bruce Springsteen – Born in the U.S.A.",
+    "suspicious": false
+  },
+  {
+    "expected": "Nena – 99 Luftballons",
+    "matched": "Nena – 99 Luftballons",
+    "suspicious": false
+  },
+  {
+    "expected": "Men Without Hats – Safety Dance",
+    "matched": "Men Without Hats – The Safety Dance",
+    "suspicious": false
+  },
+  {
+    "expected": "Yes – Owner of a Lonely Heart",
+    "matched": "Yes – Owner of a Lonely Heart",
+    "suspicious": false
+  },
+  {
+    "expected": "Kim Wilde – Kids in America",
+    "matched": "Kim Wilde – Kids In America",
+    "suspicious": false
+  },
+  {
+    "expected": "Squeeze – Tempted",
+    "matched": "Squeeze – Tempted",
+    "suspicious": false
+  },
+  {
+    "expected": "Madness – Our House",
+    "matched": "Madness – Our House",
+    "suspicious": false
+  },
+  {
+    "expected": "Madness – One Step Beyond",
+    "matched": "Madness – One Step Beyond (2009 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "Talking Heads – Once in a Lifetime",
+    "matched": "Talking Heads – Once in a Lifetime (2005 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "Talking Heads – Psycho Killer",
+    "matched": "Talking Heads – Psycho Killer (2003 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "The Clash – Rock the Casbah",
+    "matched": "The Clash – Rock the Casbah (Remastered)",
+    "suspicious": false
+  },
+  {
+    "expected": "The Clash – Should I Stay or Should I Go",
+    "matched": "The Clash – Should I Stay or Should I Go (Remastered)",
+    "suspicious": false
+  },
+  {
+    "expected": "The Clash – London Calling",
+    "matched": "The Clash – London Calling (Remastered)",
+    "suspicious": false
+  },
+  {
+    "expected": "Ramones – Blitzkrieg Bop",
+    "matched": "Ramones – Blitzkrieg Bop (2016 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "Ramones – I Wanna Be Sedated",
+    "matched": "Ramones – I Wanna Be Sedated",
+    "suspicious": false
+  },
+  {
+    "expected": "Sex Pistols – Anarchy in the U.K.",
+    "matched": "Sex Pistols – Anarchy In The UK",
+    "suspicious": false
+  },
+  {
+    "expected": "Joy Division – Love Will Tear Us Apart",
+    "matched": "Joy Division – Love Will Tear Us Apart",
+    "suspicious": false
+  },
+  {
+    "expected": "Depeche Mode – Just Can't Get Enough",
+    "matched": "Depeche Mode – Just Can't Get Enough",
+    "suspicious": false
+  },
+  {
+    "expected": "Depeche Mode – Enjoy the Silence",
+    "matched": "Depeche Mode – Enjoy the Silence",
+    "suspicious": false
+  },
+  {
+    "expected": "Depeche Mode – Personal Jesus",
+    "matched": "Depeche Mode – Personal Jesus",
+    "suspicious": false
+  },
+  {
+    "expected": "The Smiths – This Charming Man",
+    "matched": "The Smiths – This Charming Man (Single Version; 2008 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "The Smiths – There Is a Light That Never Goes Out",
+    "matched": "The Smiths – There Is a Light That Never Goes Out (2008 Remaster)",
+    "suspicious": false
+  },
+  {
+    "expected": "The Cure – Just Like Heaven",
+    "matched": "The Cure – Just Like Heaven",
+    "suspicious": false
+  },
+  {
+    "expected": "The Cure – Friday I'm in Love",
+    "matched": "The Cure – Friday I'm In Love",
+    "suspicious": false
+  },
+  {
+    "expected": "The Cure – Lovesong",
+    "matched": "The Cure – Lovesong",
+    "suspicious": false
+  },
+  {
+    "expected": "Pixies – Where Is My Mind?",
+    "matched": "Pixies – Where Is My Mind?",
+    "suspicious": false
+  },
+  {
+    "expected": "Pearl Jam – Black",
+    "matched": "Pearl Jam – Black",
+    "suspicious": false
+  },
+  {
+    "expected": "Pearl Jam – Alive",
+    "matched": "Pearl Jam – Alive",
+    "suspicious": false
+  },
+  {
+    "expected": "Alice in Chains – Man in the Box",
+    "matched": "Alice In Chains – Man in the Box",
+    "suspicious": false
+  },
+  {
+    "expected": "Soundgarden – Black Hole Sun",
+    "matched": "Soundgarden – Black Hole Sun",
+    "suspicious": false
+  },
+  {
+    "expected": "Nirvana – Come As You Are",
+    "matched": "Nirvana – Come As You Are",
+    "suspicious": false
+  },
+  {
+    "expected": "Nirvana – Heart-Shaped Box",
+    "matched": "Nirvana – Heart-Shaped Box",
+    "suspicious": false
+  },
+  {
+    "expected": "Nirvana – About a Girl",
+    "matched": "Nirvana – About A Girl",
+    "suspicious": false
+  },
+  {
+    "expected": "Foo Fighters – Everlong",
+    "matched": "Foo Fighters – Everlong",
+    "suspicious": false
+  },
+  {
+    "expected": "Foo Fighters – Learn to Fly",
+    "matched": "Foo Fighters – Learn to Fly",
+    "suspicious": false
+  },
+  {
+    "expected": "Foo Fighters – Best of You",
+    "matched": "Foo Fighters – Best of You",
+    "suspicious": false
+  },
+  {
+    "expected": "Stone Temple Pilots – Plush",
+    "matched": "Stone Temple Pilots – Plush",
+    "suspicious": false
+  },
+  {
+    "expected": "Stone Temple Pilots – Interstate Love Song",
+    "matched": "Stone Temple Pilots – Interstate Love Song",
+    "suspicious": false
+  },
+  {
+    "expected": "U2 – One",
+    "matched": "U2 – One",
+    "suspicious": false
+  },
+  {
+    "expected": "U2 – Where the Streets Have No Name",
+    "matched": "U2 – Where The Streets Have No Name",
+    "suspicious": false
+  },
+  {
+    "expected": "U2 – Sunday Bloody Sunday",
+    "matched": "U2 – Sunday Bloody Sunday (Remastered 2008)",
+    "suspicious": false
+  },
+  {
+    "expected": "U2 – Vertigo",
+    "matched": "U2 – Vertigo",
+    "suspicious": false
+  },
+  {
+    "expected": "Radiohead – Karma Police",
+    "matched": "Radiohead – Karma Police",
+    "suspicious": false
+  },
+  {
+    "expected": "Radiohead – No Surprises",
+    "matched": "Radiohead – No Surprises",
+    "suspicious": false
+  },
+  {
+    "expected": "Radiohead – Paranoid Android",
+    "matched": "Radiohead – Paranoid Android",
+    "suspicious": false
+  },
+  {
+    "expected": "Coldplay – Yellow",
+    "matched": "Coldplay – Yellow",
+    "suspicious": false
+  },
+  {
+    "expected": "Coldplay – The Scientist",
+    "matched": "Coldplay – The Scientist",
+    "suspicious": false
+  },
+  {
+    "expected": "Coldplay – Fix You",
+    "matched": "Coldplay – Fix You",
+    "suspicious": false
+  },
+  {
+    "expected": "Coldplay – Paradise",
+    "matched": "Coldplay – Paradise",
+    "suspicious": false
+  },
+  {
+    "expected": "Coldplay – A Sky Full of Stars",
+    "matched": "Coldplay – A Sky Full of Stars",
+    "suspicious": false
+  },
+  {
+    "expected": "Franz Ferdinand – Take Me Out",
+    "matched": "Franz Ferdinand – Take Me Out",
+    "suspicious": false
+  },
+  {
+    "expected": "Kings of Leon – Sex on Fire",
+    "matched": "Kings Of Leon – Sex on Fire",
+    "suspicious": false
+  },
+  {
+    "expected": "The Fratellis – Chelsea Dagger",
+    "matched": "The Fratellis – Chelsea Dagger",
+    "suspicious": false
+  },
+  {
+    "expected": "Arctic Monkeys – Fluorescent Adolescent",
+    "matched": "Arctic Monkeys – Fluorescent Adolescent",
+    "suspicious": false
+  },
+  {
+    "expected": "Arctic Monkeys – I Bet You Look Good on the Dancefloor",
+    "matched": "Arctic Monkeys – I Bet You Look Good On The Dancefloor",
+    "suspicious": false
+  },
+  {
+    "expected": "Arctic Monkeys – Do I Wanna Know?",
+    "matched": "Arctic Monkeys – Do I Wanna Know?",
+    "suspicious": false
+  },
+  {
+    "expected": "Arctic Monkeys – R U Mine?",
+    "matched": "Arctic Monkeys – R U Mine?",
+    "suspicious": false
+  },
+  {
+    "expected": "The Kooks – Naive",
+    "matched": "The Kooks – Naive",
+    "suspicious": false
+  },
+  {
+    "expected": "The Kooks – She Moves in Her Own Way",
+    "matched": "The Kooks – She Moves In Her Own Way",
+    "suspicious": false
+  },
+  {
+    "expected": "The Zutons – Valerie",
+    "matched": "The Zutons – Valerie",
+    "suspicious": false
+  },
+  {
+    "expected": "Florence + the Machine – Dog Days Are Over",
+    "matched": "Florence + The Machine – Dog Days Are Over",
+    "suspicious": false
+  },
+  {
+    "expected": "Florence + the Machine – Shake It Out",
+    "matched": "Florence + The Machine – Shake It Out",
+    "suspicious": false
+  },
+  {
+    "expected": "Arctic Monkeys – I Bet You Look Good on the Dancefloor",
+    "matched": "Arctic Monkeys – I Bet You Look Good On The Dancefloor",
+    "suspicious": false
+  },
+  {
+    "expected": "MGMT – Electric Feel",
+    "matched": "MGMT – Electric Feel",
+    "suspicious": false
+  },
+  {
+    "expected": "MGMT – Kids",
+    "matched": "MGMT – Kids",
+    "suspicious": false
+  },
+  {
+    "expected": "MGMT – Time to Pretend",
+    "matched": "MGMT – Time to Pretend",
+    "suspicious": false
+  },
+  {
+    "expected": "The 1975 – Chocolate",
+    "matched": "The 1975 – Chocolate",
+    "suspicious": false
+  },
+  {
+    "expected": "The 1975 – Somebody Else",
+    "matched": "The 1975 – Somebody Else",
+    "suspicious": false
+  },
+  {
+    "expected": "Peter Bjorn and John – Young Folks",
+    "matched": "Peter Bjorn And John – Young Folks",
+    "suspicious": false
+  },
+  {
+    "expected": "Modest Mouse – Float On",
+    "matched": "Modest Mouse – Float On",
+    "suspicious": false
+  },
+  {
+    "expected": "The Lumineers – Ho Hey",
+    "matched": "The Lumineers – Ho Hey",
+    "suspicious": false
+  },
+  {
+    "expected": "Of Monsters and Men – Little Talks",
+    "matched": "Of Monsters and Men – Little Talks",
+    "suspicious": false
+  },
+  {
+    "expected": "Bon Iver – Skinny Love",
+    "matched": "Bon Iver – Skinny Love",
+    "suspicious": false
+  },
+  {
+    "expected": "Mumford & Sons – The Cave",
+    "matched": "Mumford & Sons – The Cave",
+    "suspicious": false
+  },
+  {
+    "expected": "Mumford & Sons – I Will Wait",
+    "matched": "Mumford & Sons – I Will Wait",
+    "suspicious": false
+  },
+  {
+    "expected": "Mumford & Sons – Little Lion Man",
+    "matched": "Mumford & Sons – Little Lion Man",
+    "suspicious": false
+  },
+  {
+    "expected": "Bastille – Pompeii",
+    "matched": "Bastille – Pompeii",
+    "suspicious": false
+  },
+  {
+    "expected": "Vance Joy – Riptide",
+    "matched": "Vance Joy – Riptide",
+    "suspicious": false
+  },
+  {
+    "expected": "George Ezra – Budapest",
+    "matched": "George Ezra – Budapest",
+    "suspicious": false
+  },
+  {
+    "expected": "Hozier – Take Me to Church",
+    "matched": "Hozier – Take Me To Church",
+    "suspicious": false
+  },
+  {
+    "expected": "X Ambassadors – Renegades",
+    "matched": "X Ambassadors – Renegades",
+    "suspicious": false
+  },
+  {
+    "expected": "Paramore – Ain't It Fun",
+    "matched": "Paramore – Ain't It Fun",
+    "suspicious": false
+  },
+  {
+    "expected": "Paramore – Misery Business",
+    "matched": "Paramore – Misery Business",
+    "suspicious": false
+  },
+  {
+    "expected": "Paramore – Decode",
+    "matched": "Paramore – Decode (Twilight Soundtrack Version)",
+    "suspicious": false
+  },
+  {
+    "expected": "Panic! at the Disco – I Write Sins Not Tragedies",
+    "matched": "Panic! At The Disco – I Write Sins Not Tragedies",
+    "suspicious": false
+  },
+  {
+    "expected": "Panic! at the Disco – High Hopes",
+    "matched": "Panic! At The Disco – High Hopes",
+    "suspicious": false
+  },
+  {
+    "expected": "Fall Out Boy – Sugar, We're Goin Down",
+    "matched": "Fall Out Boy – Sugar, We're Goin Down",
+    "suspicious": false
+  },
+  {
+    "expected": "Fall Out Boy – Centuries",
+    "matched": "Fall Out Boy – Centuries",
+    "suspicious": false
+  },
+  {
+    "expected": "Fall Out Boy – Thnks fr th Mmrs",
+    "matched": "Fall Out Boy – Thnks fr th Mmrs",
+    "suspicious": false
+  },
+  {
+    "expected": "The Dandy Warhols – Bohemian Like You",
+    "matched": "The Dandy Warhols – Bohemian Like You",
+    "suspicious": false
+  },
+  {
+    "expected": "The Strokes – Last Nite",
+    "matched": "The Strokes – Last Nite",
+    "suspicious": false
+  },
+  {
+    "expected": "The Strokes – Reptilia",
+    "matched": "The Strokes – Reptilia",
+    "suspicious": false
+  },
+  {
+    "expected": "Yeah Yeah Yeahs – Maps",
+    "matched": "Yeah Yeah Yeahs – Maps",
+    "suspicious": false
+  },
+  {
+    "expected": "Yeah Yeah Yeahs – Heads Will Roll",
+    "matched": "Yeah Yeah Yeahs – Heads Will Roll",
+    "suspicious": false
+  },
+  {
+    "expected": "Gorillaz – Feel Good Inc.",
+    "matched": "Gorillaz – Feel Good Inc.",
+    "suspicious": false
+  },
+  {
+    "expected": "Gorillaz – Clint Eastwood",
+    "matched": "Gorillaz – Clint Eastwood",
+    "suspicious": false
+  },
+  {
+    "expected": "Gorillaz – On Melancholy Hill",
+    "matched": "Gorillaz – On Melancholy Hill",
+    "suspicious": false
+  },
+  {
+    "expected": "alt-J – Breezeblocks",
+    "matched": "alt-J – Breezeblocks",
+    "suspicious": false
+  },
+  {
+    "expected": "The Neighbourhood – Sweater Weather",
+    "matched": "The Neighbourhood – Sweater Weather",
+    "suspicious": false
+  },
+  {
+    "expected": "Queen – Somebody to Love",
+    "matched": "Queen – Somebody To Love",
+    "suspicious": false
+  },
+  {
+    "expected": "Queen – Killer Queen",
+    "matched": "Queen – Killer Queen",
+    "suspicious": false
+  },
+  {
+    "expected": "Queen – Fat Bottomed Girls",
+    "matched": "Queen – Fat Bottomed Girls (Remastered 2011)",
+    "suspicious": false
+  },
+  {
+    "expected": "Queen – Radio Ga Ga",
+    "matched": "Queen – Radio Ga Ga (Remastered 2011)",
+    "suspicious": false
+  },
+  {
+    "expected": "Amy Winehouse – Valerie",
+    "matched": "Amy Winehouse – Valerie (Live At BBC Radio 1 Live Lounge, London / 2007)",
+    "suspicious": false
+  },
+  {
+    "expected": "Amy Winehouse – Back to Black",
+    "matched": "Amy Winehouse – Back To Black",
+    "suspicious": false
+  },
+  {
+    "expected": "Amy Winehouse – Tears Dry on Their Own",
+    "matched": "Amy Winehouse – Tears Dry On Their Own",
+    "suspicious": false
+  },
+  {
+    "expected": "Snow Patrol – Set Fire to the Third Bar",
+    "matched": "Snow Patrol – Set The Fire To The Third Bar",
+    "suspicious": false
+  },
+  {
+    "expected": "Snow Patrol – Run",
+    "matched": "Snow Patrol – Run",
+    "suspicious": false
+  },
+  {
+    "expected": "Hozier – Take Me to Church",
+    "matched": "Hozier – Take Me To Church",
+    "suspicious": false
+  },
+  {
+    "expected": "Sia ft. Sean Paul – Cheap Thrills",
+    "matched": "Sia – Cheap Thrills (feat. Sean Paul)",
+    "suspicious": false
+  },
+  {
+    "expected": "Sia – Elastic Heart",
+    "matched": "Sia – Elastic Heart",
+    "suspicious": false
+  },
+  {
+    "expected": "Elle King – Ex's & Oh's",
+    "matched": "Elle King – Ex's & Oh's",
+    "suspicious": false
+  },
+  {
+    "expected": "Vance Joy – Riptide",
+    "matched": "Vance Joy – Riptide",
+    "suspicious": false
+  },
+  {
+    "expected": "Imagine Dragons – Demons",
+    "matched": "Imagine Dragons – Demons",
+    "suspicious": false
+  },
+  {
+    "expected": "Imagine Dragons – It's Time",
+    "matched": "Imagine Dragons – It's Time",
+    "suspicious": false
+  },
+  {
+    "expected": "Imagine Dragons – Whatever It Takes",
+    "matched": "Imagine Dragons – Whatever It Takes",
+    "suspicious": false
+  }
+]
