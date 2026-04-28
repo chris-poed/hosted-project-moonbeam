@@ -4,7 +4,10 @@ import { useEffect, useState, useMemo } from "react";
 import { socket } from "../socket";
 import CountdownTimer from "../components/CountdownTimer";
 import DragAndDrop from "../components/DragAndDrop";
+<<<<<<< HEAD
 import AudioPlayer from "../components/AudioPlayer";
+=======
+>>>>>>> 820b2b9 (updates gamescreen with useStates from DragAndDrop)
 import { songs } from "../data/songs";
 import Timeline from "../components/Timeline";
 //import CardBank from "../components/CardBank";
@@ -49,6 +52,10 @@ export function GameScreen() {
         gameState.phase === "listening-placement-phase" && isCurrentPlayer;
 
     const roomId = `game:${gameState.join_code}`;
+
+  const [cardBank, setCardBank] = useState(songs);
+    const [timeline, setTimeline] = useState([]);
+    const [activeTimelineCard, setActiveTimelineCard] = useState(null); // only timeline card that is currently allowed to be moved again
 
   useEffect(() => {
     function handlePhaseChanged(updatedGameState) {
