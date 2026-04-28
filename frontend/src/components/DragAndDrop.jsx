@@ -1,14 +1,22 @@
 import { useEffect, useState } from "react";
 import { DndContext, rectIntersection, DragOverlay } from "@dnd-kit/core";
 import { arrayMove } from "@dnd-kit/sortable";
-import { songs } from "../data/songs";
+//import { songs } from "../data/songs";
 import CardBank from "./CardBank";
 import Timeline from "./Timeline";
 
-function DragAndDrop() {
-  const [cardBank, setCardBank] = useState(songs);
-  const [timeline, setTimeline] = useState([]);
-  const [activeTimelineCard, setActiveTimelineCard] = useState(null); // only timeline card that is currently allowed to be moved again
+function DragAndDrop({
+    cardBank,
+    setCardBank,
+    timeline,
+    setTimeline,
+    activeTimelineCard,
+    setActiveTimelineCard
+}) {
+
+//   const [cardBank, setCardBank] = useState(songs);
+//   const [timeline, setTimeline] = useState([]);
+//   const [activeTimelineCard, setActiveTimelineCard] = useState(null); // only timeline card that is currently allowed to be moved again
   const [activeCard, setActiveCard] = useState(null); // This card is used by DragOverlay for when the current card is being dragged.  Stops glitchiness
 
   const handleDragStart = (event) => {

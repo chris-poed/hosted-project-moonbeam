@@ -5,6 +5,10 @@ import { socket } from "../socket";
 import CountdownTimer from "../components/CountdownTimer";
 import DragAndDrop from "../components/DragAndDrop";
 import AudioPlayer from "../components/AudioPlayer";
+import { songs } from "../data/songs";
+import Timeline from "../components/Timeline";
+//import CardBank from "../components/CardBank";
+//import Timeline from "../components/Timeline";
 
 export function GameScreen() {
   const location = useLocation();
@@ -14,6 +18,10 @@ export function GameScreen() {
   const playerId = location.state?.playerId;
 
   const [gameState, setGameState] = useState(initialGameState);
+
+  const [cardBank, setCardBank] = useState(songs);
+    const [timeline, setTimeline] = useState([]);
+    const [activeTimelineCard, setActiveTimelineCard] = useState(null); // only timeline card that is currently allowed to be moved again
 
   useEffect(() => {
     function handlePhaseChanged(updatedGameState) {
@@ -116,7 +124,7 @@ useEffect(() => {
       <p>SOCKET ID: {socket.id}</p>
 
       <h3>Round number: {gameState.round_no}</h3>
-      <h3>Current player's turn: {gameState.current_player.display_name}</h3>
+      <h3>Current players turn: {gameState.current_player.display_name}</h3>
       <h3>My name: {myPlayer?.display_name}</h3>
       <h3>Phase: {gameState.phase}</h3>
 
@@ -144,13 +152,26 @@ useEffect(() => {
 
 
       {canMoveCards ? (
+        <>
         <p>You can move your cards now.</p>
+        <DragAndDrop 
+      cardBank={cardBank}
+      setCardBank={setCardBank}
+      timeline={timeline}
+      setTimeline={setTimeline}
+      activeTimelineCard={activeTimelineCard}
+      setActiveTimelineCard={setActiveTimelineCard}/>
+      </>
       ) : (
+        <>
         <p>You cannot move cards right now.</p>
+        <Timeline timeline={timeline} />
+        </>
       )}
 
-      {/* to be used in timeline/cards component */} <DragAndDrop />
-      {/* <Timeline disabled={!canMoveCards} if not current player/> */}
+      {/* to be used in timeline/cards component */} 
+      {/* <Timeline disabled={!canMoveCards} if not current player/> */} 
+      
     </>
   );
 }
