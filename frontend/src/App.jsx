@@ -2,10 +2,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./App.css";
 import { HomePage } from "./pages/Home/HomePage";
-
 import { Lobby } from "./pages/Lobby/LobbyPage";
 import { GameScreen } from "./pages/GameScreen";
-import { TimerTest } from "./pages/TimerTest";
+import { RevealPage } from "./pages/Reveal/RevealPage";
 
 // docs: https://reactrouter.com/en/main/start/overview
 const router = createBrowserRouter([
@@ -22,8 +21,8 @@ const router = createBrowserRouter([
     element: <GameScreen/>
  },
   {
-    path: "/timer-test",
-    element: <TimerTest />,
+    path: "/reveal",
+    element: <RevealPage />,
   }
 ]);
 

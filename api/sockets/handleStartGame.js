@@ -1,4 +1,5 @@
 const getGameStatePayload = require("../helpers/getGameStatePayload")
+const { startTimer } = require("./gameTimer")
 const Game = require("../models/game");
 
 async function handleStartGame(io, socket, payload, callback){
@@ -6,6 +7,16 @@ async function handleStartGame(io, socket, payload, callback){
     // server must then validate host, setup game?, set turn order, etc, then emit message to 
     // // broadcast all players to navigate to GameScreen
 
+    //constants used to set timer values    
+    const INTRO_CNTDOWN = 3;
+    const LLP_CNTDOWN = 30;
+
+    //required for updating game phase chnages to trigger state events in the frontend
+    async function emitUpdatedGameState(io,join_code, roomName){
+        const updatedPayload = await getGameStatePayload(join_code);
+        io.to(roomName).emit("game:phase_changed", updatedPayload);
+        return updatedPayload;
+    }
     
     try {
 
@@ -62,8 +73,8 @@ async function handleStartGame(io, socket, payload, callback){
             { join_code: join_code },
             {
                 $set: {
-                    phase: "listening-placement-phase",
-                    round_no: 1,
+                    phase: "intro-countdown",   //!!!!change to intro-cnt-down
+                    round_no: 1,  ///this will nedd to be updated per round e.g. round_no: round_no +1
                     current_player: firstPlayer.player_id,
                 },
             },
@@ -74,6 +85,39 @@ async function handleStartGame(io, socket, payload, callback){
 
         // emits it to the room
         io.to(roomName).emit("game:started", gameStartPayload);
+
+        ///!!!!call start intro timer here
+
+        startTimer(io, roomName, INTRO_CNTDOWN, async ()=>{
+            await Game.findOneAndUpdate(
+                { join_code },
+                {
+                    $set:{
+                        phase:"listening-placement-phase",
+                    },
+                }
+            )
+
+            await emitUpdatedGameState(io, join_code, roomName);
+
+            ///!!!emitUpdatedGameState broadcast - set phase to LPP
+             startTimer(io, roomName, LLP_CNTDOWN, async ()=>{
+                await Game.findOneAndUpdate(
+                    { join_code },
+                    {
+                        $set:{
+                            phase:"placement-ended",
+                        },
+                    }
+                )
+
+            await emitUpdatedGameState(io, join_code, roomName);
+
+            });
+         });
+
+        
+
         return callback({
             ok:true,
         })

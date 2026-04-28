@@ -7,8 +7,10 @@ export function useGameCountdown(socket, roomId) {
   const [endsAt, setEndsAt] = useState(null);
   const endsAtRef = useRef(null);
 
+ //onstart payload from gametimer.js called inside handleStartGame.js (Backend)
+
   useEffect(() => {
-    if (!socket) return;
+    if (!socket || !roomId) return;
 
     function onTimerStart({ remaining: r, duration: d, endsAt: e }) {
       setRemaining(r);
