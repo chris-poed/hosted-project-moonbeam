@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom";
+import DragAndDrop from "../../components/DragAndDrop";
 
 export function RevealPage() {
   const location = useLocation();
@@ -39,6 +40,7 @@ export function RevealPage() {
           </li>
         ))}
       </ul>
+      <DragAndDrop />
     </div>
   );
 }

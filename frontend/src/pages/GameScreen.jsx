@@ -30,6 +30,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { socket } from "../socket";
 import CountdownTimer from "../components/CountdownTimer";
+import DragAndDrop from "../components/DragAndDrop";
 
 export function GameScreen() {
   const location = useLocation();
@@ -144,7 +145,7 @@ export function GameScreen() {
         <p>You cannot move cards right now.</p>
       )}
 
-      {/* to be used in timeline/cards component */}
+      {/* to be used in timeline/cards component */} <DragAndDrop />
       {/* <Timeline disabled={!canMoveCards} if not current player/> */}
     </>
   );
