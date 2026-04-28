@@ -1,6 +1,6 @@
 
 import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { socket } from "../socket";
 import CountdownTimer from "../components/CountdownTimer";
 import DragAndDrop from "../components/DragAndDrop";
@@ -11,167 +11,208 @@ import Timeline from "../components/Timeline";
 //import Timeline from "../components/Timeline";
 
 export function GameScreen() {
-  const location = useLocation();
-  const navigate = useNavigate();
+    const location = useLocation();
+    const navigate = useNavigate();
 
-  const initialGameState = location.state?.gameState;
-  const playerId = location.state?.playerId;
+    const initialGameState = location.state?.gameState;
+    const playerId = location.state?.playerId;
 
-  const [gameState, setGameState] = useState(initialGameState);
+    const [gameState, setGameState] = useState(initialGameState);
 
-  const [cardBank, setCardBank] = useState(songs);
+    const [cardBank, setCardBank] = useState(songs);
     const [timeline, setTimeline] = useState([]);
     const [activeTimelineCard, setActiveTimelineCard] = useState(null); // only timeline card that is currently allowed to be moved again
+    const [placement, setPlacement] = useState(null);
+    const [hasSubmittedPlacement, setHasSubmittedPlacement] = useState(false);
+
+
+    const myPlayer = useMemo(() => {
+        if (!gameState?.players || !playerId) return null;
+
+        return gameState.players.find((player) => {
+        return player.player_id === playerId;
+        });
+    }, [gameState, playerId]);
+
+    const currentPlayer = useMemo(() => {
+        if (!gameState?.players || !gameState?.current_player?.player_id) return null;
+
+        return gameState.players.find((player) => {
+        return player.player_id === gameState.current_player.player_id;
+        });
+    }, [gameState]);
+
+    const isCurrentPlayer =
+        gameState.current_player?.player_id === playerId;
+
+    const canMoveCards =
+        gameState.phase === "listening-placement-phase" && isCurrentPlayer;
+
+    const roomId = `game:${gameState.join_code}`;
 
   useEffect(() => {
     function handlePhaseChanged(updatedGameState) {
-      
-      setGameState(updatedGameState);
+    setGameState(updatedGameState);
     }
 
     socket.on("game:phase_changed", handlePhaseChanged);
 
     return () => {
-      socket.off("game:phase_changed", handlePhaseChanged);
+    socket.off("game:phase_changed", handlePhaseChanged);
     };
   }, []);
 
 
-  useEffect(()=> {
-    if(!gameState) return;
+  useEffect(() => {
+    if (!myPlayer) return;
 
-    if(gameState.phase !== "placement-ended") return;
+    setTimeline(myPlayer.timeline || []);
+  }, [myPlayer?.player_id]);
 
-    if(gameState.current_player?.player_id !== playerId) return;
 
+useEffect(() => {
+    if (!gameState) return;
 
-    const curretPlayer = gameState.players.find((player)=>{
-      return player.player_id === playerId;
-    });
+    if (gameState.phase === "listening-placement-phase") {
+    setHasSubmittedPlacement(false);
+    }
+  }, [gameState?.phase]);
 
-    
-    socket.emit(
-        "placement:submit",
-        {
-          join_code:gameState.join_code,
-          player_id:playerId,
-          timeline: myPlayer?.timeline || [],
-        },
-        (response)=>{
-          
-          if(!response.ok){
-            console.log(response.error)
-          }
-        }
-      );
-    
-  }, [gameState?.phase, gameState, playerId])
 
   useEffect(() => {
-  function handleReveal(revealPayload) {
-    
-    navigate("/reveal", {
-      state: {
-        revealState: revealPayload,
-        playerId,
-      },
-    });
-  }
+    if (!gameState) return;
+    if (!isCurrentPlayer) return;
+    if (gameState.phase !== "placement-ended") return;
+    if (hasSubmittedPlacement) return;
+    if(gameState.current_player?.player_id !== playerId) return;
+    if (!placement) {
+    console.log("No placement was made before timer ended.");
+    return;
+    }
 
-  socket.on("game:reveal", handleReveal);
+    setHasSubmittedPlacement(true);
 
-  return () => {
-    socket.off("game:reveal", handleReveal);
-  };
+    socket.emit(
+    "placement:submit",
+    {
+      join_code: gameState.join_code,
+      player_id: playerId,
+      placed_song: placement.placed_song,
+      position: placement.position,
+		timeline: myPlayer?.timeline || []
+
+    },
+    (response) => {
+      if (!response.ok) {
+      console.log(response.error);
+      }
+    }
+    );
+  }, [
+    gameState?.phase,
+    gameState?.join_code,
+    isCurrentPlayer,
+    hasSubmittedPlacement,
+    placement,
+    playerId,
+  ]);
+
+
+ useEffect(() => {
+ function handleReveal(revealPayload) {
+   
+  navigate("/reveal", {
+   state: {
+    revealState: revealPayload,
+    playerId,
+   },
+  });
+ }
+
+ socket.on("game:reveal", handleReveal);
+
+ return () => {
+  socket.off("game:reveal", handleReveal);
+ };
 }, [navigate, playerId]);
 
-//for debugging 
+
 useEffect(() => {
-  function logAnyEvent(event, ...args) {
-    console.log("SOCKET EVENT RECEIVED:", event, args);
-  }
+ function logAnyEvent(event, ...args) {
+  console.log("SOCKET EVENT RECEIVED:", event, args);
+ }
 
-  socket.onAny(logAnyEvent);
+ socket.onAny(logAnyEvent);
 
-  return () => {
-    socket.offAny(logAnyEvent);
-  };
+ return () => {
+  socket.offAny(logAnyEvent);
+ };
 }, []);
 
 
 
+    if (!gameState) {
+        return <p>No game state found.</p>;
+    }
 
-  if (!gameState) {
-    return <p>No game state found.</p>;
-  }
+    const timelineToShow = currentPlayer?.timeline || [];
 
-  const roomId = `game:${gameState.join_code}`;
-
-  const myPlayer = gameState.players.find((player) => {
-    return player.player_id === playerId;
-  });
-
-  const isCurrentPlayer =
-    gameState.current_player?.player_id === playerId;
-
-  const canMoveCards =
-    gameState.phase === "listening-placement-phase" && isCurrentPlayer;
-
-  return (
-    <>
-      <h1>The GameScreen</h1>
-
-      <p>SOCKET ID: {socket.id}</p>
-
-      <h3>Round number: {gameState.round_no}</h3>
-      <h3>Current players turn: {gameState.current_player.display_name}</h3>
-      <h3>My name: {myPlayer?.display_name}</h3>
-      <h3>Phase: {gameState.phase}</h3>
-
-      {gameState.phase === "intro-countdown" && (
+    return (
         <>
-        <h3>Get Ready...</h3>
-        <CountdownTimer
-          roomId={roomId}
-          label="Get ready"
-          size="lg"
-        />
+        <h1>The GameScreen</h1>
+
+        <h3>Round number: {gameState.round_no}</h3>
+        <h3>Current players turn: {gameState.current_player.display_name}</h3>
+        <h3>My name: {myPlayer?.display_name}</h3>
+        <h3>Phase: {gameState.phase}</h3>
+
+        {gameState.phase === "intro-countdown" && (
+            <>
+            <h3>Get Ready...</h3>
+            <CountdownTimer
+            roomId={roomId}
+            label="Get ready"
+            size="lg"
+            />
+            </>
+        )}
+
+        {gameState.phase === "listening-placement-phase" && (
+            <>
+                <AudioPlayer previewUrl={gameState.current_song?.previewUrl}/>
+                <CountdownTimer
+                roomId={roomId}
+                label="Place your cards"
+                size="md"
+                />
+            </> 
+        )}
+
+        {canMoveCards ? (
+            <>
+            <p>You can move your card now.</p>
+
+            <DragAndDrop
+                cardBank={cardBank}
+                setCardBank={setCardBank}
+                timeline={timeline}
+                setTimeline={setTimeline}
+                activeTimelineCard={activeTimelineCard}
+                setActiveTimelineCard={setActiveTimelineCard}
+                setPlacement={setPlacement}
+            />
+            </>
+        ) : (
+            <>
+            <p>Its {gameState.current_player?.display_name}s turn.</p>
+
+            <Timeline timeline={timelineToShow} disabled={true} />
+            </>
+        )}
+
+        {/* to be used in timeline/cards component */} 
+        {/* <Timeline disabled={!canMoveCards} if not current player/> */} 
+        
         </>
-      )}
-
-      {gameState.phase === "listening-placement-phase" && (
-      <>
-        <AudioPlayer previewUrl={gameState.current_song?.previewUrl}/>
-        <CountdownTimer
-          roomId={roomId}
-          label="Place your cards"
-          size="md"
-        />
-      </> 
-  )}
-
-
-      {canMoveCards ? (
-        <>
-        <p>You can move your cards now.</p>
-        <DragAndDrop 
-      cardBank={cardBank}
-      setCardBank={setCardBank}
-      timeline={timeline}
-      setTimeline={setTimeline}
-      activeTimelineCard={activeTimelineCard}
-      setActiveTimelineCard={setActiveTimelineCard}/>
-      </>
-      ) : (
-        <>
-        <p>You cannot move cards right now.</p>
-        <Timeline timeline={timeline} />
-        </>
-      )}
-
-      {/* to be used in timeline/cards component */} 
-      {/* <Timeline disabled={!canMoveCards} if not current player/> */} 
-      
-    </>
-  );
+    );
 }

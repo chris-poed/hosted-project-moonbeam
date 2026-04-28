@@ -11,7 +11,8 @@ function DragAndDrop({
     timeline,
     setTimeline,
     activeTimelineCard,
-    setActiveTimelineCard
+    setActiveTimelineCard,
+    setPlacement
 }) {
 
 //   const [cardBank, setCardBank] = useState(songs);
@@ -78,28 +79,43 @@ function DragAndDrop({
   const handleDragEnd = (event) => {
     const { active, over } = event;
 
-    if (!over) { // If the card is dropped outside a valid area, it returns to the card bank
-  const draggedFromBank = cardBank.find(song => song.id === active.id);
+      if (!over) { // If the card is dropped outside a valid area, it returns to the card bank
+        const draggedFromBank = cardBank.find(song => song.id === active.id);
 
-  if (draggedFromBank) { // if the card was in the timeline and is dragged and released outside, it will return to its last place in the timeline
-    setTimeline(prev => prev.filter(song => song.id !== active.id));
-    setActiveTimelineCard(null);
-  }
+        if (draggedFromBank) { // if the card was in the timeline and is dragged and released outside, it will return to its last place in the timeline
+          setTimeline(prev => prev.filter(song => song.id !== active.id));
+          setActiveTimelineCard(null);
+          setPlacement(null);
+        }
 
-  setActiveCard(null);
-  return;
-}
+          setActiveCard(null);
+          return;
+      }
 
-    const draggedFromBank = cardBank.find((song) => song.id === active.id);
+      const draggedFromBank = cardBank.find((song) => song.id === active.id);
 
-    if (draggedFromBank) {
-      setCardBank((prev) => prev.filter((song) => song.id !== active.id));
+      if (draggedFromBank) {
+        setCardBank((prev) => prev.filter((song) => song.id !== active.id));
 
-      setActiveTimelineCard(active.id); // marks the card as the active timeline card so that it can be moved around after being placed.
-    }
+        setActiveTimelineCard(active.id); // marks the card as the active timeline card so that it can be moved around after being placed.
+      }
+      // this sets the timeline and placement of the card so the GameScreen parent component has it
+      setTimeline((currentTimeline) => {
+        const placedSong = currentTimeline.find((song) => song.id === active.id);
+        const position = currentTimeline.findIndex((song) => song.id === active.id);
 
-    setActiveCard(null); // hides the floating drag overlay.
+        if (placedSong && position !== -1) {
+          setPlacement({
+            placed_song: placedSong,
+            position,
+          });
+        }
+
+        return currentTimeline;
+      });
+      setActiveCard(null); // hides the floating drag overlay.
   };
+
 
   useEffect(() => {
     console.log("timeline:", timeline);
