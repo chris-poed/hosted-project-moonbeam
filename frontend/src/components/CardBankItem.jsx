@@ -15,7 +15,7 @@ function CardBankItem(props) {
     border: "1px solid black",
     background: "white",
     transform: CSS.Transform.toString(draggable.transform),
-    opacity: props.isDragging ? 0 : 1,
+    opacity: props.isDragging ? 0 : 1, // the original card disappears while dragging.
     zIndex: props.isTopCard ? 100 : props.index,
     cursor: props.isTopCard ? "grab" : "default",
     pointerEvents: props.isTopCard ? "auto" : "none",
