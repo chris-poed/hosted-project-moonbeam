@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { socket } from "../../socket";
+import "./LobbyPage.css";
 
 export function Lobby() {
 
@@ -63,11 +64,14 @@ export function Lobby() {
 
     if(!lobby){
         return (
-            <div>
-                <h1>Lobby Page</h1>
-                <p>No lobby data available.</p>
+            <div className="lobby-root">
+                <div className="lobby-root__before" />
+                <div className="lobby-card">
+                <h1 className="lobby-title">Lobby</h1>
+                <p className="lobby-empty">No lobby data available.</p>
+                </div>
             </div>
-        )
+            );
     }
 
     const isHost = lobby.game_host === playerId;
@@ -88,36 +92,49 @@ export function Lobby() {
     }
     
     return(
-        <div>
-            <h1>Lobby Page</h1>
+        <div className="lobby-root">
+            <div className="lobby-card">
+                <h1 className="lobby-title">Lobby</h1>
 
-            <p><strong>Game pin:</strong> {lobby.join_code}</p>
+                <div className="lobby-pin">
+                <span className="lobby-pin__label">Game Pin</span>
+                <span className="lobby-pin__code">{lobby.join_code}</span>
+                </div>
 
-            <h2>Players</h2>
+                <h2 className="lobby-players-heading">Players</h2>
 
-            {lobby.players.length > 0 ? (
-                <ul>
-                    {lobby.players.map((player)=> (
-                        <li key={player.player_id}>
-                            {player.display_name}
-                            {player.player_id === lobby.game_host ? "(host)": ""}
-                            {player.is_connected ? "connected": "disconnected"}
-                        </li>
-                ))}
+                {lobby.players.length > 0 ? (
+                <ul className="lobby-players">
+                    {lobby.players.map((player) => (
+                    <li key={player.player_id} className="lobby-player">
+                        <span className="lobby-player__name">{player.display_name}</span>
+                        <div className="lobby-player__tags">
+                        {player.player_id === lobby.game_host && (
+                            <span className="lobby-tag lobby-tag--host">Host</span>
+                        )}
+                        <span className={`lobby-tag ${player.is_connected ? "lobby-tag--connected" : "lobby-tag--disconnected"}`}>
+                            {player.is_connected ? "Connected" : "Disconnected"}
+                        </span>
+                        </div>
+                    </li>
+                    ))}
                 </ul>
-            ):(
-                <p>No players have joined</p>
+                ) : (
+                <p className="lobby-empty">No players have joined yet...</p>
+                )}
 
-            )}
+                {error && <p className="lobby-error">{error}</p>}
 
-            {isHost ? (
-                <button type="button" onClick={handleStartGame}>Start Game</button>
-            ):(
-                <button type="button" disabled>
-                    Waiting for host to start
+                {isHost ? (
+                <button className="btn btn-primary" type="button" onClick={handleStartGame}>
+                    Start Game
                 </button>
-            )}
-
+                ) : (
+                <button className="btn btn-waiting" type="button" disabled>
+                    Waiting for host...
+                </button>
+                )}
+            </div>
         </div>
     );
 
