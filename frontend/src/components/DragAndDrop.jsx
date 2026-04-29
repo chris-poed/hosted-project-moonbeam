@@ -4,6 +4,8 @@ import { arrayMove } from "@dnd-kit/sortable";
 //import { songs } from "../data/songs";
 import CardBank from "./CardBank";
 import Timeline from "./Timeline";
+import { createPortal } from "react-dom";
+import "../components/DragAndDrop.css"
 
 function DragAndDrop({
     cardBank,
@@ -116,6 +118,10 @@ function DragAndDrop({
       setActiveCard(null); // hides the floating drag overlay.
   };
 
+  const handleDragCancel = () => {
+    setActiveCard(null);
+  };
+
 
   useEffect(() => {
     console.log("timeline:", timeline);
@@ -129,6 +135,7 @@ function DragAndDrop({
       onDragStart={handleDragStart} // this function and onDragOver and onDragEnd are run when a card is dragged because of useDraggable in CardBankId
       onDragOver={handleDragOver}
       onDragEnd={handleDragEnd}
+      onDragCancel={handleDragCancel}
     >
       <div>
         <CardBank cardBank={cardBank} activeCard={activeCard} />
@@ -136,22 +143,16 @@ function DragAndDrop({
         <Timeline timeline={timeline} activeTimelineCard={activeTimelineCard} />
       </div>
 
-      <DragOverlay> 
-        {activeCard ? ( // DragOverLay creates and tells dnd-kit to use a floating drag preview that follows the mouse while dragging
-          <div          // It is a temporary visual copy, not the real card
-            style={{    // It is needed to help prevent glitchiness and duplicates whilst card is being dragged by the mouse
-              padding: "10px",  // the real card stays in place and / or is hidden
-              border: "1px solid black", // activeCard is set in the handleDragStart function.
-              background: "white",
-              minWidth: "60px",
-              textAlign: "center",
-              boxSizing: "border-box",
-            }}
-          >
-            <span style={{ fontSize: "32px", fontWeight: "bold" }}>?</span>
-          </div> // the activeCard ? (...) : null is to show the overlay if it is being dragged or show nothing if not
-        ) : null} 
-      </DragOverlay> 
+      {createPortal(
+        <DragOverlay adjustScale={false} dropAnimation={null}>
+          {activeCard ? (
+            <div className="drag-overlay-card">
+              <span className="drag-overlay-card__unknown">?</span>
+            </div>
+          ) : null}
+        </DragOverlay>,
+        document.body
+      )}
     </DndContext>
   );
 }
