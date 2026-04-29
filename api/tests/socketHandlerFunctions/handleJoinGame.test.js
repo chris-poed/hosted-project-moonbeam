@@ -39,6 +39,7 @@ describe("handleJoinGame", ()=>{
                 error:"Enter a display name",
             });
         });
+        
         test("returns an error if the game join code is missing", async ()=>{
             await handleJoinGame(io, socket, {display_name: "Bob"}, callback);
 

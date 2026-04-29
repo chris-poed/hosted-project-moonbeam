@@ -5,6 +5,15 @@ async function handleDeleteGame(io, socket, payload, callback){
 try{
 
     const { join_code } = payload;
+
+    //catch join_code missing from payload
+    if(!join_code){
+        return callback({
+            ok:false,
+            error: "Game code missing",
+        })
+
+    }
     
     //check join code exists
     const game = await Game.findOne({ join_code });
@@ -13,6 +22,8 @@ try{
         console.log("Game has already been deleted");
         return callback({ok:true})
     }
+
+    
 
     //check current phase is game-ended --> don't  delete if not
     if(game.phase !== "game-ended"){
