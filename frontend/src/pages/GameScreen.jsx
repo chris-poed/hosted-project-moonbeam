@@ -5,7 +5,6 @@ import { socket } from "../socket";
 import CountdownTimer from "../components/CountdownTimer";
 import DragAndDrop from "../components/DragAndDrop";
 import AudioPlayer from "../components/AudioPlayer";
-import { songs } from "../data/songs";
 import Timeline from "../components/Timeline";
 //import CardBank from "../components/CardBank";
 //import Timeline from "../components/Timeline";
@@ -19,7 +18,7 @@ export function GameScreen() {
 
     const [gameState, setGameState] = useState(initialGameState);
 
-    const [cardBank, setCardBank] = useState(songs);
+    const [cardBank, setCardBank] = useState([]);
     const [timeline, setTimeline] = useState([]);
     const [activeTimelineCard, setActiveTimelineCard] = useState(null); // only timeline card that is currently allowed to be moved again
     const [placement, setPlacement] = useState(null);
@@ -34,97 +33,165 @@ export function GameScreen() {
         });
     }, [gameState, playerId]);
 
-    const currentPlayer = useMemo(() => {
-        if (!gameState?.players || !gameState?.current_player?.player_id) return null;
-
-        return gameState.players.find((player) => {
-        return player.player_id === gameState.current_player.player_id;
-        });
-    }, [gameState]);
-
     const isCurrentPlayer =
-        gameState.current_player?.player_id === playerId;
+        gameState?.current_player?.player_id === playerId;
 
     const canMoveCards =
-        gameState.phase === "listening-placement-phase" && isCurrentPlayer;
+        gameState?.phase === "listening-placement-phase" && isCurrentPlayer;
+
+    const playersWithTimelinesToShow = useMemo(() => {
+        if (!gameState?.players) return [];
+
+        const currentPlayerId = gameState.current_player?.player_id;
+
+        // if it's my turn, DragAndDrop already shows my own timeline.
+        if (isCurrentPlayer) {
+            return gameState.players.filter((player) => {
+                return player.player_id !== playerId;
+            });
+        }
+
+        // if it's not my turn, show all players, but put the current players timeline first
+        const currentTurnPlayer = gameState.players.find((player) => {
+            return player.player_id === currentPlayerId;
+        });
+
+        const otherPlayers = gameState.players.filter((player) => {
+            return player.player_id !== currentPlayerId;
+        });
+
+        if (!currentTurnPlayer) return gameState.players;
+
+        return [currentTurnPlayer, ...otherPlayers];
+    }, [
+        gameState?.players,
+        gameState?.current_player?.player_id,
+        isCurrentPlayer,
+        playerId,
+    ]);
 
     const roomId = `game:${gameState.join_code}`;
 
     useEffect(() => {
-    function handlePhaseChanged(updatedGameState) {
-    setGameState(updatedGameState);
-    }
-    socket.on("game:phase_changed", handlePhaseChanged);
-    return () => {
-    socket.off("game:phase_changed", handlePhaseChanged);
-    };
+        function handlePhaseChanged(updatedGameState) {
+            setGameState(updatedGameState);
+        }
+        socket.on("game:phase_changed", handlePhaseChanged);
+
+        return () => {
+            socket.off("game:phase_changed", handlePhaseChanged);
+        };
     }, []);
+
     useEffect(() => {
-    if (!myPlayer) return;
-    setTimeline(myPlayer.timeline || []);
-    }, [myPlayer?.player_id]);
-    useEffect(() => {
-    if (!gameState) return;
-    if (gameState.phase === "listening-placement-phase") {
-    setHasSubmittedPlacement(false);
-    }
-    }, [gameState?.phase]);
-    useEffect(() => {
-    if (!gameState) return;
-    if (!isCurrentPlayer) return;
-    if (gameState.phase !== "placement-ended") return;
-    if (hasSubmittedPlacement) return;
-    if(gameState.current_player?.player_id !== playerId) return;
-    if (!placement) {
-    console.log("No placement was made before timer ended.");
-    return;
-    }
-    setHasSubmittedPlacement(true);
-    socket.emit(
-    "placement:submit",
-    {
-    join_code: gameState.join_code,
-    player_id: playerId,
-    placed_song: placement.placed_song,
-    position: placement.position,
-    timeline: myPlayer?.timeline || []
-    },
-    (response) => {
-    if (!response.ok) {
-    console.log(response.error);
-    }
-    }
-    );
+        if (!myPlayer) return;
+
+        setTimeline(myPlayer.timeline || []);
     }, [
-    gameState?.phase,
-    gameState?.join_code,
-    isCurrentPlayer,
-    hasSubmittedPlacement,
-    placement,
-    playerId,
+        myPlayer?.player_id,
+        gameState?.current_player?.player_id,
+        gameState?.current_song?.id,
     ]);
+
     useEffect(() => {
-    function handleReveal(revealPayload) {
-    navigate("/reveal", {
-    state: {
-    revealState: revealPayload,
-    playerId,
-    },
-    });
-    }
-    socket.on("game:reveal", handleReveal);
-    return () => {
-    socket.off("game:reveal", handleReveal);
-    };
+        if (!gameState) return;
+        if (gameState.phase === "listening-placement-phase") {
+        setHasSubmittedPlacement(false);
+        }
+    }, [gameState?.phase]);
+
+    useEffect(() => {
+        if (!gameState?.current_song) return;
+
+        setCardBank([
+            {
+            id: gameState.current_song.id,
+            title: gameState.current_song.title,
+            artist: gameState.current_song.artist,
+            previewUrl: gameState.current_song.previewUrl,
+            },
+        ]);
+
+        setActiveTimelineCard(null);
+        setPlacement(null);
+        }, [gameState?.current_song?.id]);
+
+    useEffect(() => {
+        if (!gameState) return;
+        if (!isCurrentPlayer) return;
+        if (gameState.phase !== "placement-ended") return;
+        if (hasSubmittedPlacement) return;
+        if(gameState.current_player?.player_id !== playerId) return;
+        if (!placement) {
+        setHasSubmittedPlacement(true);
+
+        socket.emit(
+            "placement:submit",
+            {
+                join_code: gameState.join_code,
+                player_id: playerId,
+                song_id: gameState.current_song?.id,
+                position: null,
+            },
+            (response) => {
+                if (!response.ok) {
+                    console.log(response.error);
+                }
+            }
+        );
+
+        return;
+        }
+        setHasSubmittedPlacement(true);
+            socket.emit(
+            "placement:submit",
+            {
+                join_code: gameState.join_code,
+                player_id: playerId,
+                song_id: placement?.song_id || gameState.current_song?.id,
+                position: placement ? placement.position : null,
+            },
+        (response) => {
+            if (!response.ok) {
+            console.log(response.error);
+            }
+        }
+        );
+    }, [
+        gameState?.phase,
+        gameState?.join_code,
+        isCurrentPlayer,
+        hasSubmittedPlacement,
+        placement,
+        playerId,
+        gameState,
+        myPlayer?.timeline
+    ]);
+
+    useEffect(() => {
+        function handleReveal(revealPayload) {
+            navigate("/reveal", {
+                state: {
+                    revealState: revealPayload,
+                    playerId,
+                },
+            });
+        }
+        socket.on("game:reveal", handleReveal);
+        
+        return () => {
+            socket.off("game:reveal", handleReveal);
+        };
     }, [navigate, playerId]);
+
     useEffect(() => {
-    function logAnyEvent(event, ...args) {
-    console.log("SOCKET EVENT RECEIVED:", event, args);
-    }
-    socket.onAny(logAnyEvent);
-    return () => {
-    socket.offAny(logAnyEvent);
-    };
+        function logAnyEvent(event, ...args) {
+            console.log("SOCKET EVENT RECEIVED:", event, args);
+        }
+        socket.onAny(logAnyEvent);
+        return () => {
+            socket.offAny(logAnyEvent);
+        };
     }, []);
 
 
@@ -132,21 +199,13 @@ export function GameScreen() {
     if (!gameState) {
         return <p>No game state found.</p>;
     }
-
-    const timelineToShow = currentPlayer?.timeline || [];
-
-    if (!gameState) {
-        return <p>No game state found.</p>;
-    }
-
-    const timelineToShow = currentPlayer?.timeline || [];
 
     return (
         <>
         <h1>The GameScreen</h1>
 
         <h3>Round number: {gameState.round_no}</h3>
-        <h3>Current players turn: {gameState.current_player.display_name}</h3>
+        <h3>Current players turn: {gameState.current_player?.display_name}</h3>
         <h3>My name: {myPlayer?.display_name}</h3>
         <h3>Phase: {gameState.phase}</h3>
 
@@ -172,52 +231,48 @@ export function GameScreen() {
             </> 
         )}
 
-      {canMoveCards ? (
+        {canMoveCards ? (
             <>
-            <p>You can move your card now.</p>
+                <p>You can move your card now.</p>
 
-            <DragAndDrop
-                cardBank={cardBank}
-                setCardBank={setCardBank}
-                timeline={timeline}
-                setTimeline={setTimeline}
-                activeTimelineCard={activeTimelineCard}
-                setActiveTimelineCard={setActiveTimelineCard}
-                setPlacement={setPlacement}
-            />
+                <DragAndDrop
+                    cardBank={cardBank}
+                    setCardBank={setCardBank}
+                    timeline={timeline}
+                    setTimeline={setTimeline}
+                    activeTimelineCard={activeTimelineCard}
+                    setActiveTimelineCard={setActiveTimelineCard}
+                    setPlacement={setPlacement}
+                />
             </>
         ) : (
-            <>
-            <p>{"It's"} {gameState.current_player?.display_name}{"'s turn."}</p>
-            <h3>My Timeline</h3>
-            <Timeline timeline={timelineToShow} disabled={true} />
-
-            
-            </>
+            <p>
+                {"It's"} {gameState.current_player?.display_name}
+                {"'s turn."}
+            </p>
         )}
-          <h2>Other Players</h2>
 
-            {gameState.players
-              .filter(player => player.player_id !== playerId)
-              .map(player => (
+        <h2>{canMoveCards ? "Other Players" : "Player Timelines"}</h2>
+
+        {playersWithTimelinesToShow.map((player) => {
+            const isMe = player.player_id === playerId;
+            const isCurrentTurnPlayer =
+                player.player_id === gameState.current_player?.player_id;
+
+            return (
                 <div key={player.player_id}>
-                  <h3>{player.display_name}{"'s Timeline"}</h3>
+                    <h3>
+                        {isMe ? "My Timeline" : `${player.display_name}'s Timeline`}
+                        {!canMoveCards && isCurrentTurnPlayer ? " - Current Turn" : ""}
+                    </h3>
 
-                  <Timeline
-                    //name={player.display_name}
-                    timeline={player.timeline || []}
-                    disabled={
-                      !(
-                        gameState.phase === "listening-placement-phase" &&
-                        player.player_id === gameState.current_player?.player_id &&
-                        player.player_id === playerId
-                      )
-                    }
-                  />
+                    <Timeline
+                        timeline={player.timeline || []}
+                        disabled={true}
+                    />
                 </div>
-              ))}
-        {/* to be used in timeline/cards component */} 
-        {/* <Timeline disabled={!canMoveCards} if not current player/> */} 
+            );
+        })}
         
         </>
     );
