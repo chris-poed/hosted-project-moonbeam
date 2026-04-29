@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 require('dotenv').config({ path: require('path').resolve(__dirname, '../../.env') });
 const Song = require('../../models/song.js');
-const { songs: songsData } = require('./songs-deezer-updated.js');
+const { songs: songsData } = require('./songs.js');
 
 function normalize(s) {
   return (s ?? '')
