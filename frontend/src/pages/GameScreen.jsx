@@ -44,25 +44,34 @@ export function GameScreen() {
 
         const currentPlayerId = gameState.current_player?.player_id;
 
-        // if it's my turn, DragAndDrop already shows my own timeline.
+        // If it's my turn, DragAndDrop already shows my own timeline,
+        // so only show the other players underneath.
         if (isCurrentPlayer) {
             return gameState.players.filter((player) => {
                 return player.player_id !== playerId;
             });
         }
 
-        // if it's not my turn, show all players, but put the current players timeline first
         const currentTurnPlayer = gameState.players.find((player) => {
             return player.player_id === currentPlayerId;
         });
 
-        const otherPlayers = gameState.players.filter((player) => {
-            return player.player_id !== currentPlayerId;
+        const viewingPlayer = gameState.players.find((player) => {
+            return player.player_id === playerId;
         });
 
-        if (!currentTurnPlayer) return gameState.players;
+        const otherPlayers = gameState.players.filter((player) => {
+            return (
+                player.player_id !== currentPlayerId &&
+                player.player_id !== playerId
+            );
+        });
 
-        return [currentTurnPlayer, ...otherPlayers];
+        return [
+            currentTurnPlayer,
+            viewingPlayer,
+            ...otherPlayers,
+        ].filter(Boolean);
     }, [
         gameState?.players,
         gameState?.current_player?.player_id,
@@ -70,7 +79,7 @@ export function GameScreen() {
         playerId,
     ]);
 
-    const roomId = `game:${gameState.join_code}`;
+    const roomId = gameState ? `game:${gameState.join_code}` : null;
 
     useEffect(() => {
         function handlePhaseChanged(updatedGameState) {
