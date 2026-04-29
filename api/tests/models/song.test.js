@@ -12,7 +12,7 @@ describe("Song model", () => {
       artist: "Smash Mouth",
       title: "All Star",
       year: 1999,
-      url: "https://music.apple.com"
+      previewUrl: "https://music.apple.com"
     });
     expect(song.artist).toEqual("Smash Mouth");
   });
@@ -22,7 +22,7 @@ describe("Song model", () => {
       artist: "Smash Mouth",
       title: "All Star",
       year: 1999,
-      url: "https://music.apple.com"
+      previewUrl: "https://music.apple.com"
     });
     expect(song.title).toEqual("All Star");
   });
@@ -32,7 +32,7 @@ describe("Song model", () => {
       artist: "Smash Mouth",
       title: "All Star",
       year: 1999,
-      url: "https://music.apple.com"
+      previewUrl: "https://music.apple.com"
     });
     expect(song.year).toEqual(1999);
   });
@@ -42,8 +42,8 @@ describe("Song model", () => {
       artist: "Smash Mouth",
       title: "All Star",
       year: 1999,
-      url: "https://music.apple.com"
+      previewUrl: "https://music.apple.com"
     });
-    expect(song.url).toContain("https://");
+    expect(song.previewUrl).toContain("https://");
   });
 });
