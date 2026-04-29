@@ -15,7 +15,6 @@ export function RevealPage() {
   const roomId = `game:${revealState.join_code}`;
 
   const isFinalRound = revealState.round_no >= MAX_ROUNDS;
-
   useEffect(() => {
     function handlePhaseChanged(updatedGameState) {
       if (updatedGameState.phase === "intro-countdown") {

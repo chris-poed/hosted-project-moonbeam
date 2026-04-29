@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { socket } from "../socket";
 import CountdownTimer from "../components/CountdownTimer";
 import DragAndDrop from "../components/DragAndDrop";
+import AudioPlayer from "../components/AudioPlayer";
 
 export function GameScreen() {
   const location = useLocation();
@@ -131,12 +132,16 @@ useEffect(() => {
       )}
 
       {gameState.phase === "listening-placement-phase" && (
+      <>
+        <AudioPlayer previewUrl={gameState.current_song?.previewUrl}/>
         <CountdownTimer
           roomId={roomId}
           label="Place your cards"
           size="md"
         />
-      )}
+      </> 
+  )}
+
 
       {canMoveCards ? (
         <p>You can move your cards now.</p>
