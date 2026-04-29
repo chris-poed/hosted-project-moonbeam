@@ -106,7 +106,7 @@ function DragAndDrop({
 
         if (placedSong && position !== -1) {
           setPlacement({
-            placed_song: placedSong,
+            song_id: placedSong.id,
             position,
           });
         }
