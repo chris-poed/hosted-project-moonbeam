@@ -2,7 +2,7 @@ const handleCreateGame = require("./handleCreateGame")
 const handleJoinGame = require("./handleJoinGame")
 const handleStartGame = require("./handleStartGame")
 const handleSubmitPlacement = require("./handleSubmitPlacement")
-//const { registerTimerEvents } = require("./handleGameTimer")
+
 
 const registerCreateGameHandlers = (io, socket) => {
    
@@ -19,7 +19,6 @@ const registerCreateGameHandlers = (io, socket) => {
     });
 
      socket.on("placement:submit", async (payload, callback) => {
-        console.log("SERVER: inside placement:submit register handler", payload);
         await handleSubmitPlacement(io, socket, payload, callback)
     })
 
