@@ -1,23 +1,9 @@
+const Game = require("../models/game");
 const getGameStatePayload = require("../helpers/getGameStatePayload");
 const  shuffleGamePlayers  = require("../helpers/shuffleGamePlayers");
-const { startTimer } = require("./gameTimer");
-const Game = require("../models/game");
+const startTurnFlow = require("../helpers/startTurnFlow")
 
 async function handleStartGame(io, socket, payload, callback){
-
-    // server must then validate host, setup game?, set turn order, etc, then emit message to 
-    // // broadcast all players to navigate to GameScreen
-
-    //constants used to set timer values    
-    const INTRO_CNTDOWN = 3;
-    const LLP_CNTDOWN = 30;
-
-    //required for updating game phase changes to trigger state events in the frontend
-    async function emitUpdatedGameState(io,join_code, roomName){
-        const updatedPayload = await getGameStatePayload(join_code);
-        io.to(roomName).emit("game:phase_changed", updatedPayload);
-        return updatedPayload;
-    }
     
     try {
 
@@ -93,35 +79,7 @@ async function handleStartGame(io, socket, payload, callback){
         io.to(roomName).emit("game:started", gameStartPayload);
 
         
-        //starts the intro timer
-        startTimer(io, roomName, INTRO_CNTDOWN, async ()=>{
-            await Game.findOneAndUpdate(
-                { join_code },
-                {
-                    $set:{
-                        phase:"listening-placement-phase",
-                    },
-                }
-            )
-
-            await emitUpdatedGameState(io, join_code, roomName);
-
-            ///!!!emitUpdatedGameState broadcast - set phase to LPP
-             startTimer(io, roomName, LLP_CNTDOWN, async ()=>{
-                await Game.findOneAndUpdate(
-                    { join_code },
-                    {
-                        $set:{
-                            phase:"placement-ended",
-                        },
-                    }
-                )
-
-            await emitUpdatedGameState(io, join_code, roomName);
-
-            });
-         });
-
+        await startTurnFlow(io, join_code);
         
 
         return callback({

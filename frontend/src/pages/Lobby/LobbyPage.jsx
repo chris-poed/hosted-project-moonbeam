@@ -29,7 +29,7 @@ export function Lobby() {
         if(!lobby && location.state?.lobby){
             setLobby(location.state.lobby);
         }
-    },[location.data, lobby]);
+    },[location.state, lobby]);
 
     useEffect(()=>{
         function handleLobbyUpdated(updatedLobby){
