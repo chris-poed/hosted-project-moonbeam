@@ -34,8 +34,6 @@ function buildRankings(players) {
   return [...players].sort((a, b) => b.timeline.length - a.timeline.length)
 }
 
-// ... your sanitiseState here, also without `export` ...
-
 module.exports = {
   generateCode,
   shuffleDeck,
