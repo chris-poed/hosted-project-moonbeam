@@ -49,10 +49,6 @@ export function RevealPage() {
     return player.player_id === revealState.current_player?.player_id;
   });
 
-  const currentPlayer = revealState.players.find((player) => {
-    return player.player_id === revealState.current_player?.player_id;
-  });
-
   if (!revealState) {
     return <p>No reveal data available.</p>;
   }
