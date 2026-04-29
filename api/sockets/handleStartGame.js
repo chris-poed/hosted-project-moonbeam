@@ -2,6 +2,8 @@ const Game = require("../models/game");
 const getGameStatePayload = require("../helpers/getGameStatePayload");
 const  shuffleGamePlayers  = require("../helpers/shuffleGamePlayers");
 const startTurnFlow = require("../helpers/startTurnFlow")
+const Song = require("../models/song")
+const {shuffleDeck} = require("../gameLogic")
 
 async function handleStartGame(io, socket, payload, callback){
     
@@ -56,6 +58,15 @@ async function handleStartGame(io, socket, payload, callback){
         const shuffledPlayers = shuffleGamePlayers(game.players);
         const firstPlayer = shuffledPlayers[0].player_id;
         
+        //creates a randomly shuffled "deck" of songs
+
+        const allSongs = await Song.find ({previewUrl: {$ne: ""}})
+
+        if (allSongs.length === 0 ){
+            return callback({ok: false, error: "No songs available to play"})
+        }
+
+        const deck = shuffleDeck(allSongs).map((song) => song._id)
 
 
         // updates the Game in the db to the next phase and sets the round to 1
@@ -68,6 +79,7 @@ async function handleStartGame(io, socket, payload, callback){
                     turn_order: shuffledPlayers.map((player)=>player.player_id),
                     turn_index:0,  //this will be updated after reveal phase
                     current_player: firstPlayer,
+                    songs: deck,
                 },
             },
         );
