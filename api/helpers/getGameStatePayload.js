@@ -77,8 +77,12 @@ async function getGameStatePayload(join_code) {
                 player_id: player._id.toString(),
                 display_name: player.display_name,
                 is_connected: player.is_connected,
-                timeline: player.timeline || [],
-        })),
+                timeline: (player.timeline || []).map((timelineSong) => ({
+                    id: timelineSong.song_id.toString(),
+                    song_id: timelineSong.song_id.toString(),
+                    year: timelineSong.year,
+                })),
+            })),
         };
     } catch (error) {
         console.log(error, "error getting game state payload");
