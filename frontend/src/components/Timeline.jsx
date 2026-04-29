@@ -15,8 +15,7 @@ function Timeline({
                                                         // id: timeline later becomes over.id when a dragged card is hovering over it
     return (
         <div>
-        <h2>Timeline</h2>
-
+        {/* <h2>Timeline</h2> */}
         <div // because of ref={droppable.setNodeRef}, this div is where dropping is allowed
             ref={droppable.setNodeRef} // connects the actual HTML element to dnd-kit.  Without this, useDroppable() would exist but would not be attached to anything
             style={{

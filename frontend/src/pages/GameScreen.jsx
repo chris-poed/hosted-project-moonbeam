@@ -188,7 +188,7 @@ useEffect(() => {
             </> 
         )}
 
-        {canMoveCards ? (
+      {canMoveCards ? (
             <>
             <p>You can move your card now.</p>
 
@@ -205,11 +205,33 @@ useEffect(() => {
         ) : (
             <>
             <p>Its {gameState.current_player?.display_name}s turn.</p>
-
+            <h3>My Timeline</h3>
             <Timeline timeline={timelineToShow} disabled={true} />
+
+            
             </>
         )}
+          <h2>Other Players</h2>
 
+            {gameState.players
+              .filter(player => player.player_id !== playerId)
+              .map(player => (
+                <div key={player.player_id}>
+                  <h3>{player.display_name}{"'s Timeline"}</h3>
+
+                  <Timeline
+                    //name={player.display_name}
+                    timeline={player.timeline || []}
+                    disabled={
+                      !(
+                        gameState.phase === "listening-placement-phase" &&
+                        player.player_id === gameState.current_player?.player_id &&
+                        player.player_id === playerId
+                      )
+                    }
+                  />
+                </div>
+              ))}
         {/* to be used in timeline/cards component */} 
         {/* <Timeline disabled={!canMoveCards} if not current player/> */} 
         
