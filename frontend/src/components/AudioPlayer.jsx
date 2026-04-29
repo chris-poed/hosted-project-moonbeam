@@ -18,8 +18,8 @@ function AudioPlayer(props) {
     return m + ":" + s.toString().padStart(2, "0");
   }
 
-  function end() {
-    if (audioRef.current) audioRef.current.pause();
+  function end(audio) {
+    audio.pause();
     cancelAnimationFrame(rafRef.current);
     clearTimeout(timerRef.current);
     setFillWidth(100);
@@ -28,14 +28,14 @@ function AudioPlayer(props) {
     setIsPlaying(false);
   }
 
-  function tick() {
-    const current = Math.min(audioRef.current ? audioRef.current.currentTime : 0, DURATION);
+  function tick(audio) {
+    const current = Math.min(audio.currentTime, DURATION);
     setFillWidth((current / DURATION) * 100);
     setElapsed(fmt(current));
     if (current < DURATION) {
-      rafRef.current = requestAnimationFrame(tick);
+      rafRef.current = requestAnimationFrame(() => tick(audio));
     } else {
-      end();
+      end(audio);
     }
   }
 
@@ -49,7 +49,7 @@ function AudioPlayer(props) {
     setLabel("Loading...");
     setIsPlaying(false);
 
-    audio.addEventListener("canplay", function () {
+    function onCanPlay() {
       setLabel("30s preview");
       audio.play().catch(function () {
         setLabel("Click to play");
@@ -57,19 +57,28 @@ function AudioPlayer(props) {
           if (audioRef.current) audioRef.current.play().catch(function () {});
         }, { once: true });
       });
-    });
+    }
 
-    audio.addEventListener("play", function () {
+    function onPlay() {
+      cancelAnimationFrame(rafRef.current);
+      clearTimeout(timerRef.current);
       setIsPlaying(true);
-      timerRef.current = setTimeout(end, DURATION * 1000);
-      tick();
-    });
+      timerRef.current = setTimeout(() => end(audio), DURATION * 1000);
+      tick(audio);
+    }
 
-    audio.addEventListener("error", function () {
+    function onError() {
       setLabel("Preview unavailable");
-    });
+    }
+
+    audio.addEventListener("canplay", onCanPlay);
+    audio.addEventListener("play", onPlay);
+    audio.addEventListener("error", onError);
 
     return function () {
+      audio.removeEventListener("canplay", onCanPlay);
+      audio.removeEventListener("play", onPlay);
+      audio.removeEventListener("error", onError);
       audio.pause();
       cancelAnimationFrame(rafRef.current);
       clearTimeout(timerRef.current);
