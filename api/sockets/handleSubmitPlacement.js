@@ -51,6 +51,29 @@ async function handleSubmitPlacement(io, socket, payload, callback) {
       });
     }
 
+    //store song before it gets popped from deck
+
+    const gameBeforePop = await Game.findOne({join_code}).populate({
+      path: "songs",
+      select: "title artist year previewUrl"
+    })
+
+    const revealedSong = gameBeforePop?.songs?.[0]
+    ?{
+      id:         gameBeforePop.songs[0]._id.toString(),
+          previewUrl: gameBeforePop.songs[0].previewUrl,
+          title:      gameBeforePop.songs[0].title,
+          artist:     gameBeforePop.songs[0].artist,
+          year:       gameBeforePop.songs[0].year,
+        }
+    : null
+
+    await Game.findOneAndUpdate(
+      { join_code },
+      {$pop: { songs: -1}}
+    )
+
+
     await Player.findByIdAndUpdate(player_id, {
       $set: {
         timeline: timeline || [],
@@ -70,6 +93,7 @@ async function handleSubmitPlacement(io, socket, payload, callback) {
 
     const revealPayload = {
       ...updatedPayload,
+      revealed_song: revealedSong,
       reveal_message: "Reveal phase started. Result display coming next.",
     };
 

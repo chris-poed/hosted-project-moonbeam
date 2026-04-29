@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { socket } from "../socket";
+import "./JoinGame.css";
 
 export function JoinGame() {
 
@@ -60,40 +61,49 @@ export function JoinGame() {
         );
     }
     return (
-        <div>
-            <h2>Join a Game</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
+        <div className="join-root">
+            <div className="join-card">
 
-                    <label htmlFor="join-display-name">Display name</label>
+                <h1 className="join-title">Join Game</h1>
+
+                <form className="join-form" onSubmit={handleSubmit}>
+                <div className="join-field">
+                    <label className="join-label" htmlFor="join-display-name">
+                    Display Name
+                    </label>
                     <input
+                    className="join-input"
                     id="join-display-name"
                     type="text"
                     value={displayName}
-                    onChange={(event)=> setDisplayName(event.target.value)}
-                    placeholder="Enter display name"
-
+                    onChange={(event) => setDisplayName(event.target.value)}
+                    placeholder="Enter your display name"
                     />
-                    
                 </div>
 
-                <div>
-
-                    <label htmlFor="join-code">Game pin</label>
+                <div className="join-field">
+                    <label className="join-label" htmlFor="join-code">
+                    Game Pin
+                    </label>
                     <input
+                    className="join-input join-input--pin"
                     id="join-code"
                     type="text"
                     value={joinCode}
-                    onChange={(event)=> setJoinCode(event.target.value)}
+                    onChange={(event) => setJoinCode(event.target.value)}
                     placeholder="Enter game pin"
-
+                    maxLength={8}
                     />
-                    
                 </div>
-                {error && <p>{error}</p>}
 
-                <button type="submit">Join Game</button>
-            </form>
+                {error && <p className="join-error">{error}</p>}
+
+                <button className="btn btn-primary" type="submit">
+                    Join Game
+                </button>
+                </form>
+
+            </div>
         </div>
     )
 }

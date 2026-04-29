@@ -1,46 +1,46 @@
 import { useEffect, useState } from "react";
 import { CreateGame } from "../../components/CreateGame";
 import { JoinGame } from "../../components/JoinGame";
-import {socket} from "../../socket"
-
-
+import { socket } from "../../socket";
 import "./HomePage.css";
 
 export function HomePage() {
   const [activeView, setActiveView] = useState(null);
 
-          useEffect(() => {
-        
-            socket.connect() 
+  useEffect(() => {
+    socket.connect();
+  }, []);
 
-        }, []);
+  return (
+    <div className="landing-root">
 
-  return(
-    <div>
-      <h1> Hitster</h1>
+      <div className="blob blob-pink" />
+      <div className="blob blob-purple" />
+      <div className="ring ring-lg" />
+      <div className="ring ring-md" />
 
-      {/* On page entry default view*/}
       {!activeView && (
-        <div>
-          <button onClick={()=> setActiveView("create")}>
-            Create a game
-          </button>
+        <div className="landing-content">
+          <p className="eyebrow">Music Timeline Game</p>
+          <h1 className="logo">SNIPPIT</h1>
+          <p className="tagline">Guess the year. Beat your friends.</p>
 
-          <button onClick={()=> setActiveView("join")}>
-            Join a game
-          </button>
+          <div className="button-group">
+            <button className="btn btn-primary" onClick={() => setActiveView("create")}>
+              Create Game
+            </button>
+            <button className="btn btn-secondary" onClick={() => setActiveView("join")}>
+              Join Game
+            </button>
+          </div>
+
+          <p className="landing-note">No account needed &nbsp;·&nbsp; Multiplayer</p>
         </div>
-         )
-      }
+      )}
 
-      {/* Active view = create after user button click*/}
-      {activeView === "create" && <CreateGame/>}
-
-      {/* Active view = join game after user button click*/}
-      {activeView === "join" && <JoinGame/>}
-
+      {activeView === "create" && <CreateGame />}
+      {activeView === "join" && <JoinGame />}
 
     </div>
-  )
-  
+  );
 }
