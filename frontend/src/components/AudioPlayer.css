@@ -1,0 +1,115 @@
+.music-player {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 16px;
+  padding: 16px 20px;
+  width: 340px;
+  box-sizing: border-box;
+}
+.music-player__row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.music-player__art {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  background: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.music-player__info {
+  flex: 1;
+  min-width: 0;
+}
+.music-player__title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #111;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.music-player__artist {
+  margin: 3px 0 0;
+  font-size: 13px;
+  color: #888;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.music-player__track {
+  height: 4px;
+  background: #f0f0f0;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.music-player__fill {
+  height: 100%;
+  width: 0%;
+  background: #111;
+  border-radius: 2px;
+  transition: width 0.5s linear;
+}
+.music-player__times {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #aaa;
+}
+.music-player__wave {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  margin-top: 14px;
+  height: 24px;
+}
+.music-player__wave span {
+  display: block;
+  width: 3px;
+  height: 20px;
+  background: #e0e0e0;
+  border-radius: 2px;
+  transform: scaleY(0.3);
+  transform-origin: center;
+}
+.music-player__wave--playing span {
+  animation: wave-bar 1s ease-in-out infinite;
+}
+.music-player__wave--playing span:nth-child(even) {
+  animation-delay: 0.15s;
+}
+.equalizer {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 16px;
+  flex-shrink: 0;
+}
+.equalizer span {
+  display: block;
+  width: 3px;
+  height: 4px;
+  background: #111;
+  border-radius: 2px;
+}
+.equalizer--playing span:nth-child(1) { animation: eq-bar 0.9s ease-in-out infinite 0s; }
+.equalizer--playing span:nth-child(2) { animation: eq-bar 0.9s ease-in-out infinite 0.2s; }
+.equalizer--playing span:nth-child(3) { animation: eq-bar 0.9s ease-in-out infinite 0.4s; }
+@keyframes eq-bar {
+  0%, 100% { height: 4px; }
+  50%       { height: 14px; }
+}
+@keyframes wave-bar {
+  0%, 100% { transform: scaleY(0.3); }
+  50%       { transform: scaleY(1); }
+}
