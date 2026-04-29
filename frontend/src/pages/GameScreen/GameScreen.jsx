@@ -241,7 +241,7 @@ export function GameScreen() {
             <header className="game-header">
                 <div className="game-header-content">
                     <p className="game-eyebrow">Round {gameState.round_no}</p>
-                    <h1 className="game-title">Moonbeam</h1>
+                    <h1 className="game-title">Snippit</h1>
                     <p className="game-subtitle">
                         Place the track in the correct year order.
                     </p>
