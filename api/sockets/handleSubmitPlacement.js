@@ -4,6 +4,7 @@ const getGameStatePayload = require("../helpers/getGameStatePayload");
 const startTurnFlow = require("../helpers/startTurnFlow");
 const emitGameState = require("../helpers/emitGameState");
 const { startTimer } = require("./gameTimer");
+const { isValidPlacement } = require("../gameLogic")
 
 const REVEAL_CNTDOWN = 5;
 const MAX_ROUNDS = 2;
@@ -12,7 +13,7 @@ const MAX_ROUNDS = 2;
 async function handleSubmitPlacement(io, socket, payload, callback) {
   try {
    
-    const { join_code, player_id, timeline } = payload;
+    const { join_code, player_id, song_id, position } = payload;
 
     if (!join_code) {
       return callback({
@@ -28,7 +29,7 @@ async function handleSubmitPlacement(io, socket, payload, callback) {
       });
     }
 
-    const game = await Game.findOne({ join_code });
+    const game = await Game.findOne({ join_code })
 
     if (!game) {
       return callback({
@@ -58,31 +59,96 @@ async function handleSubmitPlacement(io, socket, payload, callback) {
       select: "title artist year previewUrl"
     })
 
-    const revealedSong = gameBeforePop?.songs?.[0]
-    ?{
-      id:         gameBeforePop.songs[0]._id.toString(),
-          previewUrl: gameBeforePop.songs[0].previewUrl,
-          title:      gameBeforePop.songs[0].title,
-          artist:     gameBeforePop.songs[0].artist,
-          year:       gameBeforePop.songs[0].year,
-        }
-    : null
+    const currentSong = gameBeforePop?.songs?.[0];
 
-    await Game.findOneAndUpdate(
-      { join_code },
-      {$pop: { songs: -1}}
-    )
+    if (!currentSong) {
+      return callback({
+        ok: false,
+        error: "No current song found",
+      });
+    }
 
+    const currentSongId = currentSong._id.toString();
 
-    await Player.findByIdAndUpdate(player_id, {
-      $set: {
-        timeline: timeline || [],
+    if (song_id && song_id !== currentSongId) {
+      return callback({
+        ok: false,
+        error: "Submitted song does not match current song",
+      });
+    }
+
+    const player = await Player.findById(player_id).lean();
+
+    if (!player) {
+      return callback({
+        ok: false,
+        error: "Player not found",
+      });
+    }
+
+    const currentTimeline = player.timeline || [];
+
+    const revealedSong = {
+    id: currentSongId,
+    song_id: currentSongId,
+    previewUrl: currentSong.previewUrl,
+    title: currentSong.title,
+    artist: currentSong.artist,
+    year: currentSong.year,
+  };
+
+  const noPlacementMade = position === null || position === undefined;
+
+  let wasCorrect = false;
+  let placementPosition = null;
+
+  if (!noPlacementMade) {
+    placementPosition = Number(position);
+
+    if (
+      !Number.isInteger(placementPosition) ||
+      placementPosition < 0 ||
+      placementPosition > currentTimeline.length
+    ) {
+      return callback({
+        ok: false,
+        error: "Invalid placement position",
+      });
+    }
+
+    wasCorrect = isValidPlacement(
+      currentTimeline,
+      {
+        song_id: currentSong._id,
+        year: currentSong.year,
       },
-    });
+      placementPosition
+    );
+
+    if (wasCorrect) {
+      const timelineSong = {
+        song_id: currentSong._id,
+        year: currentSong.year,
+      };
+
+      const nextTimeline = [
+        ...currentTimeline.slice(0, placementPosition),
+        timelineSong,
+        ...currentTimeline.slice(placementPosition),
+      ];
+
+      await Player.findByIdAndUpdate(player_id, {
+        $set: {
+          timeline: nextTimeline,
+        },
+      });
+    }
+  }
 
     await Game.findOneAndUpdate(
       { join_code },
       {
+        $pop: { songs: -1 },
         $set: {
           phase: "reveal-phase",
         },
@@ -94,7 +160,11 @@ async function handleSubmitPlacement(io, socket, payload, callback) {
     const revealPayload = {
       ...updatedPayload,
       revealed_song: revealedSong,
-      reveal_message: "Reveal phase started. Result display coming next.",
+      was_correct: wasCorrect,
+      attempted_position: placementPosition,
+      reveal_message: wasCorrect
+        ? "Correct placement!"
+        : "Incorrect placement.",
     };
 
     const roomName = `game:${join_code}`;
