@@ -1,9 +1,17 @@
 const Game = require("../models/game");
 const Player = require("../models/player");
 const getGameStatePayload = require("../helpers/getGameStatePayload");
+const startTurnFlow = require("../helpers/startTurnFlow");
+const emitGameState = require("../helpers/emitGameState");
+const { startTimer } = require("./gameTimer");
+
+const REVEAL_CNTDOWN = 5;
+const MAX_ROUNDS = 2;
+
 
 async function handleSubmitPlacement(io, socket, payload, callback) {
   try {
+   
     const { join_code, player_id, timeline } = payload;
 
     if (!join_code) {
@@ -67,7 +75,53 @@ async function handleSubmitPlacement(io, socket, payload, callback) {
 
     const roomName = `game:${join_code}`;
 
+    console.log("SERVER:emitting game:reveal", revealPayload);
     io.to(roomName).emit("game:reveal", revealPayload);
+
+     startTimer(io, roomName, REVEAL_CNTDOWN, async () => {
+      const latestGame = await Game.findOne({ join_code });
+
+      if (!latestGame) return;
+      if (latestGame.phase !== "reveal-phase") return;
+
+      const nextTurnIndex =
+        (latestGame.turn_index + 1) % latestGame.turn_order.length;
+
+      const nextRoundNo =
+        nextTurnIndex === 0
+          ? latestGame.round_no + 1
+          : latestGame.round_no;
+
+      if (nextRoundNo > MAX_ROUNDS) {
+        await Game.findOneAndUpdate(
+          { join_code },
+          {
+            $set: {
+              phase: "game-ended",
+            },
+          }
+        );
+
+        await emitGameState(io, join_code);
+        return;
+      }
+
+      const nextPlayerId = latestGame.turn_order[nextTurnIndex];
+
+      await Game.findOneAndUpdate(
+        { join_code },
+        {
+          $set: {
+            turn_index: nextTurnIndex,
+            current_player: nextPlayerId,
+            round_no: nextRoundNo,
+          },
+        }
+      );
+
+      await startTurnFlow(io, join_code);
+    });
+
 
     return callback({
       ok: true,
