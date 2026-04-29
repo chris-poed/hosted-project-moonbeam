@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { socket } from "../socket"
-
+import "./CreateGame.css";
 
 export function CreateGame(){
     const [displayName, setDisplayName] = useState("");
@@ -69,34 +69,40 @@ export function CreateGame(){
 
 
 return (
-    <div>
-        <h2>Create a game</h2>
-        <p>Socket status: {isConnected ? "connected": "disconnected"}</p>
+    <div className="create-root">
+      <div className="create-card">
 
-        <form onSubmit={handleCreateGame}>
-        <div>
-            <label htmlFor="create-display-name"> Display name</label>
+        <h1 className="create-title">Create Game</h1>
+
+        <span className={`create-status ${isConnected ? "create-status--on" : "create-status--off"}`}>
+          {isConnected ? "● Connected" : "○ Disconnected"}
+        </span>
+
+        <form className="create-form" onSubmit={handleCreateGame}>
+          <div className="create-field">
+            <label className="create-label" htmlFor="create-display-name">
+              Display Name
+            </label>
             <input
-                id="create-display-name"
-                type="text"
-                value={displayName}
-                onChange={(event)=> setDisplayName(event.target.value)}
-                placeholder="Enter your display name"
-
+              className="create-input"
+              id="create-display-name"
+              type="text"
+              value={displayName}
+              onChange={(event) => setDisplayName(event.target.value)}
+              placeholder="Enter your display name"
             />
-        </div>
+          </div>
 
-        {error && <p>{error}</p>}
+          {error && <p className="create-error">{error}</p>}
 
-        <div> 
-          <button type="submit">CreateGame</button>
-        
-        
-        </div>
-
+          <button className="btn btn-primary" type="submit">
+            Create Game
+          </button>
         </form>
+
+      </div>
     </div>
 
-)
+);
 
 }
