@@ -204,7 +204,7 @@ useEffect(() => {
             </>
         ) : (
             <>
-            <p>Its {gameState.current_player?.display_name}s turn.</p>
+            <p>{"It's"} {gameState.current_player?.display_name}{"'s turn."}</p>
             <h3>My Timeline</h3>
             <Timeline timeline={timelineToShow} disabled={true} />
 
