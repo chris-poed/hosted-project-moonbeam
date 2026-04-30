@@ -59,12 +59,10 @@ export function RevealPage() {
       </div>
     );
   }
-  
 
   return (
     <div className="reveal-root">
 
-      {/* Header card */}
       <div className="reveal-card reveal-card--header">
         <p className="reveal-eyebrow">Round {revealState.round_no}</p>
         <h1 className="reveal-title">Reveal</h1>
@@ -75,7 +73,6 @@ export function RevealPage() {
         </div>
       </div>
 
-      {/* Info row */}
       <div className="reveal-info-row">
         <div className="reveal-info-item">
           <span className="reveal-info-item__label">Phase</span>
@@ -89,7 +86,6 @@ export function RevealPage() {
         </div>
       </div>
 
-      {/* Current player's timeline */}
       <div className="reveal-card reveal-card--timeline">
         <h2 className="reveal-section-title">
           {revealState.current_player?.display_name}'s Timeline
@@ -97,7 +93,6 @@ export function RevealPage() {
         <Timeline timeline={currentPlayer?.timeline || []} disabled={true} />
       </div>
 
-      {/* Players card */}
       <div className="reveal-card">
         <h2 className="reveal-section-title">Players</h2>
         <ul className="reveal-players">
@@ -112,7 +107,6 @@ export function RevealPage() {
         </ul>
       </div>
 
-      {/* Timer */}
       <div className="reveal-timer">
         <CountdownTimer
           roomId={roomId}
@@ -121,7 +115,6 @@ export function RevealPage() {
         />
       </div>
 
-      {/* Timeline / drag area */}
       <div className="reveal-timeline-area">
         <DragAndDrop />
       </div>
