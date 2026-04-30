@@ -115,9 +115,9 @@ export function RevealPage() {
         />
       </div>
 
-      <div className="reveal-timeline-area">
+      {/* <div className="reveal-timeline-area">
         <DragAndDrop />
-      </div>
+      </div> */}
 
     </div>
   );
