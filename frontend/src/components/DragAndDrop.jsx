@@ -1,14 +1,21 @@
 import { useEffect, useState } from "react";
 import { DndContext, rectIntersection, DragOverlay } from "@dnd-kit/core";
 import { arrayMove } from "@dnd-kit/sortable";
-import { songs } from "../data/songs";
 import CardBank from "./CardBank";
 import Timeline from "./Timeline";
+import { createPortal } from "react-dom";
+import "../components/DragAndDrop.css"
 
-function DragAndDrop() {
-  const [cardBank, setCardBank] = useState(songs);
-  const [timeline, setTimeline] = useState([]);
-  const [activeTimelineCard, setActiveTimelineCard] = useState(null); // only timeline card that is currently allowed to be moved again
+function DragAndDrop({
+    cardBank,
+    setCardBank,
+    timeline,
+    setTimeline,
+    activeTimelineCard,
+    setActiveTimelineCard,
+    setPlacement
+}) {
+
   const [activeCard, setActiveCard] = useState(null); // This card is used by DragOverlay for when the current card is being dragged.  Stops glitchiness
 
   const handleDragStart = (event) => {
@@ -70,28 +77,47 @@ function DragAndDrop() {
   const handleDragEnd = (event) => {
     const { active, over } = event;
 
-    if (!over) { // If the card is dropped outside a valid area, it returns to the card bank
-  const draggedFromBank = cardBank.find(song => song.id === active.id);
+      if (!over) { // If the card is dropped outside a valid area, it returns to the card bank
+        const draggedFromBank = cardBank.find(song => song.id === active.id);
 
-  if (draggedFromBank) { // if the card was in the timeline and is dragged and released outside, it will return to its last place in the timeline
-    setTimeline(prev => prev.filter(song => song.id !== active.id));
-    setActiveTimelineCard(null);
-  }
+        if (draggedFromBank) { // if the card was in the timeline and is dragged and released outside, it will return to its last place in the timeline
+          setTimeline(prev => prev.filter(song => song.id !== active.id));
+          setActiveTimelineCard(null);
+          setPlacement(null);
+        }
 
-  setActiveCard(null);
-  return;
-}
+          setActiveCard(null);
+          return;
+      }
 
-    const draggedFromBank = cardBank.find((song) => song.id === active.id);
+      const draggedFromBank = cardBank.find((song) => song.id === active.id);
 
-    if (draggedFromBank) {
-      setCardBank((prev) => prev.filter((song) => song.id !== active.id));
+      if (draggedFromBank) {
+        setCardBank((prev) => prev.filter((song) => song.id !== active.id));
 
-      setActiveTimelineCard(active.id); // marks the card as the active timeline card so that it can be moved around after being placed.
-    }
+        setActiveTimelineCard(active.id); // marks the card as the active timeline card so that it can be moved around after being placed.
+      }
+      // this sets the timeline and placement of the card so the GameScreen parent component has it
+      setTimeline((currentTimeline) => {
+        const placedSong = currentTimeline.find((song) => song.id === active.id);
+        const position = currentTimeline.findIndex((song) => song.id === active.id);
 
-    setActiveCard(null); // hides the floating drag overlay.
+        if (placedSong && position !== -1) {
+          setPlacement({
+            song_id: placedSong.id,
+            position,
+          });
+        }
+
+        return currentTimeline;
+      });
+      setActiveCard(null); // hides the floating drag overlay.
   };
+
+  const handleDragCancel = () => {
+    setActiveCard(null);
+  };
+
 
   useEffect(() => {
     console.log("timeline:", timeline);
@@ -105,6 +131,7 @@ function DragAndDrop() {
       onDragStart={handleDragStart} // this function and onDragOver and onDragEnd are run when a card is dragged because of useDraggable in CardBankId
       onDragOver={handleDragOver}
       onDragEnd={handleDragEnd}
+      onDragCancel={handleDragCancel}
     >
       <div>
         <CardBank cardBank={cardBank} activeCard={activeCard} />
@@ -112,22 +139,16 @@ function DragAndDrop() {
         <Timeline timeline={timeline} activeTimelineCard={activeTimelineCard} />
       </div>
 
-      <DragOverlay> 
-        {activeCard ? ( // DragOverLay creates and tells dnd-kit to use a floating drag preview that follows the mouse while dragging
-          <div          // It is a temporary visual copy, not the real card
-            style={{    // It is needed to help prevent glitchiness and duplicates whilst card is being dragged by the mouse
-              padding: "10px",  // the real card stays in place and / or is hidden
-              border: "1px solid black", // activeCard is set in the handleDragStart function.
-              background: "white",
-              minWidth: "60px",
-              textAlign: "center",
-              boxSizing: "border-box",
-            }}
-          >
-            <span style={{ fontSize: "32px", fontWeight: "bold" }}>?</span>
-          </div> // the activeCard ? (...) : null is to show the overlay if it is being dragged or show nothing if not
-        ) : null} 
-      </DragOverlay> 
+      {createPortal(
+        <DragOverlay adjustScale={false} dropAnimation={null}>
+          {activeCard ? (
+            <div className="drag-overlay-card">
+              <span className="drag-overlay-card__unknown">?</span>
+            </div>
+          ) : null}
+        </DragOverlay>,
+        document.body
+      )}
     </DndContext>
   );
 }

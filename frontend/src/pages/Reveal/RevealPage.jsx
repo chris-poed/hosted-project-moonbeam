@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { socket } from "../../socket";
 import DragAndDrop from "../../components/DragAndDrop";
 import CountdownTimer from "../../components/CountdownTimer";
+import Timeline from "../../components/Timeline";
 
 export function RevealPage() {
   //Thi sis for demo purposes and needs to match the value in 
@@ -44,9 +45,14 @@ export function RevealPage() {
   }, [navigate, playerId]);
 
 
+  const currentPlayer = revealState.players.find((player) => {
+    return player.player_id === revealState.current_player?.player_id;
+  });
+
   if (!revealState) {
     return <p>No reveal data available.</p>;
   }
+  
 
   return (
     <div>
@@ -66,6 +72,15 @@ export function RevealPage() {
         <strong>Current player:</strong>{" "}
         {revealState.current_player?.display_name}
       </p>
+      
+      <p>
+        <strong>Result:</strong>{" "}
+        {revealState.was_correct ? "Correct placement" : "Incorrect placement"}
+      </p>
+
+      <h2>{revealState.current_player?.display_name}'s Timeline</h2>
+
+      <Timeline timeline={currentPlayer?.timeline || []} disabled={true} />
 
       <h2>Players</h2>
 
