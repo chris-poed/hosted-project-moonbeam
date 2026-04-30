@@ -1,9 +1,9 @@
 .drag-overlay-card {
-    width: 90px;
-    min-height: 120px;
+    width: 60px;
+    height: 80px;
     padding: 18px 14px;
     box-sizing: border-box;
-    border-radius: 18px;
+    border-radius: 4px;
     background: linear-gradient(135deg, rgba(232, 67, 147, 0.95), rgba(192, 132, 252, 0.95));
     border: 1px solid rgba(255, 255, 255, 0.28);
     box-shadow:
@@ -13,7 +13,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 14px;
     text-align: center;
     cursor: grabbing;
@@ -23,10 +23,11 @@
 }
 
 .drag-overlay-card__unknown {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 72px;
+    font-size: 32px;
+    font-weight: bold;
     line-height: 0.9;
-    color: #fff;
+    /* color: #fff; */
+    color: black;
     filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.35));
 }
 
