@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { DndContext, rectIntersection, DragOverlay } from "@dnd-kit/core";
+import { DndContext,  pointerWithin, closestCenter,DragOverlay } from "@dnd-kit/core";
 import { arrayMove } from "@dnd-kit/sortable";
 import CardBank from "./CardBank";
 import Timeline from "./Timeline";
@@ -18,101 +18,113 @@ function DragAndDrop({
 
   const [activeCard, setActiveCard] = useState(null); // This card is used by DragOverlay for when the current card is being dragged.  Stops glitchiness
 
-  const handleDragStart = (event) => {
-    const activeId = event.active.id; // gives the id of the card the user just picked up because of useDraggable in CardBankItem
+  const collisionDetection = (args) => {
+    const pointerCollisions = pointerWithin(args);
 
-    const card =
-      cardBank.find((song) => song.id === activeId) ||
-      timeline.find((song) => song.id === activeId);
+    const collisions =
+      pointerCollisions.length > 0
+        ? pointerCollisions
+        : closestCenter(args);
 
-    setActiveCard(card); // stores the full card being dragged.
+    const itemCollisions = collisions.filter((collision) => {
+      return collision.id !== "timeline";
+    });
+
+    return itemCollisions.length > 0 ? itemCollisions : collisions;
   };
 
-  // Dragging a card over the timeline
-  const handleDragOver = (event) => {
-    const { active, over } = event;
+const handleDragStart = (event) => {
+  const activeId = event.active.id;
 
-    if (!over) return;
+  const bankCard = cardBank.find((song) => song.id === activeId);
+  const timelineCard = timeline.find((song) => song.id === activeId);
 
-    const activeId = active.id;
-    const overId = over.id;
+  const card = bankCard || timelineCard;
+  setActiveCard(card);
 
-    const draggedFromBank = cardBank.find((song) => song.id === activeId);
-    const activeIndex = timeline.findIndex((song) => song.id === activeId);
-    const overIndex = timeline.findIndex((song) => song.id === overId);
+  if (bankCard) {
+    setCardBank((prev) =>
+      prev.filter((song) => song.id !== activeId)
+    );
 
-    if (draggedFromBank) {
-      setTimeline((prev) => {
-        const alreadyInTimeline = prev.some((song) => song.id === activeId); // .some returns true if at least one item matches
+    setTimeline((prev) => {
+      const alreadyInTimeline = prev.some((song) => song.id === activeId);
 
-        const copy = alreadyInTimeline
-          ? prev.filter((song) => song.id !== activeId)
-          : [...prev];
+      if (alreadyInTimeline) return prev;
 
-        const insertIndex = copy.findIndex((song) => song.id === overId);  // Which timeline card is being hovered over
+      return [...prev, bankCard];
+    });
 
-        if (overId === "timeline" || insertIndex === -1) {
-          copy.push(draggedFromBank); // .push adds item to the end of the array
-        } else {
-          copy.splice(insertIndex, 0, draggedFromBank); // This is what makes the other timeline cards shift left and right.
-        }                                               // .splice adds card to the middle of the array
+    setActiveTimelineCard(activeId);
+  }
+};
 
-        return copy;
-      });
+//   // Dragging a card over the timeline
+const handleDragOver = (event) => {
+  const { active, over } = event;
 
-      setActiveTimelineCard(activeId);
-      return;
+  if (!over) return;
+
+  const activeId = active.id;
+  const overId = over.id;
+
+  const activeIndex = timeline.findIndex((song) => song.id === activeId);
+  const overIndex = timeline.findIndex((song) => song.id === overId);
+
+  if (
+    activeIndex !== -1 &&
+    overIndex !== -1 &&
+    activeIndex !== overIndex
+  ) {
+    setTimeline((prev) => {
+      const oldIndex = prev.findIndex((song) => song.id === activeId);
+      const newIndex = prev.findIndex((song) => song.id === overId);
+
+      return arrayMove(prev, oldIndex, newIndex);
+    });
+  }
+};
+
+const handleDragEnd = (event) => {
+  const { active, over } = event;
+
+  if (!over) {
+    setTimeline((prev) =>
+      prev.filter((song) => song.id !== active.id)
+    );
+
+    if (activeCard) {
+      setCardBank((prev) => [activeCard, ...prev]);
     }
 
-    if (
-      activeId === activeTimelineCard && // check to see if the card is the active card
-      activeIndex !== -1 && // check to see if the card is inside the timeline
-      overIndex !== -1 && // what is the index of the card we are hovering over
-      activeIndex !== overIndex // check to see if the actie card is different to the card that is being hovered over
-    ) {
-      setTimeline((prev) => arrayMove(prev, activeIndex, overIndex)); // Only the newest/active card can be moved again.
-    }
-  };
+    setActiveTimelineCard(null);
+    setPlacement(null);
+    setActiveCard(null);
+    return;
+  }
 
-  const handleDragEnd = (event) => {
-    const { active, over } = event;
+  setTimeline((currentTimeline) => {
+    const placedSong = currentTimeline.find(
+      (song) => song.id === active.id
+    );
 
-      if (!over) { // If the card is dropped outside a valid area, it returns to the card bank
-        const draggedFromBank = cardBank.find(song => song.id === active.id);
+    const position = currentTimeline.findIndex(
+      (song) => song.id === active.id
+    );
 
-        if (draggedFromBank) { // if the card was in the timeline and is dragged and released outside, it will return to its last place in the timeline
-          setTimeline(prev => prev.filter(song => song.id !== active.id));
-          setActiveTimelineCard(null);
-          setPlacement(null);
-        }
-
-          setActiveCard(null);
-          return;
-      }
-
-      const draggedFromBank = cardBank.find((song) => song.id === active.id);
-
-      if (draggedFromBank) {
-        setCardBank((prev) => prev.filter((song) => song.id !== active.id));
-
-        setActiveTimelineCard(active.id); // marks the card as the active timeline card so that it can be moved around after being placed.
-      }
-      // this sets the timeline and placement of the card so the GameScreen parent component has it
-      setTimeline((currentTimeline) => {
-        const placedSong = currentTimeline.find((song) => song.id === active.id);
-        const position = currentTimeline.findIndex((song) => song.id === active.id);
-
-        if (placedSong && position !== -1) {
-          setPlacement({
-            song_id: placedSong.id,
-            position,
-          });
-        }
-
-        return currentTimeline;
+    if (placedSong && position !== -1) {
+      setPlacement({
+        song_id: placedSong.id,
+        position,
       });
-      setActiveCard(null); // hides the floating drag overlay.
-  };
+    }
+
+    return currentTimeline;
+  });
+
+  setActiveTimelineCard(active.id);
+  setActiveCard(null);
+};
 
   const handleDragCancel = () => {
     setActiveCard(null);
@@ -127,7 +139,7 @@ function DragAndDrop({
 
   return (
     <DndContext
-      collisionDetection={rectIntersection} //decides what the dragged card is currently over
+      collisionDetection={collisionDetection}
       onDragStart={handleDragStart} // this function and onDragOver and onDragEnd are run when a card is dragged because of useDraggable in CardBankId
       onDragOver={handleDragOver}
       onDragEnd={handleDragEnd}
