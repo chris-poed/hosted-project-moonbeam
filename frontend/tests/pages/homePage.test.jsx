@@ -1,11 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 
+
 import { HomePage } from "../../src/pages/Home/HomePage";
 
 describe("Home Page", () => {
-  test("welcomes you to the site", () => {
-    // We need the Browser Router so that the Link elements load correctly
+  test("correctly renders the game title", () => {
     render(
       <BrowserRouter>
         <HomePage />
@@ -13,28 +13,17 @@ describe("Home Page", () => {
     );
 
     const heading = screen.getByRole("heading");
-    expect(heading.textContent).toEqual("Welcome to Acebook!");
+    expect(heading.textContent).toEqual("SNIPPIT");
   });
 
-  test("Displays a signup link", async () => {
+  test("displays the eyeborw and tagline", async () => {
     render(
       <BrowserRouter>
         <HomePage />
       </BrowserRouter>
     );
 
-    const signupLink = screen.getByText("Sign Up");
-    expect(signupLink.getAttribute("href")).toEqual("/signup");
-  });
-
-  test("Displays a login link", async () => {
-    render(
-      <BrowserRouter>
-        <HomePage />
-      </BrowserRouter>
-    );
-
-    const loginLink = screen.getByText("Log In");
-    expect(loginLink.getAttribute("href")).toEqual("/login");
+    expect(screen.getByText("Music Timeline Game")).not.toBeNull();
+    expect(screen.getByText("Guess the year. Beat your friends.")).not.toBeNull();
   });
 });
