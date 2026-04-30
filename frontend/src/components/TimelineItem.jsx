@@ -10,6 +10,7 @@ function TimelineItem(props) {
     padding: "10px",
     border: "1px solid black",
     background: "white",
+    color: "black", // add this
     cursor: props.isDraggable ? "grab" : "default",
 
     // Hide original card while DragOverlay is moving
