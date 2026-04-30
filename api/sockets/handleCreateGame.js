@@ -1,5 +1,7 @@
  const Player = require("../models/player");
  const Game = require("../models/game");
+ const Song = require("../models/song")
+ const {shuffleDeck} = require("../gameLogic")
 
  function generateJoinCode(){
         return Math.random().toString(36).substring(2, 6).toUpperCase();
@@ -39,6 +41,16 @@
 
         const joinCode = await generateUniqueCode();
 
+        //creates a randomly shuffled "deck" of songs
+
+        const allSongs = await Song.find ({previewUrl: {$ne: ""}})
+
+        if (allSongs.length === 0 ){
+            return callback({ok: false, error: "No songs available to play"})
+        }
+
+        const deck = shuffleDeck(allSongs).map((song) => song._id)
+
        
         //create game
         const game = await Game.create({
@@ -46,10 +58,30 @@
             game_host:player._id,
             current_player: player._id,
             join_code:joinCode,
-            songs:[]
+            songs:deck
         })
 
-        
+        //*******************************************************/
+        //need to add initial song to host players timeline
+        //select first song for timeline
+         const randomIndex = Math.floor(Math.random() * game.songs.length);
+         
+         const initialSong = game.songs[randomIndex];
+
+         const startingSong = await Song.findById(initialSong)
+
+         console.log("INITIAL SONG ID Host player------>", initialSong);
+
+        player.timeline.push({
+            song_id:startingSong._id,
+            year: startingSong.year,
+        });
+
+        //remove song from timline
+        game.songs.pull(startingSong._id);
+
+        await player.save();
+        await game.save();
 
         const roomName = `game:${game.join_code}`;
         socket.join(roomName);
