@@ -51,9 +51,6 @@ const Player = require("../models/player");
             })
         }
 
-        //new code for intialising timeline with one song
-        //ensure the intial song is removed from the game array
-
         //check that songs exit in the Gane
         if(!game.songs || game.songs.length === 0){
             return callback({
