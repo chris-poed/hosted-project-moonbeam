@@ -20,6 +20,10 @@ app.use(cors({
 
 app.use(express.json());
 
+app.get("/health", (req, res) => {
+  res.json({ ok: true });
+});
+
 const io = new Server(httpServer, {
   cors: {
     origin: allowedOrigins,
