@@ -7,8 +7,6 @@ import DragAndDrop from "../../components/DragAndDrop";
 import AudioPlayer from "../../components/AudioPlayer";
 import Timeline from "../../components/Timeline";
 import "./GameScreen.css";
-//import CardBank from "../components/CardBank";
-//import Timeline from "../components/Timeline";
 
 export function GameScreen() {
     const location = useLocation();
