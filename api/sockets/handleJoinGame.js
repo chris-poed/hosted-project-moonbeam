@@ -1,5 +1,6 @@
 const Player = require("../models/player");
  const Game = require("../models/game");
+ const Song = require("../models/song")
 
  async function handleJoinGame(io, socket, payload, callback){
 
@@ -50,13 +51,41 @@ const Player = require("../models/player");
             })
         }
 
+        //new code for intialising timeline with one song
+        //ensure the intial song is removed from the game array
+
+        //check that songs exit in the Gane
+        if(!game.songs || game.songs.length === 0){
+            return callback({
+                ok:false,
+                error: "No songs available",
+            });
+        }
+
+        //select first song for timeline
+        const randomIndex = Math.floor(Math.random() * game.songs.length);
+
+        const initialSong = game.songs[randomIndex];
+
+         const startingSong = await Song.findById(initialSong)
+
+         console.log("INITIAL SONG ID Joining Player------>", startingSong);
+
         const player = await Player.create({
             display_name:display_name.trim(),
-            timeline:[],
+            timeline:[
+                {
+                    song_id:startingSong._id,
+                    year: startingSong.year,
+                }
+            ],
             is_connected:true,
         });
 
         game.players.push(player._id);
+        
+        //remove intial song from games song array
+        game.songs.pull(startingSong._id);
         await game.save();
 
         const updatedGame = await Game.findById(game._id).populate("players");
