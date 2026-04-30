@@ -12,7 +12,10 @@ function AudioPlayer({ previewUrl, remaining, duration }) {
   const [label, setLabel] = useState("Loading...");
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
-  const [volume, setVolume] = useState(0.85);
+  const [volume, setVolume] = useState(() => {
+    const saved = localStorage.getItem("playerVolume");
+    return saved !== null ? parseFloat(saved) : 0.75;
+  });
 
   function fmt(seconds) {
     const m = Math.floor(seconds / 60);
@@ -47,6 +50,8 @@ function AudioPlayer({ previewUrl, remaining, duration }) {
   function handleVolumeChange(e) {
     const val = parseFloat(e.target.value);
     setVolume(val);
+    localStorage.setItem("playerVolume", val);
+    
     if (audioRef.current) {
       audioRef.current.volume = val;
       if (val === 0) {
