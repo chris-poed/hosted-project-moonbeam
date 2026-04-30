@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { socket } from "../../socket";
+import "./GameOverPage.css";
 
 export function GameOverPage() {
   const location = useLocation();
@@ -49,22 +50,33 @@ export function GameOverPage() {
   }
 
   if (!gameState) {
-    return <p>No game result available.</p>;
+    return (
+      <div className="gameover-root">
+        <div className="gameover-card">
+          <p className="gameover-empty">No game result available.</p>
+        </div>
+      </div>
+    );
   }
 
   return (
+    <div className="gameover-root">
 
-    <div>
-      <h1>Game Over</h1>
-      <p>Final results page coming next.</p>
-      <p>Rounds completed: {gameState.round_no}</p>
+      <div className="gameover-card">
+        <p className="gameover-eyebrow">Thanks for playing</p>
+        <h1 className="gameover-title">Game Over</h1>
+        <p className="gameover-subtitle">Final results page coming next.</p>
 
-      <button type="button" onClick={handleGoHome}>Start New Game</button>
+        <div className="gameover-stat">
+          <span className="gameover-stat__label">Rounds Completed</span>
+          <span className="gameover-stat__value">{gameState.round_no}</span>
+        </div>
+
+        <button className="btn btn-primary" type="button" onClick={handleGoHome}>
+          Start New Game
+        </button>
+      </div>
 
     </div>
-
-
-
-    
   );
 }
