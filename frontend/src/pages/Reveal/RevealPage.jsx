@@ -1,7 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { socket } from "../../socket";
-import DragAndDrop from "../../components/DragAndDrop";
 import CountdownTimer from "../../components/CountdownTimer";
 import Timeline from "../../components/Timeline";
 import "./RevealPage.css";
@@ -114,10 +113,6 @@ export function RevealPage() {
           size="md"
         />
       </div>
-
-      {/* <div className="reveal-timeline-area">
-        <DragAndDrop />
-      </div> */}
 
     </div>
   );
