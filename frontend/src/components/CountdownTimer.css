@@ -4,15 +4,16 @@
   align-items: center;
   gap: 8px;
   user-select: none;
+  font-family: 'DM Sans', sans-serif;
 }
 
 .countdown-timer__label {
   margin: 0;
   font-size: 0.85rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--color-text-secondary, #555);
+  color: rgba(255, 255, 255, 0.4);
 }
 
 .countdown-timer__ring-wrapper {
@@ -26,41 +27,38 @@
   position: absolute;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
-  color: var(--timer-fg, #1a1a1a);
+  color: var(--timer-fg, #fff);
   line-height: 1;
   transition: color 0.4s ease;
 }
 
-/* SVG track (background ring) */
 .countdown-timer__track {
-  stroke: var(--timer-track, #e0e0e0);
+  stroke: rgba(255, 255, 255, 0.08);
 }
 
-/* SVG arc (progress ring) */
 .countdown-timer__arc {
-  stroke: var(--timer-arc, #4a90e2);
+  stroke: var(--timer-arc, #e84393);
 }
 
-/* --- Urgency states --- */
-.countdown-timer--calm {
-  --timer-arc: #4a90e2;
-  --timer-fg: #1a1a1a;
+.countdown-timer--calm    { --timer-arc: #e84393; --timer-fg: #fff; }
+.countdown-timer--warning { --timer-arc: #f59e0b; --timer-fg: #f59e0b; }
+.countdown-timer--urgent  { --timer-arc: #ef4444; --timer-fg: #ef4444; animation: countdown-pulse 0.6s ease-in-out infinite alternate; }
+
+.countdown-timer--calm .countdown-timer__ring-wrapper {
+  filter: drop-shadow(0 0 6px #e84393) drop-shadow(0 0 12px rgba(232, 67, 147, 0.5));
 }
 
-.countdown-timer--warning {
-  --timer-arc: #f59e0b;
-  --timer-fg: #92400e;
+.countdown-timer--warning .countdown-timer__ring-wrapper {
+  filter: drop-shadow(0 0 6px #f59e0b) drop-shadow(0 0 12px rgba(245, 158, 11, 0.5));
 }
 
-.countdown-timer--urgent {
-  --timer-arc: #ef4444;
-  --timer-fg: #991b1b;
-  animation: countdown-pulse 0.6s ease-in-out infinite alternate;
+.countdown-timer--urgent .countdown-timer__ring-wrapper {
+  filter: drop-shadow(0 0 8px #ef4444) drop-shadow(0 0 20px rgba(239, 68, 68, 0.6));
 }
 
 @keyframes countdown-pulse {
-  from { transform: scale(1); }
-  to   { transform: scale(1.04); }
+  from { transform: scale(1);    filter: brightness(1); }
+  to   { transform: scale(1.06); filter: brightness(1.2); }
 }
 
 @media (prefers-reduced-motion: reduce) {
