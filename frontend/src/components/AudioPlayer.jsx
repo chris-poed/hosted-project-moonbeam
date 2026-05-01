@@ -1,22 +1,23 @@
 import { useEffect, useRef, useState } from "react";
 import "./AudioPlayer.css";
 function AudioPlayer(props) {
-  const audioRef   = useRef(null);
-  const rafRef     = useRef(null);
-  const timerRef   = useRef(null);
-  const DURATION   = 30;
-  const [fillWidth,  setFillWidth]  = useState(0);
-  const [elapsed,    setElapsed]    = useState("0:00");
-  const [label,      setLabel]      = useState("Loading...");
-  const [isPlaying,  setIsPlaying]  = useState(false);
-  const [needsTap,   setNeedsTap]   = useState(false);   // ← NEW
+  const audioRef  = useRef(null);
+  const rafRef    = useRef(null);
+  const timerRef  = useRef(null);
+  const DURATION  = 30;
+  const [fillWidth, setFillWidth] = useState(0);
+  const [elapsed,   setElapsed]   = useState("0:00");
+  const [label,     setLabel]     = useState("Loading...");
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [needsTap,  setNeedsTap]  = useState(false);
   function fmt(seconds) {
     const m = Math.floor(seconds / 60);
     const s = Math.floor(seconds % 60);
     return m + ":" + s.toString().padStart(2, "0");
   }
-  function end(audio) {
-    audio.pause();
+  function end() {
+    const audio = audioRef.current
+    if (audio) audio.pause()
     cancelAnimationFrame(rafRef.current);
     clearTimeout(timerRef.current);
     setFillWidth(100);
@@ -24,36 +25,41 @@ function AudioPlayer(props) {
     setLabel("Preview ended");
     setIsPlaying(false);
   }
-  function tick(audio) {
+  function tick() {
+    const audio = audioRef.current
+    if (!audio) return
     const current = Math.min(audio.currentTime, DURATION);
     setFillWidth((current / DURATION) * 100);
     setElapsed(fmt(current));
     if (current < DURATION) {
-      rafRef.current = requestAnimationFrame(() => tick(audio));
+      rafRef.current = requestAnimationFrame(tick);
     } else {
-      end(audio);
+      end();
     }
   }
-  // ── Called directly by user tap — satisfies iOS gesture requirement ─────────
   function handleTap() {
     const audio = audioRef.current
     if (!audio) return
     setNeedsTap(false)
     audio.play().catch(() => {})
   }
+  // Reset state when previewUrl changes
   useEffect(() => {
-    const audio = new Audio(props.previewUrl);
-    audioRef.current = audio;
-    audio.volume = 0.85;
     setFillWidth(0);
     setElapsed("0:00");
     setLabel("Loading...");
     setIsPlaying(false);
     setNeedsTap(false);
+    cancelAnimationFrame(rafRef.current);
+    clearTimeout(timerRef.current);
+  }, [props.previewUrl]);
+  // Set up event listeners on the DOM audio element
+  useEffect(() => {
+    const audio = audioRef.current
+    if (!audio || !props.previewUrl) return
     function onCanPlay() {
       setLabel("30s preview");
-      audio.play().catch(function () {
-        // Autoplay blocked — show tap prompt
+      audio.play().catch(() => {
         setNeedsTap(true);
         setLabel("Tap to play");
       });
@@ -63,8 +69,8 @@ function AudioPlayer(props) {
       clearTimeout(timerRef.current);
       setIsPlaying(true);
       setNeedsTap(false);
-      timerRef.current = setTimeout(() => end(audio), DURATION * 1000);
-      tick(audio);
+      timerRef.current = setTimeout(end, DURATION * 1000);
+      tick();
     }
     function onError() {
       setLabel("Preview unavailable");
@@ -72,37 +78,47 @@ function AudioPlayer(props) {
     audio.addEventListener("canplay", onCanPlay);
     audio.addEventListener("play",    onPlay);
     audio.addEventListener("error",   onError);
-    return function () {
+    // Set volume and load
+    audio.volume = 0.85
+    audio.load()
+    return () => {
       audio.removeEventListener("canplay", onCanPlay);
       audio.removeEventListener("play",    onPlay);
       audio.removeEventListener("error",   onError);
-      audio.pause();
+      audio.pause()
       cancelAnimationFrame(rafRef.current);
       clearTimeout(timerRef.current);
     };
   }, [props.previewUrl]);
   return (
     <div className="music-player">
-      {/* Tap overlay — shown on mobile when autoplay is blocked */}
+      {/* DOM audio element — attached to the page for iOS compatibility */}
+      <audio
+        ref={audioRef}
+        src={props.previewUrl}
+        preload="auto"
+        playsInline          // critical for iOS — prevents fullscreen takeover
+        style={{ display: 'none' }}
+      />
       {needsTap && (
         <button
           onClick={handleTap}
           style={{
-            display:         'flex',
-            alignItems:      'center',
-            justifyContent:  'center',
-            gap:             '10px',
-            width:           '100%',
-            padding:         '14px',
-            marginBottom:    '12px',
-            background:      'linear-gradient(135deg, #E84393, #C084FC)',
-            border:          'none',
-            borderRadius:    '12px',
-            color:           '#fff',
-            fontSize:        '15px',
-            fontWeight:      '600',
-            cursor:          'pointer',
-            fontFamily:      'inherit',
+            display:        'flex',
+            alignItems:     'center',
+            justifyContent: 'center',
+            gap:            '10px',
+            width:          '100%',
+            padding:        '14px',
+            marginBottom:   '12px',
+            background:     'linear-gradient(135deg, #E84393, #C084FC)',
+            border:         'none',
+            borderRadius:   '12px',
+            color:          '#fff',
+            fontSize:       '15px',
+            fontWeight:     '600',
+            cursor:         'pointer',
+            fontFamily:     'inherit',
           }}
         >
           
@@ -126,4 +142,5 @@ function AudioPlayer(props) {
     </div>
   );
 }
+
 export default AudioPlayer;
