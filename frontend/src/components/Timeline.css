@@ -1,0 +1,22 @@
+.timeline-wrapper {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+.timeline-dropzone {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 10px;
+
+    width: 100%;
+    max-width: 100%;
+    min-height: 80px;
+    box-sizing: border-box;
+
+    border: 1px solid black;
+    padding: 10px;
+}

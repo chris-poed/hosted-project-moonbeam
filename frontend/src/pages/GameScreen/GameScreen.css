@@ -402,8 +402,9 @@
     }
 
     .game-timeline-card {
-    padding: 18px;
-    overflow: hidden;
+        padding: 18px;
+        min-width: 0;
+        overflow: visible;
     }
 
     .game-timeline-card--active {
