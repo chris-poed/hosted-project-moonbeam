@@ -7,6 +7,15 @@ function TimelineItem(props) {
   const style = {
     transform: CSS.Transform.toString(sortable.transform),
     transition: sortable.transition,
+
+    width: "60px",
+    height: "80px",
+    flex: "0 0 60px",
+
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+
     padding: "10px",
     borderRadius: "4px",
     color: "black",
@@ -15,14 +24,14 @@ function TimelineItem(props) {
     boxShadow: "0 18px 50px rgba(0, 0, 0, 0.45), 0 0 30px rgba(232, 67, 147, 0.35)",
 
     cursor: props.isDraggable ? "grab" : "default",
-
-    // Hide original card while DragOverlay is moving
     opacity: sortable.isDragging ? 0 : 1,
 
-    minWidth: "60px",
     textAlign: "center",
     fontWeight: "bold",
     boxSizing: "border-box",
+
+    touchAction: "none",
+    userSelect: "none",
   };
 
   return (
