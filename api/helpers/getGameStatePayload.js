@@ -1,5 +1,6 @@
 const Game = require("../models/game")
 const mongoose = require("mongoose");
+const { buildRankings } = require("../gameLogic");
 
 // this helper should be used as the payload in socket.emit to update players on the current state of the game.
 
@@ -61,6 +62,23 @@ async function getGameStatePayload(join_code) {
         
         }
 
+        //rankings 
+
+        const rankings = game.phase === "game-ended" 
+            ? buildRankings(game.players).map((player, index)=> ({
+                position: index + 1,
+                player_id: player._id.toString(),
+                display_name: player.display_name,
+                score: player.timeline.length,
+            }))
+            :null
+       
+       
+       
+       
+       
+       
+       
         console.log('[getGameStatePayload] phase:', game.phase, '| current_song:', current_song)
         return {
             id: game._id.toString(),
@@ -73,6 +91,7 @@ async function getGameStatePayload(join_code) {
             },
             round_no: game.round_no,
             current_song,
+            rankings,
             players: game.players.map((player) => ({
                 player_id: player._id.toString(),
                 display_name: player.display_name,

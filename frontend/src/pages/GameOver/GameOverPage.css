@@ -1,162 +1,434 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+/* ── Root ─────────────────────────────────────────────────────────────────── */
 
 .gameover-root {
-  min-height: 100vh;
-  width: 100%;
-  background: #0e0b14;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    width: 100%;
+    background: #0e0b14;
+    color: #fff;
+    position: relative;
+    overflow-x: hidden;
+    font-family: 'DM Sans', sans-serif;
+    padding: 32px 16px;
+    box-sizing: border-box;
 }
 
 .gameover-root::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at top right, rgba(232, 67, 147, 0.45) 0%, transparent 55%),
-    radial-gradient(ellipse at bottom left, rgba(124, 58, 237, 0.45) 0%, transparent 55%),
-    radial-gradient(ellipse at bottom right, rgba(56, 189, 248, 0.25) 0%, transparent 50%);
-  animation: bgBreath 8s ease-in-out infinite alternate;
-  pointer-events: none;
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at top right,   rgba(232, 67, 147, 0.42) 0%, transparent 55%),
+        radial-gradient(ellipse at bottom left,  rgba(124, 58, 237, 0.42) 0%, transparent 55%),
+        radial-gradient(ellipse at bottom right, rgba(56, 189, 248, 0.22) 0%, transparent 50%);
+    animation: gameoverBgBreath 8s ease-in-out infinite alternate;
+    pointer-events: none;
 }
 
-@keyframes bgBreath {
-  0%   { opacity: 0.7; transform: scale(1); }
-  100% { opacity: 1;   transform: scale(1.08); }
+@keyframes gameoverBgBreath {
+    0%   { opacity: 0.7; transform: scale(1);    }
+    100% { opacity: 1;   transform: scale(1.08); }
 }
 
-.gameover-card {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 3rem 3.5rem;
-  width: 100%;
-  max-width: 480px;
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 24px;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  gap: 1rem;
+/* ── Blobs ────────────────────────────────────────────────────────────────── */
+
+.gameover-blob {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.42;
+    pointer-events: none;
+}
+
+.gameover-blob--pink {
+    width: 340px;
+    height: 340px;
+    background: #e84393;
+    top: -90px;
+    right: -80px;
+}
+
+.gameover-blob--blue {
+    width: 280px;
+    height: 280px;
+    background: #38bdf8;
+    bottom: -80px;
+    left: -60px;
+}
+
+.gameover-ring {
+    position: fixed;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    pointer-events: none;
+}
+
+.gameover-ring--lg {
+    width: 680px;
+    height: 680px;
+    top: -260px;
+    right: -220px;
+}
+
+.gameover-ring--md {
+    width: 460px;
+    height: 460px;
+    top: -140px;
+    right: -120px;
+    border-color: rgba(255, 255, 255, 0.09);
+}
+
+/* ── Shell ────────────────────────────────────────────────────────────────── */
+
+.gameover-shell {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+}
+
+/* ── Header ───────────────────────────────────────────────────────────────── */
+
+.gameover-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 8px;
+    gap: 8px;
 }
 
 .gameover-eyebrow {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #e84393;
-  margin: 0;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #e84393;
+    margin: 0;
 }
 
 .gameover-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(64px, 14vw, 100px);
-  letter-spacing: 0.06em;
-  line-height: 1;
-  margin: 0;
-  background-image: linear-gradient(135deg, #fff 0%, #e84393 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: colorShift 4s ease-in-out infinite alternate;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 9vw, 92px);
+    line-height: 0.9;
+    letter-spacing: 0.06em;
+    margin: 0;
+    background-image: linear-gradient(135deg, #fff 0%, #e84393 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gameoverColorShift 4s ease-in-out infinite alternate;
 }
 
-@keyframes colorShift {
-  0%   { background-image: linear-gradient(135deg, #fff 0%, #e84393 100%); filter: drop-shadow(0 0 12px #e84393) drop-shadow(0 0 40px #e84393); }
-  50%  { background-image: linear-gradient(135deg, #fff 0%, #c084fc 100%); filter: drop-shadow(0 0 12px #c084fc) drop-shadow(0 0 40px #c084fc); }
-  100% { background-image: linear-gradient(135deg, #fff 0%, #38bdf8 100%); filter: drop-shadow(0 0 12px #38bdf8) drop-shadow(0 0 40px #38bdf8); }
+@keyframes gameoverColorShift {
+    0% {
+        background-image: linear-gradient(135deg, #fff 0%, #e84393 100%);
+        filter: drop-shadow(0 0 12px #e84393) drop-shadow(0 0 34px rgba(232, 67, 147, 0.8));
+    }
+    50% {
+        background-image: linear-gradient(135deg, #fff 0%, #c084fc 100%);
+        filter: drop-shadow(0 0 12px #c084fc) drop-shadow(0 0 34px rgba(192, 132, 252, 0.75));
+    }
+    100% {
+        background-image: linear-gradient(135deg, #fff 0%, #38bdf8 100%);
+        filter: drop-shadow(0 0 12px #38bdf8) drop-shadow(0 0 34px rgba(56, 189, 248, 0.65));
+    }
 }
 
-.gameover-subtitle {
-  font-size: 15px;
-  color: rgba(255, 255, 255, 0.4);
-  margin: 0;
-  letter-spacing: 0.02em;
+/* ── Cards ────────────────────────────────────────────────────────────────── */
+
+.gameover-card {
+    width: 100%;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.045);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    box-shadow:
+        0 8px 40px rgba(0, 0, 0, 0.34),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    padding: 28px;
 }
 
-.gameover-stat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 1rem 2.5rem;
-  width: 100%;
+/* ── Winner callout ───────────────────────────────────────────────────────── */
+
+.gameover-winner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
 }
 
-.gameover-stat__label {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.35);
+.gameover-winner__emoji {
+    font-size: 52px;
+    line-height: 1;
 }
 
-.gameover-stat__value {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 52px;
-  letter-spacing: 0.06em;
-  line-height: 1;
-  color: #fff;
+.gameover-winner__heading {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 6vw, 56px);
+    letter-spacing: 0.05em;
+    margin: 0;
+    color: #fff;
 }
 
-.btn {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  padding: 14px 40px;
-  border-radius: 100px;
-  cursor: pointer;
-  border: none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-  letter-spacing: 0.02em;
-  position: relative;
-  overflow: hidden;
-  width: 100%;
+.gameover-winner__sub {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0;
 }
 
-.btn::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.3) 50%, transparent 60%);
-  transition: left 0s;
+/* ── Section labels ───────────────────────────────────────────────────────── */
+
+.gameover-section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #e84393;
+    margin: 0 0 10px 0;
+    display: block;
 }
 
-.btn:hover::after {
-  left: 160%;
-  transition: left 0.5s ease;
+.gameover-panel-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    color: #fff;
+    margin: 0 0 20px 0;
 }
 
-.btn:hover  { transform: translateY(-2px) scale(1.02); }
-.btn:active { transform: translateY(0) scale(0.97); }
+/* ── Rankings ─────────────────────────────────────────────────────────────── */
 
-.btn-primary {
-  background: linear-gradient(135deg, #e84393, #c084fc);
-  color: #fff;
-  box-shadow: 0 0 20px rgba(232, 67, 147, 0.4);
+.gameover-rankings {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.btn-primary:hover {
-  background: linear-gradient(135deg, #38bdf8, #c084fc);
-  box-shadow: 0 0 30px rgba(192, 132, 252, 0.6), 0 0 60px rgba(56, 189, 248, 0.3);
+.gameover-rankings__item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
+
+.gameover-rankings__item--first {
+    background: rgba(232, 67, 147, 0.08);
+    border-color: rgba(232, 67, 147, 0.28);
+    box-shadow: 0 0 24px rgba(232, 67, 147, 0.1);
+}
+
+.gameover-rankings__item--me {
+    border-color: rgba(56, 189, 248, 0.32);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.1);
+}
+
+.gameover-rankings__medal {
+    font-size: 24px;
+    flex-shrink: 0;
+    width: 32px;
+    text-align: center;
+    line-height: 1;
+}
+
+.gameover-rankings__name {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.gameover-rankings__you {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #38bdf8;
+}
+
+.gameover-rankings__score {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.45);
+    flex-shrink: 0;
+}
+
+/* ── Timelines ────────────────────────────────────────────────────────────── */
+
+.gameover-timelines {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.gameover-timeline-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 16px 18px;
+}
+
+.gameover-timeline-card__heading {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0 0 12px 0;
+    letter-spacing: 0.04em;
+}
+
+.gameover-timeline-card__heading--me {
+    color: #38bdf8;
+}
+
+.gameover-timeline-empty {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.3);
+    margin: 0;
+    font-style: italic;
+}
+
+.gameover-timeline-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.gameover-timeline-list__item {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.75);
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.gameover-timeline-list__year {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.08em;
+    color: #e84393;
+    flex-shrink: 0;
+}
+
+/* ── CTA button ───────────────────────────────────────────────────────────── */
+
+.gameover-cta {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 32px;
+}
+
+.gameover-btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 14px 48px;
+    border-radius: 100px;
+    cursor: pointer;
+    border: none;
+    background: linear-gradient(135deg, #e84393, #c084fc);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(232, 67, 147, 0.4);
+    letter-spacing: 0.02em;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.gameover-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        105deg,
+        transparent 40%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 60%
+    );
+    transition: left 0s;
+}
+
+.gameover-btn:hover::after {
+    left: 160%;
+    transition: left 0.5s ease;
+}
+
+.gameover-btn:hover {
+    background: linear-gradient(135deg, #38bdf8, #c084fc);
+    box-shadow: 0 0 30px rgba(192, 132, 252, 0.6), 0 0 60px rgba(56, 189, 248, 0.3);
+    transform: translateY(-3px) scale(1.04);
+}
+
+.gameover-btn:active {
+    transform: translateY(0) scale(0.97);
+}
+
+/* ── Empty state ──────────────────────────────────────────────────────────── */
 
 .gameover-empty {
-  color: rgba(255, 255, 255, 0.35);
-  font-size: 14px;
+    position: relative;
+    z-index: 2;
+    max-width: 520px;
+    margin: 20vh auto 0;
+    padding: 36px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.045);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.gameover-empty p {
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 560px) {
+    .gameover-root            { padding: 16px 12px; }
+    .gameover-card            { padding: 20px; border-radius: 20px; }
+    .gameover-title           { font-size: 54px; }
+    .gameover-rankings__item  { padding: 12px 14px; }
 }
