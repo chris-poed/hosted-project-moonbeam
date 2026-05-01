@@ -30,8 +30,10 @@ export function RevealPage() {
       if (updatedGameState.phase === "game-ended") {
         navigate("/gameover", {
           state: {
-            gameState: updatedGameState,
+            rankings: updatedGameState.rankings,
+            players: updatedGameState.players,
             playerId,
+            join_code: updatedGameState.join_code,
           },
         });
       }

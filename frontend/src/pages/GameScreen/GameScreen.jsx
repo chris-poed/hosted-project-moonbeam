@@ -47,12 +47,24 @@ export function GameScreen() {
     }, [gameState?.players, gameState?.current_player?.player_id, isCurrentPlayer, playerId]);
 
     useEffect(() => {
-        function handlePhaseChanged(updatedGameState) {
-            setGameState(updatedGameState);
+    function handlePhaseChanged(updatedGameState) {
+        setGameState(updatedGameState);
+
+        if (updatedGameState.phase === "game-ended") {
+            navigate("/gameover", {
+                state: {
+                    rankings:  updatedGameState.rankings,
+                    players:   updatedGameState.players,
+                    playerId,
+                    join_code: updatedGameState.join_code,
+                },
+            });
         }
-        socket.on("game:phase_changed", handlePhaseChanged);
-        return () => { socket.off("game:phase_changed", handlePhaseChanged); };
-    }, []);
+    }
+    socket.on("game:phase_changed", handlePhaseChanged);
+    return () => { socket.off("game:phase_changed", handlePhaseChanged); };
+}, [navigate, playerId]);
+
 
     useEffect(() => {
         if (!myPlayer) return;
