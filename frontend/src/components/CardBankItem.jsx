@@ -12,6 +12,12 @@ function CardBankItem(props) {
     left: `${props.index * 2}px`,
     width: "50px",
     height: "70px",
+
+    touchAction: "none",
+    WebkitUserSelect: "none",
+    userSelect: "none",
+    WebkitTouchCallout: "none",
+
     background: "linear-gradient(135deg, rgba(232, 67, 147, 0.95), rgba(192, 132, 252, 0.95))",
     border: "1px solid rgba(255, 255, 255, 0.28)",
     boxShadow: "0 18px 50px rgba(0, 0, 0, 0.45), 0 0 30px rgba(232, 67, 147, 0.35)",

@@ -22,7 +22,6 @@ function createGame(req, res) {
     game
         .save()
         .then((game) => {
-        console.log("Game created, id:", game._id.toString());
         res.status(201).json({ message: "OK", game });
         })
         .catch((err) => {

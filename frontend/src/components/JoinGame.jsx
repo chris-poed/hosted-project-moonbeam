@@ -14,24 +14,24 @@ export function JoinGame() {
      function handleSubmit(event){
         event.preventDefault();
         setError("");
-        console.log("INSIDE GAME:JOIN HANDLE SUBMIT");
-        console.log("DISPLAYNAME", displayName);
-         console.log("DISPLAYNAME", joinCode);
+        // console.log("INSIDE GAME:JOIN HANDLE SUBMIT");
+        // console.log("DISPLAYNAME", displayName);
+        //  console.log("DISPLAYNAME", joinCode);
 
         if(!displayName.trim()){
-            console.log("STOPPING: displayname")
+            // console.log("STOPPING: displayname")
             setError("Enter a display name");
             return;
         }
 
 
         if(!joinCode.trim()){
-            console.log("STOPPING: join code")
+            // console.log("STOPPING: join code")
             setError("Enter a join code name");
             return;
         }
         if(!socket.connected){
-            console.log("Socket not connected");
+            // console.log("Socket not connected");
             socket.connect();
         }
         
@@ -42,13 +42,13 @@ export function JoinGame() {
         },
         (response) => {
 
-            console.log("GAME:JOIN---->", response);
+            // console.log("GAME:JOIN---->", response);
             if(!response.ok){
                 setError(response?.error|| "Game join failed");
                 return;
             }
 
-            console.log("game:join response---->", response);
+            // console.log("game:join response---->", response);
             //TODO: Add response data to local storage
             navigate("/lobby", {
                 state:{

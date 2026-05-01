@@ -1,5 +1,13 @@
 import { useEffect, useState } from "react";
-import { DndContext,  pointerWithin, closestCenter,DragOverlay } from "@dnd-kit/core";
+import { DndContext,  
+  pointerWithin, 
+  closestCenter,
+  DragOverlay, 
+  MouseSensor, 
+  TouchSensor,
+  useSensor,
+  useSensors, 
+} from "@dnd-kit/core";
 import { arrayMove } from "@dnd-kit/sortable";
 import CardBank from "./CardBank";
 import Timeline from "./Timeline";
@@ -13,10 +21,24 @@ function DragAndDrop({
     setTimeline,
     activeTimelineCard,
     setActiveTimelineCard,
-    setPlacement
+    setPlacement,
 }) {
 
   const [activeCard, setActiveCard] = useState(null); // This card is used by DragOverlay for when the current card is being dragged.  Stops glitchiness
+
+  const sensors = useSensors(
+    useSensor(MouseSensor, {
+      activationConstraint: {
+        distance: 5,
+      },
+    }),
+    useSensor(TouchSensor, {
+      activationConstraint: {
+        delay: 150,
+        tolerance: 8,
+      },
+    })
+  );
 
   const collisionDetection = (args) => {
     const pointerCollisions = pointerWithin(args);
@@ -131,14 +153,15 @@ const handleDragEnd = (event) => {
   };
 
 
-  useEffect(() => {
-    console.log("timeline:", timeline);
-    console.log("cardBank:", cardBank);
-    console.log("activeTimelineCard:", activeTimelineCard);
-  }, [timeline, cardBank, activeTimelineCard]);
+  // useEffect(() => {
+  //   console.log("timeline:", timeline);
+  //   console.log("cardBank:", cardBank);
+  //   console.log("activeTimelineCard:", activeTimelineCard);
+  // }, [timeline, cardBank, activeTimelineCard]);
 
   return (
     <DndContext
+      sensors={sensors}
       collisionDetection={collisionDetection}
       onDragStart={handleDragStart} // this function and onDragOver and onDragEnd are run when a card is dragged because of useDraggable in CardBankId
       onDragOver={handleDragOver}

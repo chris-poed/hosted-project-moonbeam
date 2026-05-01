@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { socket } from "../socket"
 import "./CreateGame.css";
@@ -13,7 +13,6 @@ export function CreateGame(){
     useEffect(() => {
         function onConnect() {
           setIsConnected(true);
-          console.log(socket.id, "<-------- frontend socket id")
         }
     
         function onDisconnect() {
@@ -52,8 +51,6 @@ export function CreateGame(){
             localStorage.setItem("playerId", response.player_id);
             localStorage.setItem("roomCode", response.join_code);
             localStorage.setItem("gameID", response.game_id);
-
-            console.log("NAVIGATING", response);
     
             navigate("/lobby", {
                 state:{

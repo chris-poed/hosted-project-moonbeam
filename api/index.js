@@ -34,7 +34,6 @@ const io = new Server(httpServer, {
 const registerCreateGameHandlers = require("./sockets/createGameHandlers.js")
 
 const onConnection = (socket) => {
-  console.log(socket.id, '<---socket.id')
   registerCreateGameHandlers(io, socket)
 }
 

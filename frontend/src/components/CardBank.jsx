@@ -9,8 +9,8 @@ function CardBank({ cardBank = [], activeCard = null }) {
         <div
             style={{
             position: "relative",
-            width: "60px",
-            height: "80px",
+            width: "90px",
+            height: "115px",
             }}
         >
             {cardBank.map(( song, index, // Take every song in the card bank and turn it into a CardBankItem component

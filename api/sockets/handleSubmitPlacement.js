@@ -7,7 +7,7 @@ const { startTimer } = require("./gameTimer");
 const { isValidPlacement } = require("../gameLogic")
 
 const REVEAL_CNTDOWN = 5;
-const MAX_ROUNDS = 2;
+const MAX_ROUNDS = 5;
 
 
 async function handleSubmitPlacement(io, socket, payload, callback) {

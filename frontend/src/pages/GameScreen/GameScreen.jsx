@@ -113,7 +113,7 @@ export function GameScreen() {
 
     useEffect(() => {
         function logAnyEvent(event, ...args) {
-            console.log("SOCKET EVENT RECEIVED:", event, args);
+            // console.log("SOCKET EVENT RECEIVED:", event, args);
         }
         socket.onAny(logAnyEvent);
         return () => { socket.offAny(logAnyEvent); };
