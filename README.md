@@ -1,123 +1,375 @@
-## Acebook MERN Template
+# Snippit
 
-In this project, you are task with working on an existing application. A
-significant part of the challenge will be to familiarise yourself with the
-codebase you've inherited, as you work to **improve and extend** it.
+**Snippit** is a real-time multiplayer music timeline game.
 
-### Structure
+Players listen to short song previews and try to place each track in the correct chronological position on their timeline. The more songs you place correctly, the stronger your final score.
 
-This repo contains two applications:
+Live app: https://snippit-netlify.netlify.app
 
-- A frontend React App
-- A backend api server
+---
 
-These two applications will communicate through HTTP requests, and need to be
-run separately.
+## How the game works
 
-### Documentation
+1. A host creates a new game.
+2. Other players join using the game PIN.
+3. The host starts the game once at least two players have joined.
+4. Players take turns listening to a hidden song preview.
+5. The current player drags the song card into the position where they think it belongs in their timeline.
+6. The game reveals whether the placement was correct.
+7. Final rankings are based on how many songs each player placed correctly.
 
-[More documentation of the codebase and its architecture can be found here.](./DOCUMENTATION.md)
-It's recommended you all read the suggested docs _after making sure the whole
-setup below worked for everyone_. Then work together on a diagram describing how
-the application works.
+No account is required. Players only need a display name and a game PIN.
 
-### Card wall
+---
 
-REPLACE THIS TEXT WITH A LINK TO YOUR CARD WALL
+## Features
 
-### Quickstart
+- Real-time multiplayer gameplay using Socket.io
+- Create and join game lobbies with shareable PIN codes
+- Supports 2–4 players
+- Timed listening and placement rounds
+- Drag-and-drop timeline interaction
+- Hidden song details during the guessing phase
+- Reveal screen showing whether the placement was correct
+- Final game-over screen with rankings and player timelines
+- Seeded song database with preview audio URLs
+- Responsive UI designed for desktop and mobile play
 
-### Install Node.js
+---
 
-If you haven't already, make sure you have node and NVM installed.
+## Tech stack
 
-1. Install Node Version Manager (NVM)
-   ```
-   brew install nvm
-   ```
-   Then follow the instructions to update your `~/.zshrc`.
-2. Open a new terminal
-3. Install the latest version of [Node.js](https://nodejs.org/en/), (`20.5.0` at
-   time of writing).
-   ```
-   nvm install 20
-   ```
+### Frontend
 
-### Set up your project
+- React
+- Vite
+- React Router
+- Socket.io Client
+- dnd-kit
+- CSS modules/files
 
-1. Have one team member fork this repository
-2. Rename the fork to `acebook-<team name>`
-3. Every team member clone the fork to their local machine
-4. Install dependencies for both the `frontend` and `api` applications:
-   ```
-   cd frontend
-   npm install
-   cd ../api
-   npm install
-   ```
-5. Install an ESLint plugin for your editor, for example
-   [ESLint for VSCode](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-6. Install MongoDB - pick the latest version available, at the time of writing this, it's @8.0. 
-   ```
-   brew tap mongodb/brew
-   brew install mongodb-community@8.0
-   ```
-   _Note:_ If you see a message that says
-   `If you need to have mongodb-community@8.0 first in your PATH, run:`, follow
-   the instruction. Restart your terminal after this.
-7. Start MongoDB
+### Backend
 
-   ```
-   brew services start mongodb-community@8.0
-   ```
+- Node.js
+- Express
+- Socket.io
+- MongoDB
+- Mongoose
+- Jest / Supertest
 
-### Setting up environment variables.
+### Hosting
 
-We need to create two `.env` files, one in the frontend and one in the api.
+- Frontend: Netlify
+- Backend: Node/Express service, suitable for Render or similar platforms
+- Database: MongoDB Atlas or local MongoDB
 
-#### Frontend
+---
 
-Create a file `frontend/.env` with the following contents:
+## Project structure
 
-```
-VITE_BACKEND_URL="http://localhost:3000"
-```
+```text
+hosted-project-moonbeam/
+  api/
+    db/
+      songs/
+        seed-songs.js
+        songs.js
+    helpers/
+    models/
+      game.js
+      player.js
+      song.js
+    sockets/
+      createGameHandlers.js
+      handleCreateGame.js
+      handleJoinGame.js
+      handleStartGame.js
+      handleSubmitPlacement.js
+      handleDeleteGame.js
+      gameTimer.js
+    tests/
+    index.js
+    package.json
 
-#### Backend
+  frontend/
+    src/
+      components/
+      pages/
+        Home/
+        Lobby/
+        GameScreen/
+        Reveal/
+        GameOver/
+      services/
+      socket.js
+    tests/
+    package.json
 
-Create a file `api/.env` with the following contents:
-
-```
-MONGODB_URL="mongodb://0.0.0.0/acebook"
-NODE_ENV="development"
-JWT_SECRET="secret"
-```
-
-For an explanation of these environment variables, see the documentation.
-
-### How to run the server and use the app
-
-1. Start the server application (in the `api` directory) in dev mode:
-
-```
-; cd api
-; npm run dev
-```
-
-2. Start the front end application (in the `frontend` directory)
-
-In a new terminal session...
-
-```
-; cd frontend
-; npm run dev
+  docs/
+  README.md
+  package.json
 ```
 
-You should now be able to open your browser and go to
-`http://localhost:5173/signup` to create a new user.
+The root `package.json` is intentionally a placeholder to stop packages being installed or run from the wrong directory. Run commands from either `api/` or `frontend/`.
 
-Then, after signing up, you should be able to log in by going to
-`http://localhost:5173/login`.
+---
 
-After logging in, you won't see much but you can create posts using PostMan and
-they should then show up in the browser if you refresh the page.
+## Local setup
+
+### Prerequisites
+
+You will need:
+
+- Node.js 20+
+- npm
+- MongoDB running locally, or a MongoDB Atlas connection string
+
+---
+
+## 1. Clone the repo
+
+```bash
+git clone https://github.com/chris-poed/hosted-project-moonbeam.git
+cd hosted-project-moonbeam
+```
+
+---
+
+## 2. Install backend dependencies
+
+```bash
+cd api
+npm install
+```
+
+Create an `.env` file inside `api/`:
+
+```env
+MONGODB_URL=mongodb://127.0.0.1:27017/snippit
+NODE_ENV=development
+CLIENT_URL=http://localhost:5173
+PORT=3000
+```
+
+If using MongoDB Atlas, replace `MONGODB_URL` with your Atlas connection string.
+
+---
+
+## 3. Seed the song database
+
+From inside the `api/` directory:
+
+```bash
+npm run seed:songs
+```
+
+This populates the database with songs and preview URLs used during gameplay.
+
+---
+
+## 4. Start the backend
+
+From inside the `api/` directory:
+
+```bash
+npm run dev
+```
+
+The backend will run on:
+
+```text
+http://localhost:3000
+```
+
+---
+
+## 5. Install frontend dependencies
+
+Open a second terminal:
+
+```bash
+cd frontend
+npm install
+```
+
+Create an `.env` file inside `frontend/`:
+
+```env
+VITE_BACKEND_URL=http://localhost:3000
+```
+
+---
+
+## 6. Start the frontend
+
+From inside the `frontend/` directory:
+
+```bash
+npm run dev
+```
+
+The frontend will usually run on:
+
+```text
+http://localhost:5173
+```
+
+Open that URL in your browser to play locally.
+
+---
+
+## Running tests
+
+### Backend tests
+
+```bash
+cd api
+npm test
+```
+
+### Frontend tests
+
+```bash
+cd frontend
+npm test
+```
+
+### Frontend linting
+
+```bash
+cd frontend
+npm run lint
+```
+
+---
+
+## Environment variables
+
+### Backend
+
+| Variable | Purpose |
+|---|---|
+| `MONGODB_URL` | MongoDB connection string |
+| `NODE_ENV` | App environment, for example `development`, `test`, or `production` |
+| `CLIENT_URL` | Frontend URL allowed by CORS |
+| `PORT` | Optional backend port. Defaults to `3000` |
+
+### Frontend
+
+| Variable | Purpose |
+|---|---|
+| `VITE_BACKEND_URL` | URL of the backend Socket.io server |
+
+For the hosted version, the frontend URL is:
+
+```text
+https://snippit-netlify.netlify.app
+```
+
+In production, the backend `CLIENT_URL` should match the frontend origin exactly:
+
+```env
+CLIENT_URL=https://snippit-netlify.netlify.app
+```
+
+Avoid adding a trailing slash to `CLIENT_URL`, as CORS origin checks need to match the browser origin.
+
+---
+
+## Key socket events
+
+The game is driven mainly by Socket.io events.
+
+| Event | Purpose |
+|---|---|
+| `game:create` | Creates a new game and host player |
+| `game:join` | Adds a player to an existing lobby |
+| `lobby:updated` | Broadcasts lobby changes to all players |
+| `game:start` | Starts the game when the host is ready |
+| `game:started` | Sends initial game state to all players |
+| `game:phase_changed` | Broadcasts changes between game phases |
+| `placement:submit` | Submits the current player's song placement |
+| `game:reveal` | Shows whether the placement was correct |
+| `game:delete` | Deletes the game after the final results screen |
+| `timer:start`, `timer:tick`, `timer:end` | Keeps clients in sync during timed phases |
+
+---
+
+## Game phases
+
+The backend tracks the game using these phases:
+
+```text
+lobby
+intro-countdown
+listening-placement-phase
+placement-ended
+reveal-phase
+game-ended
+```
+
+During the guessing phase, song title, artist and year are hidden from players. The client receives the preview URL so the song can be played, but the answer is only revealed after the placement is submitted.
+
+---
+
+## Data models
+
+### Game
+
+Stores the players, host, current player, game phase, join code, turn order, round number and song deck.
+
+### Player
+
+Stores the player's display name, connection state and timeline of correctly placed songs.
+
+### Song
+
+Stores the song title, artist, release year and preview URL.
+
+---
+
+## Deployment notes
+
+The live frontend is hosted at:
+
+```text
+https://snippit-netlify.netlify.app
+```
+
+For a production deployment:
+
+1. Deploy the backend API to a Node-compatible host such as Render.
+2. Add backend environment variables:
+   ```env
+   MONGODB_URL=<your-production-mongodb-uri>
+   NODE_ENV=production
+   CLIENT_URL=https://snippit-netlify.netlify.app
+   ```
+3. Deploy the frontend to Netlify.
+4. Add the frontend environment variable:
+   ```env
+   VITE_BACKEND_URL=<your-deployed-backend-url>
+   ```
+5. Seed the production MongoDB database with:
+   ```bash
+   npm run seed:songs
+   ```
+
+---
+
+## Future improvements
+
+Possible next steps:
+
+- Improve reconnection handling if a player refreshes or drops connection
+- Add a stronger mobile drag-and-drop experience
+- Add persistent game history
+- Add an admin flow for managing the song library
+- Add end-to-end tests for full multiplayer game flows
+- Improve accessibility for keyboard and screen reader users
+
+---
+
+## Credits
+
+This project was built from a Makers MERN starter/template and adapted into a real-time multiplayer music game.
